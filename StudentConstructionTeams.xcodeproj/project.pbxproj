@@ -8,6 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		EE09B85A2B2D15B100EF5536 /* MyGroupTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8592B2D15B100EF5536 /* MyGroupTable.swift */; };
+		EE09B85E2B2E1A1600EF5536 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B85D2B2E1A1600EF5536 /* Task.swift */; };
+		EE09B8602B2E1A5600EF5536 /* TaskType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B85F2B2E1A5600EF5536 /* TaskType.swift */; };
+		EE09B8622B2E1C1200EF5536 /* TaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8612B2E1C1200EF5536 /* TaskStatus.swift */; };
+		EE09B8642B2E1CAC00EF5536 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8632B2E1CAC00EF5536 /* Group.swift */; };
+		EE09B8662B2E1CFD00EF5536 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8652B2E1CFD00EF5536 /* Team.swift */; };
+		EE09B8682B2E20A800EF5536 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8672B2E20A800EF5536 /* Data.swift */; };
+		EE09B86A2B2E21C300EF5536 /* TeamDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8692B2E21C300EF5536 /* TeamDirector.swift */; };
+		EE09B86C2B2F20FB00EF5536 /* TasksTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B86B2B2F20FB00EF5536 /* TasksTable.swift */; };
+		EE09B86E2B2F28BD00EF5536 /* TasksAdminTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B86D2B2F28BD00EF5536 /* TasksAdminTable.swift */; };
+		EE09B8702B2F298100EF5536 /* StudentsAdminTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B86F2B2F298100EF5536 /* StudentsAdminTable.swift */; };
+		EE09B8722B2F36A600EF5536 /* TeamDirectorsAdminTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8712B2F36A600EF5536 /* TeamDirectorsAdminTable.swift */; };
+		EE09B8742B2F3C2400EF5536 /* UsersAdminTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8732B2F3C2400EF5536 /* UsersAdminTable.swift */; };
+		EE09B8762B2F3C5D00EF5536 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8752B2F3C5D00EF5536 /* User.swift */; };
+		EE09B8782B2F567D00EF5536 /* TaskTypeAdminTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8772B2F567D00EF5536 /* TaskTypeAdminTable.swift */; };
+		EE09B87A2B2F57C800EF5536 /* GroupsAdminTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8792B2F57C800EF5536 /* GroupsAdminTable.swift */; };
+		EE09B87C2B2F59AC00EF5536 /* TeamsAdminTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B87B2B2F59AC00EF5536 /* TeamsAdminTable.swift */; };
+		EE09B87E2B2F5BA000EF5536 /* StayingInTeamAdminTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B87D2B2F5BA000EF5536 /* StayingInTeamAdminTable.swift */; };
+		EE09B8802B2F5C4600EF5536 /* StayingInTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B87F2B2F5C4600EF5536 /* StayingInTeam.swift */; };
+		EE09B8852B2F63A200EF5536 /* EarningsOnTeamsChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8842B2F63A200EF5536 /* EarningsOnTeamsChart.swift */; };
+		EE09B8882B2F6A5200EF5536 /* EarningsOnTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8872B2F6A5200EF5536 /* EarningsOnTeams.swift */; };
 		EEC65F112B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC65F102B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift */; };
 		EEC65F132B2CBF3C00CF7C9C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC65F122B2CBF3C00CF7C9C /* ContentView.swift */; };
 		EEC65F152B2CBF3E00CF7C9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEC65F142B2CBF3E00CF7C9C /* Assets.xcassets */; };
@@ -20,6 +40,26 @@
 
 /* Begin PBXFileReference section */
 		EE09B8592B2D15B100EF5536 /* MyGroupTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupTable.swift; sourceTree = "<group>"; };
+		EE09B85D2B2E1A1600EF5536 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		EE09B85F2B2E1A5600EF5536 /* TaskType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskType.swift; sourceTree = "<group>"; };
+		EE09B8612B2E1C1200EF5536 /* TaskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatus.swift; sourceTree = "<group>"; };
+		EE09B8632B2E1CAC00EF5536 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		EE09B8652B2E1CFD00EF5536 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		EE09B8672B2E20A800EF5536 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		EE09B8692B2E21C300EF5536 /* TeamDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDirector.swift; sourceTree = "<group>"; };
+		EE09B86B2B2F20FB00EF5536 /* TasksTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTable.swift; sourceTree = "<group>"; };
+		EE09B86D2B2F28BD00EF5536 /* TasksAdminTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksAdminTable.swift; sourceTree = "<group>"; };
+		EE09B86F2B2F298100EF5536 /* StudentsAdminTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsAdminTable.swift; sourceTree = "<group>"; };
+		EE09B8712B2F36A600EF5536 /* TeamDirectorsAdminTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDirectorsAdminTable.swift; sourceTree = "<group>"; };
+		EE09B8732B2F3C2400EF5536 /* UsersAdminTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersAdminTable.swift; sourceTree = "<group>"; };
+		EE09B8752B2F3C5D00EF5536 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EE09B8772B2F567D00EF5536 /* TaskTypeAdminTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTypeAdminTable.swift; sourceTree = "<group>"; };
+		EE09B8792B2F57C800EF5536 /* GroupsAdminTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsAdminTable.swift; sourceTree = "<group>"; };
+		EE09B87B2B2F59AC00EF5536 /* TeamsAdminTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsAdminTable.swift; sourceTree = "<group>"; };
+		EE09B87D2B2F5BA000EF5536 /* StayingInTeamAdminTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StayingInTeamAdminTable.swift; sourceTree = "<group>"; };
+		EE09B87F2B2F5C4600EF5536 /* StayingInTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StayingInTeam.swift; sourceTree = "<group>"; };
+		EE09B8842B2F63A200EF5536 /* EarningsOnTeamsChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsOnTeamsChart.swift; sourceTree = "<group>"; };
+		EE09B8872B2F6A5200EF5536 /* EarningsOnTeams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsOnTeams.swift; sourceTree = "<group>"; };
 		EEC65F0D2B2CBF3C00CF7C9C /* StudentConstructionTeams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentConstructionTeams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEC65F102B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentConstructionTeamsApp.swift; sourceTree = "<group>"; };
 		EEC65F122B2CBF3C00CF7C9C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -43,6 +83,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE09B8862B2F691300EF5536 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				EE09B8842B2F63A200EF5536 /* EarningsOnTeamsChart.swift */,
+				EE09B8872B2F6A5200EF5536 /* EarningsOnTeams.swift */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
 		EEC65F042B2CBF3C00CF7C9C = {
 			isa = PBXGroup;
 			children = (
@@ -62,9 +111,11 @@
 		EEC65F0F2B2CBF3C00CF7C9C /* StudentConstructionTeams */ = {
 			isa = PBXGroup;
 			children = (
+				EE09B8672B2E20A800EF5536 /* Data.swift */,
 				EEC65F102B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift */,
 				EEC65F122B2CBF3C00CF7C9C /* ContentView.swift */,
 				EEC65F1F2B2CC20600CF7C9C /* GeneralInformationView.swift */,
+				EE09B8862B2F691300EF5536 /* Charts */,
 				EEC65F262B2CF88700CF7C9C /* TableViews */,
 				EEC65F252B2CCCB000CF7C9C /* Models */,
 				EEC65F142B2CBF3E00CF7C9C /* Assets.xcassets */,
@@ -87,6 +138,14 @@
 			children = (
 				EEC65F212B2CC30400CF7C9C /* GeneralInformation.swift */,
 				EEC65F2B2B2D02DB00CF7C9C /* Student.swift */,
+				EE09B8632B2E1CAC00EF5536 /* Group.swift */,
+				EE09B85F2B2E1A5600EF5536 /* TaskType.swift */,
+				EE09B85D2B2E1A1600EF5536 /* Task.swift */,
+				EE09B8752B2F3C5D00EF5536 /* User.swift */,
+				EE09B8652B2E1CFD00EF5536 /* Team.swift */,
+				EE09B8612B2E1C1200EF5536 /* TaskStatus.swift */,
+				EE09B8692B2E21C300EF5536 /* TeamDirector.swift */,
+				EE09B87F2B2F5C4600EF5536 /* StayingInTeam.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -96,6 +155,15 @@
 			children = (
 				EEC65F292B2D02B200CF7C9C /* MyTeamTable.swift */,
 				EE09B8592B2D15B100EF5536 /* MyGroupTable.swift */,
+				EE09B86B2B2F20FB00EF5536 /* TasksTable.swift */,
+				EE09B86F2B2F298100EF5536 /* StudentsAdminTable.swift */,
+				EE09B8712B2F36A600EF5536 /* TeamDirectorsAdminTable.swift */,
+				EE09B8732B2F3C2400EF5536 /* UsersAdminTable.swift */,
+				EE09B86D2B2F28BD00EF5536 /* TasksAdminTable.swift */,
+				EE09B8772B2F567D00EF5536 /* TaskTypeAdminTable.swift */,
+				EE09B8792B2F57C800EF5536 /* GroupsAdminTable.swift */,
+				EE09B87B2B2F59AC00EF5536 /* TeamsAdminTable.swift */,
+				EE09B87D2B2F5BA000EF5536 /* StayingInTeamAdminTable.swift */,
 			);
 			path = TableViews;
 			sourceTree = "<group>";
@@ -116,6 +184,8 @@
 			dependencies = (
 			);
 			name = StudentConstructionTeams;
+			packageProductDependencies = (
+			);
 			productName = StudentConstructionTeams;
 			productReference = EEC65F0D2B2CBF3C00CF7C9C /* StudentConstructionTeams.app */;
 			productType = "com.apple.product-type.application";
@@ -144,6 +214,8 @@
 				Base,
 			);
 			mainGroup = EEC65F042B2CBF3C00CF7C9C;
+			packageReferences = (
+			);
 			productRefGroup = EEC65F0E2B2CBF3C00CF7C9C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -171,12 +243,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEC65F202B2CC20600CF7C9C /* GeneralInformationView.swift in Sources */,
+				EE09B87C2B2F59AC00EF5536 /* TeamsAdminTable.swift in Sources */,
 				EEC65F132B2CBF3C00CF7C9C /* ContentView.swift in Sources */,
+				EE09B8662B2E1CFD00EF5536 /* Team.swift in Sources */,
+				EE09B8602B2E1A5600EF5536 /* TaskType.swift in Sources */,
+				EE09B8642B2E1CAC00EF5536 /* Group.swift in Sources */,
+				EE09B8782B2F567D00EF5536 /* TaskTypeAdminTable.swift in Sources */,
 				EEC65F112B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift in Sources */,
+				EE09B86A2B2E21C300EF5536 /* TeamDirector.swift in Sources */,
 				EEC65F222B2CC30400CF7C9C /* GeneralInformation.swift in Sources */,
+				EE09B8682B2E20A800EF5536 /* Data.swift in Sources */,
+				EE09B86C2B2F20FB00EF5536 /* TasksTable.swift in Sources */,
+				EE09B86E2B2F28BD00EF5536 /* TasksAdminTable.swift in Sources */,
+				EE09B87A2B2F57C800EF5536 /* GroupsAdminTable.swift in Sources */,
+				EE09B8702B2F298100EF5536 /* StudentsAdminTable.swift in Sources */,
+				EE09B8762B2F3C5D00EF5536 /* User.swift in Sources */,
 				EEC65F2C2B2D02DB00CF7C9C /* Student.swift in Sources */,
+				EE09B8852B2F63A200EF5536 /* EarningsOnTeamsChart.swift in Sources */,
+				EE09B8742B2F3C2400EF5536 /* UsersAdminTable.swift in Sources */,
+				EE09B8882B2F6A5200EF5536 /* EarningsOnTeams.swift in Sources */,
+				EE09B8802B2F5C4600EF5536 /* StayingInTeam.swift in Sources */,
 				EE09B85A2B2D15B100EF5536 /* MyGroupTable.swift in Sources */,
+				EE09B85E2B2E1A1600EF5536 /* Task.swift in Sources */,
+				EE09B8622B2E1C1200EF5536 /* TaskStatus.swift in Sources */,
 				EEC65F2A2B2D02B200CF7C9C /* MyTeamTable.swift in Sources */,
+				EE09B87E2B2F5BA000EF5536 /* StayingInTeamAdminTable.swift in Sources */,
+				EE09B8722B2F36A600EF5536 /* TeamDirectorsAdminTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

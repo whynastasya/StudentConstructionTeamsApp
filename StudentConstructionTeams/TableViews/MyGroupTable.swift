@@ -8,8 +8,24 @@
 import SwiftUI
 
 struct MyGroupTable: View {
+    @State private var selectedStudent: Student.ID? = nil
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Table(students, selection: $selectedStudent) {
+            TableColumn("ФИО", value: \.fullName)
+            
+            TableColumn("Команда") { student in
+                Text(student.team?.name ?? "")
+            }
+            
+            TableColumn("Номер телефона", value: \.phone)
+            
+            TableColumn("День рождения") { student in
+                if let birthdate = student.birthdate {
+                    Text(birthdate, style: .date)
+                } 
+            }
+        }
     }
 }
 
