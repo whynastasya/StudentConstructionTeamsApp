@@ -36,6 +36,14 @@
 		EEC65F222B2CC30400CF7C9C /* GeneralInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC65F212B2CC30400CF7C9C /* GeneralInformation.swift */; };
 		EEC65F2A2B2D02B200CF7C9C /* MyTeamTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC65F292B2D02B200CF7C9C /* MyTeamTable.swift */; };
 		EEC65F2C2B2D02DB00CF7C9C /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC65F2B2B2D02DB00CF7C9C /* Student.swift */; };
+		EEE76B692B3213AD0092CAFC /* EarningsOnMonths.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B682B3213AD0092CAFC /* EarningsOnMonths.swift */; };
+		EEE76B6B2B3215750092CAFC /* EarningsOnMonthsChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B6A2B3215750092CAFC /* EarningsOnMonthsChart.swift */; };
+		EEE76B6D2B321C370092CAFC /* CompletedTasksOnTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B6C2B321C370092CAFC /* CompletedTasksOnTeams.swift */; };
+		EEE76B6F2B321C3F0092CAFC /* CompletedTasksOnTeamsChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B6E2B321C3F0092CAFC /* CompletedTasksOnTeamsChart.swift */; };
+		EEE76B712B321F440092CAFC /* CompletedTasksOnMonths.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B702B321F440092CAFC /* CompletedTasksOnMonths.swift */; };
+		EEE76B732B321F560092CAFC /* Months.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B722B321F560092CAFC /* Months.swift */; };
+		EEE76B782B3221C20092CAFC /* CompletedTasksOnMonthsChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B772B3221C20092CAFC /* CompletedTasksOnMonthsChart.swift */; };
+		EEE76B7A2B3222D90092CAFC /* MyTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B792B3222D90092CAFC /* MyTeamView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +78,14 @@
 		EEC65F212B2CC30400CF7C9C /* GeneralInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralInformation.swift; sourceTree = "<group>"; };
 		EEC65F292B2D02B200CF7C9C /* MyTeamTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeamTable.swift; sourceTree = "<group>"; };
 		EEC65F2B2B2D02DB00CF7C9C /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		EEE76B682B3213AD0092CAFC /* EarningsOnMonths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsOnMonths.swift; sourceTree = "<group>"; };
+		EEE76B6A2B3215750092CAFC /* EarningsOnMonthsChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsOnMonthsChart.swift; sourceTree = "<group>"; };
+		EEE76B6C2B321C370092CAFC /* CompletedTasksOnTeams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTasksOnTeams.swift; sourceTree = "<group>"; };
+		EEE76B6E2B321C3F0092CAFC /* CompletedTasksOnTeamsChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTasksOnTeamsChart.swift; sourceTree = "<group>"; };
+		EEE76B702B321F440092CAFC /* CompletedTasksOnMonths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTasksOnMonths.swift; sourceTree = "<group>"; };
+		EEE76B722B321F560092CAFC /* Months.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Months.swift; sourceTree = "<group>"; };
+		EEE76B772B3221C20092CAFC /* CompletedTasksOnMonthsChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTasksOnMonthsChart.swift; sourceTree = "<group>"; };
+		EEE76B792B3222D90092CAFC /* MyTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeamView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +103,10 @@
 			isa = PBXGroup;
 			children = (
 				EE09B8842B2F63A200EF5536 /* EarningsOnTeamsChart.swift */,
-				EE09B8872B2F6A5200EF5536 /* EarningsOnTeams.swift */,
+				EEE76B6A2B3215750092CAFC /* EarningsOnMonthsChart.swift */,
+				EEE76B6E2B321C3F0092CAFC /* CompletedTasksOnTeamsChart.swift */,
+				EEE76B772B3221C20092CAFC /* CompletedTasksOnMonthsChart.swift */,
+				EEE76B762B3221700092CAFC /* Models */,
 			);
 			path = Charts;
 			sourceTree = "<group>";
@@ -114,6 +133,7 @@
 				EE09B8672B2E20A800EF5536 /* Data.swift */,
 				EEC65F102B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift */,
 				EEC65F122B2CBF3C00CF7C9C /* ContentView.swift */,
+				EEE76B792B3222D90092CAFC /* MyTeamView.swift */,
 				EEC65F1F2B2CC20600CF7C9C /* GeneralInformationView.swift */,
 				EE09B8862B2F691300EF5536 /* Charts */,
 				EEC65F262B2CF88700CF7C9C /* TableViews */,
@@ -166,6 +186,18 @@
 				EE09B87D2B2F5BA000EF5536 /* StayingInTeamAdminTable.swift */,
 			);
 			path = TableViews;
+			sourceTree = "<group>";
+		};
+		EEE76B762B3221700092CAFC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EEE76B6C2B321C370092CAFC /* CompletedTasksOnTeams.swift */,
+				EEE76B682B3213AD0092CAFC /* EarningsOnMonths.swift */,
+				EEE76B702B321F440092CAFC /* CompletedTasksOnMonths.swift */,
+				EEE76B722B321F560092CAFC /* Months.swift */,
+				EE09B8872B2F6A5200EF5536 /* EarningsOnTeams.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEC65F202B2CC20600CF7C9C /* GeneralInformationView.swift in Sources */,
+				EEE76B6F2B321C3F0092CAFC /* CompletedTasksOnTeamsChart.swift in Sources */,
 				EE09B87C2B2F59AC00EF5536 /* TeamsAdminTable.swift in Sources */,
 				EEC65F132B2CBF3C00CF7C9C /* ContentView.swift in Sources */,
 				EE09B8662B2E1CFD00EF5536 /* Team.swift in Sources */,
@@ -254,16 +287,23 @@
 				EEC65F222B2CC30400CF7C9C /* GeneralInformation.swift in Sources */,
 				EE09B8682B2E20A800EF5536 /* Data.swift in Sources */,
 				EE09B86C2B2F20FB00EF5536 /* TasksTable.swift in Sources */,
+				EEE76B6B2B3215750092CAFC /* EarningsOnMonthsChart.swift in Sources */,
 				EE09B86E2B2F28BD00EF5536 /* TasksAdminTable.swift in Sources */,
 				EE09B87A2B2F57C800EF5536 /* GroupsAdminTable.swift in Sources */,
+				EEE76B712B321F440092CAFC /* CompletedTasksOnMonths.swift in Sources */,
 				EE09B8702B2F298100EF5536 /* StudentsAdminTable.swift in Sources */,
 				EE09B8762B2F3C5D00EF5536 /* User.swift in Sources */,
+				EEE76B782B3221C20092CAFC /* CompletedTasksOnMonthsChart.swift in Sources */,
+				EEE76B732B321F560092CAFC /* Months.swift in Sources */,
 				EEC65F2C2B2D02DB00CF7C9C /* Student.swift in Sources */,
 				EE09B8852B2F63A200EF5536 /* EarningsOnTeamsChart.swift in Sources */,
+				EEE76B7A2B3222D90092CAFC /* MyTeamView.swift in Sources */,
 				EE09B8742B2F3C2400EF5536 /* UsersAdminTable.swift in Sources */,
 				EE09B8882B2F6A5200EF5536 /* EarningsOnTeams.swift in Sources */,
 				EE09B8802B2F5C4600EF5536 /* StayingInTeam.swift in Sources */,
+				EEE76B6D2B321C370092CAFC /* CompletedTasksOnTeams.swift in Sources */,
 				EE09B85A2B2D15B100EF5536 /* MyGroupTable.swift in Sources */,
+				EEE76B692B3213AD0092CAFC /* EarningsOnMonths.swift in Sources */,
 				EE09B85E2B2E1A1600EF5536 /* Task.swift in Sources */,
 				EE09B8622B2E1C1200EF5536 /* TaskStatus.swift in Sources */,
 				EEC65F2A2B2D02B200CF7C9C /* MyTeamTable.swift in Sources */,

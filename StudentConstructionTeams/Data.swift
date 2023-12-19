@@ -66,3 +66,38 @@ var earningsOnTeams: [EarningsOnTeams] = [EarningsOnTeams(teamName: "gfds", earn
                                           EarningsOnTeams(teamName: "444", earnings: 5435),
                                           EarningsOnTeams(teamName: "55", earnings: 2343),
 ]
+
+var earningsOnMonths = [EarningsOnMonths(month: .january, earnings: 204),
+                        EarningsOnMonths(month: .february, earnings: 124),
+                        EarningsOnMonths(month: .march, earnings: 765),
+                        EarningsOnMonths(month: .april, earnings: 345),
+                        EarningsOnMonths(month: .may, earnings: 567),
+                        EarningsOnMonths(month: .june, earnings: 1007),
+                        EarningsOnMonths(month: .jule, earnings: 234),
+                        EarningsOnMonths(month: .august, earnings: 654),
+                        EarningsOnMonths(month: .september, earnings: 678),
+                        EarningsOnMonths(month: .october, earnings: 145),
+                        EarningsOnMonths(month: .november, earnings: 204),
+                        EarningsOnMonths(month: .december, earnings: 764),
+]
+
+var completedTasksOnTeams = [CompletedTasksOnTeams(count: 7, teamName: "111"),
+                             CompletedTasksOnTeams(count: 15, teamName: "222"),
+                             CompletedTasksOnTeams(count: 3, teamName: "333"),
+                             CompletedTasksOnTeams(count: 9, teamName: "444"),
+                             CompletedTasksOnTeams(count: 10, teamName: "555")
+]
+
+var completedTasksOnMonths = [CompletedTasksOnMonths(count: 12, month: .january),
+                              CompletedTasksOnMonths(count: 43, month: .february),
+                              CompletedTasksOnMonths(count: 87, month: .march),
+                              CompletedTasksOnMonths(count: 120, month: .april),
+                              CompletedTasksOnMonths(count: 24, month: .may),
+                              CompletedTasksOnMonths(count: 56, month: .june),
+                              CompletedTasksOnMonths(count: 89, month: .jule),
+                              CompletedTasksOnMonths(count: 34, month: .august),
+                              CompletedTasksOnMonths(count: 45, month: .september),
+                              CompletedTasksOnMonths(count: 90, month: .october),
+                              CompletedTasksOnMonths(count: 23, month: .november),
+                              CompletedTasksOnMonths(count: 65, month: .december)
+]

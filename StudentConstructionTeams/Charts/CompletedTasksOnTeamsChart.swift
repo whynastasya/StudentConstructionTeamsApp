@@ -1,22 +1,20 @@
 //
-//  EarningsOnTeamsChart.swift
+//  CountCompletedTasksOnTeamsChart.swift
 //  StudentConstructionTeams
 //
-//  Created by nastasya on 17.12.2023.
+//  Created by nastasya on 19.12.2023.
 //
 
-import Charts
 import SwiftUI
+import Charts
 
-
-struct EarningsOnTeamsChart: View {
-    
+struct CompletedTasksOnTeamsChart: View {
     var body: some View {
         Chart {
-            ForEach(earningsOnTeams) {
+            ForEach(completedTasksOnTeams) {
                 BarMark(
                     x: .value("Команды", $0.teamName),
-                    y: .value("Заработок", $0.earnings)
+                    y: .value("Количество заданий", $0.count)
                 )
                 .clipShape(.rect(cornerRadius: 5))
             }
@@ -34,10 +32,9 @@ struct EarningsOnTeamsChart: View {
             Text("Заработок (руб.)")
                 .font(.title3)
         }
-//        .chartYScale(domain: [0, 6000])
     }
 }
 
 #Preview {
-    EarningsOnTeamsChart()
+    CompletedTasksOnTeamsChart()
 }

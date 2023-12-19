@@ -8,12 +8,13 @@
 import Foundation
 
 struct GeneralInformation {
-    var name: String?
+    var groupName: String?
+    var teamName: String?
     var elder: Person?
     var director: Person?
     var taskType: String?
     var date: Date?
-    var countStudent: Int?
+    var countStudents: Int?
     
     struct Person {
         var name: String
