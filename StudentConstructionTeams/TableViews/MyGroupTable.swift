@@ -26,6 +26,7 @@ struct MyGroupTable: View {
                 } 
             }
         }
+        .clipShape(.rect(cornerRadius: 15))
     }
 }
 

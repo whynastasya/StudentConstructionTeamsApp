@@ -28,13 +28,13 @@ struct EarningsOnTeamsChart: View {
         }
         .chartXAxisLabel(position: .bottom, alignment: .center) {
             Text("Команды")
-                .font(.title3)
         }
         .chartYAxisLabel(position: .leading) {
             Text("Заработок (руб.)")
-                .font(.title3)
         }
-//        .chartYScale(domain: [0, 6000])
+        .padding()
+        .background()
+        .clipShape(.rect(cornerRadius: 25))
     }
 }
 

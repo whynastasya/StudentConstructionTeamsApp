@@ -1,0 +1,9 @@
+DROP TABLE staying_in_team;
+DROP TABLE task;
+DROP TABLE task_type;
+DROP TABLE task_status;
+DROP TABLE team_director;
+DROP TABLE student;
+DROP TABLE user;
+DROP TABLE group;
+DROP TABLE user;

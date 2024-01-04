@@ -26,12 +26,13 @@ struct CompletedTasksOnMonthsChart: View {
         }
         .chartXAxisLabel(position: .bottom, alignment: .center) {
             Text("Месяцы")
-                .font(.title3)
         }
         .chartYAxisLabel(position: .leading) {
             Text("Количество заданий")
-                .font(.title3)
         }
+        .padding()
+        .background()
+        .clipShape(.rect(cornerRadius: 25))
     }
 }
 

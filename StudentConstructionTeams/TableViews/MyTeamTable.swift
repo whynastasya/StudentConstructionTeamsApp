@@ -30,6 +30,7 @@ struct MyTeamTable: View {
                 } 
             }
         }
+        .clipShape(.rect(cornerRadius: 20))
     }
 }
 

@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct MyTeamView: View {
+    @State var teamInformation = GeneralInformation(teamName: "Котята", director: GeneralInformation.Person(name: "Федор Иванов", phone: "12341234"), countStudents: 24)
+    @State var currentTaskInformation = GeneralInformation(taskType: TaskType(id: 1, name: "govno", ratePerHour: 200), startDate: Date())
+    @State var students = [Student]()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            GeneralInformationView(information: teamInformation)
+            GeneralInformationView(information: currentTaskInformation)
+            MyTeamTable()
+        }
+        .padding()
     }
 }
 

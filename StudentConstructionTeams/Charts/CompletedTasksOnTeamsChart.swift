@@ -26,12 +26,13 @@ struct CompletedTasksOnTeamsChart: View {
         }
         .chartXAxisLabel(position: .bottom, alignment: .center) {
             Text("Команды")
-                .font(.title3)
         }
         .chartYAxisLabel(position: .leading) {
-            Text("Заработок (руб.)")
-                .font(.title3)
+            Text("Количество заданий")
         }
+        .padding()
+        .background()
+        .clipShape(.rect(cornerRadius: 25))
     }
 }
 

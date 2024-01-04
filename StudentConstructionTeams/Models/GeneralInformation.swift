@@ -12,9 +12,11 @@ struct GeneralInformation {
     var teamName: String?
     var elder: Person?
     var director: Person?
-    var taskType: String?
-    var date: Date?
+    var taskType: TaskType?
+    var startDate: Date?
     var countStudents: Int?
+    var allEarnings: Int?
+    var currentMonthEarnings: Int?
     
     struct Person {
         var name: String

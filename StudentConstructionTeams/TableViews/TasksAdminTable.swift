@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct TasksAdminTable: View {
-    @State private var selectedTask: Task.ID? = nil
+    @State private var selectedTask: ConstructionTask.ID? = nil
     
     var body: some View {
         Table(tasks, selection: $selectedTask) {
-            TableColumn("Тип работы", value: \Task.taskType.name)
+            TableColumn("Тип работы", value: \ConstructionTask.taskType.name)
             
             TableColumn("Количество часов") { task in
                 Text("\(task.countHours)")

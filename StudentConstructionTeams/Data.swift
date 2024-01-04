@@ -21,11 +21,11 @@ var taskTypes = [TaskType(id: 1, name: "Побелка", ratePerHour: 234),
                 TaskType(id: 7, name: "Моча", ratePerHour: 23144144)
 ]
 
-var tasks = [Task(id: 1, taskType: taskTypes[0], countHours: 45, status: .completed, team: Team(id: 1, name: "dogs", countStudents: 34), startDate: Date(), endDate: Date()),
-             Task(id: 2, taskType: taskTypes[5], countHours: 425, status: .inProgress, team: Team(id: 2, name: "cats", countStudents: 34), startDate: Date(), endDate: Date()),
-             Task(id: 3, taskType: taskTypes[3], countHours: 4, status: .free, team: Team(id: 3, name: "rats", countStudents: 34), startDate: Date(), endDate: Date()),
-             Task(id: 4, taskType: taskTypes[2], countHours: 45, status: .inProgress, team: Team(id: 4, name: "govno", countStudents: 34), startDate: Date(), endDate: Date()),
-             Task(id: 5, taskType: taskTypes[1], countHours: 435, status: .completed, team: Team(id: 1, name: "dogs", countStudents: 34), startDate: Date(), endDate: Date()),
+var tasks = [ConstructionTask(id: 1, taskType: taskTypes[0], countHours: 45, status: .completed, team: Team(id: 1, name: "dogs", countStudents: 34), startDate: Date(), endDate: Date()),
+             ConstructionTask(id: 2, taskType: taskTypes[5], countHours: 425, status: .inProgress, team: Team(id: 2, name: "cats", countStudents: 34), startDate: Date(), endDate: Date()),
+             ConstructionTask(id: 3, taskType: taskTypes[3], countHours: 4, status: .free, team: Team(id: 3, name: "rats", countStudents: 34), startDate: Date(), endDate: Date()),
+             ConstructionTask(id: 4, taskType: taskTypes[2], countHours: 45, status: .inProgress, team: Team(id: 4, name: "govno", countStudents: 34), startDate: Date(), endDate: Date()),
+             ConstructionTask(id: 5, taskType: taskTypes[1], countHours: 435, status: .completed, team: Team(id: 1, name: "dogs", countStudents: 34), startDate: Date(), endDate: Date()),
 ]
 
 var teamDirectors = [TeamDirector(id: 1, name: "Дима", surname: "Кулич", patronymic: "", birthdate: Date(), phone: "3456789", team: Team(id: 1, name: "ksfks", countStudents: 23)),

@@ -26,13 +26,13 @@ struct EarningsOnMonthsChart: View {
         }
         .chartXAxisLabel(position: .bottom, alignment: .center) {
             Text("Месяцы")
-                .font(.title3)
         }
         .chartYAxisLabel(position: .leading) {
             Text("Заработок (руб.)")
-                .font(.title3)
         }
-//        .chartYScale(domain: [0, 1000])
+        .padding()
+        .background()
+        .clipShape(.rect(cornerRadius: 25))
     }
 }
 

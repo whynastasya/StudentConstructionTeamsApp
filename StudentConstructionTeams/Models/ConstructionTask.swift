@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Task: Identifiable {
+struct ConstructionTask: Identifiable {
     var id: Int
     var taskType: TaskType
     var countHours: Int

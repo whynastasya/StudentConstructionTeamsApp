@@ -14,9 +14,10 @@ struct GeneralInformationView: View {
             if let taskType = information.taskType {
                 Text("Текущее задание")
                     .font(.title2)
+                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                 HStack {
                     Text("Тип задачи: ") +
-                    Text(taskType)
+                    Text(taskType.name)
                         .fontWeight(.bold)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -25,6 +26,7 @@ struct GeneralInformationView: View {
             if let groupName = information.groupName {
                 Text("Моя группа")
                     .font(.title2)
+                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                 HStack {
                     Text("Название: ") +
                     Text(groupName)
@@ -36,6 +38,7 @@ struct GeneralInformationView: View {
             if let teamName = information.teamName {
                 Text("Моя команда")
                     .font(.title2)
+                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                 HStack {
                     Text("Название: ") +
                     Text(teamName)
@@ -68,9 +71,9 @@ struct GeneralInformationView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
             
-            if let date = information.date {
+            if let date = information.startDate {
                 HStack {
-                    Text("Дата: ") +
+                    Text("Дата начала: ") +
                     Text(date, style: .date)
                         .fontWeight(.bold)
                 }
@@ -84,6 +87,19 @@ struct GeneralInformationView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
+            
+            if let allEarnings = information.allEarnings {
+                Text("Мой заработок")
+                    .font(.title2)
+                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
+                Text("Заработано за все время: \(allEarnings) руб.")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            
+            if let currentMonthEarnings = information.currentMonthEarnings {
+                Text("Заработано в этом месяце: \(currentMonthEarnings) руб.")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
         }
         .padding()
         .background()
@@ -92,5 +108,5 @@ struct GeneralInformationView: View {
 }
 
 #Preview {
-    GeneralInformationView(information: GeneralInformation(groupName: "BSBO-02-21", teamName: "Cats", elder: GeneralInformation.Person(name: "Григорчук Настасья", phone: "89260819584"), director: GeneralInformation.Person(name: "Директор Цирка", phone: "12345678"), taskType: "Покраска", date: Date(), countStudents: 23))
+    GeneralInformationView(information: GeneralInformation(groupName: "BSBO-02-21", teamName: "Cats", elder: GeneralInformation.Person(name: "Григорчук Настасья", phone: "89260819584"), director: GeneralInformation.Person(name: "Директор Цирка", phone: "12345678"), taskType: TaskType(id: 1, name: "Покраска", ratePerHour: 23), startDate: Date(), countStudents: 23, allEarnings: 12345, currentMonthEarnings: 543))
 }
