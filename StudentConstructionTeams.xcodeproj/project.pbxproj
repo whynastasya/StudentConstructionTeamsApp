@@ -56,6 +56,7 @@
 		EEE76B942B3376CD0092CAFC /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B932B3376CD0092CAFC /* Sidebar.swift */; };
 		EEE76B992B34808A0092CAFC /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B982B34808A0092CAFC /* Service.swift */; };
 		EEE76BC82B34D5F90092CAFC /* PostgresClientKit in Frameworks */ = {isa = PBXBuildFile; productRef = EEE76BC72B34D5F90092CAFC /* PostgresClientKit */; };
+		EEFE7FDC2B472967001A2E26 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFE7FDB2B472967001A2E26 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +110,7 @@
 		EEE76B8F2B3376410092CAFC /* TeamDirectorSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDirectorSidebar.swift; sourceTree = "<group>"; };
 		EEE76B932B3376CD0092CAFC /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		EEE76B982B34808A0092CAFC /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		EEFE7FDB2B472967001A2E26 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				EEE76B8F2B3376410092CAFC /* TeamDirectorSidebar.swift */,
 				EEE76B8D2B33757E0092CAFC /* StudentsSidebar.swift */,
 				EEE76B932B3376CD0092CAFC /* Sidebar.swift */,
+				EEFE7FDB2B472967001A2E26 /* LoginView.swift */,
 				EEE76B872B331B1A0092CAFC /* CurrentTasksView.swift */,
 				EEC65F1F2B2CC20600CF7C9C /* GeneralInformationView.swift */,
 				EE09B8862B2F691300EF5536 /* Charts */,
@@ -346,6 +349,7 @@
 				EEE76B7E2B325DEE0092CAFC /* MyEarningsView.swift in Sources */,
 				EEE76B7A2B3222D90092CAFC /* MyTeamView.swift in Sources */,
 				EE09B8742B2F3C2400EF5536 /* UsersAdminTable.swift in Sources */,
+				EEFE7FDC2B472967001A2E26 /* LoginView.swift in Sources */,
 				EE09B8882B2F6A5200EF5536 /* EarningsOnTeams.swift in Sources */,
 				EE09B8802B2F5C4600EF5536 /* StayingInTeam.swift in Sources */,
 				EEE76B6D2B321C370092CAFC /* CompletedTasksOnTeams.swift in Sources */,
