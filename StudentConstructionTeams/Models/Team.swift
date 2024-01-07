@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Team: Identifiable {
+struct Team: Identifiable, Hashable {
     var id: Int
     var name: String
     var countStudents: Int

@@ -11,13 +11,7 @@ struct ExitButton: View {
     var body: some View {
         Button(
             action: {
-                Task {
-                    do {
-                        try Service().fetchTeams()
-                    } catch {
-                        print("\(String(reflecting: error))")
-                    }
-                }
+                
             }, label: {
                 Text("Выйти")
                     .padding(EdgeInsets(top: 8, leading: 24, bottom: 8, trailing: 24))

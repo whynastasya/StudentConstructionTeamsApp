@@ -11,7 +11,7 @@ struct TeamsAdminTable: View {
     @State private var selectedTeam: Team.ID? = nil
     
     var body: some View {
-        Table(teams, selection: $selectedTeam) {
+        Table(teams1, selection: $selectedTeam) {
             TableColumn("Название", value: \.name)
             
             TableColumn("Количество участников") { team in

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TeamDirector: Identifiable {
+struct TeamDirector: UserProtocol, Identifiable {
     var id: Int
     var name: String
     var surname: String

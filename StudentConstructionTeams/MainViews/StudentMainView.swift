@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Sidebar: View {
+struct StudentMainView: View {
     @State var user = User(id: 1, name: "Nastasya", surname: "Grigorchuk", patronymic: "Timofeevna", phone: "")
     @State var userType = "Student"
     
@@ -67,5 +67,5 @@ struct Sidebar: View {
 }
 
 #Preview {
-    Sidebar()
+    StudentMainView()
 }

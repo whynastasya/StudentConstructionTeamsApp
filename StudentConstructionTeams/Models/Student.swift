@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Student: Identifiable {
+struct Student: UserProtocol, Identifiable {
     var id: Int
     var name: String
     var surname: String
@@ -18,7 +18,6 @@ struct Student: Identifiable {
     var isElder: Bool = false
     var group: Group?
     var team: Team?
-    var dateOfJoiningTheLastTeam: Date?
     
     var fullName: String { surname + " " + name + " " + patronymic }
 }

@@ -8,8 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var currentScreen = Screen()
+    
     var body: some View {
-        Sidebar()
+        VStack {
+            switch currentScreen.currentScreen {
+                case .login:
+                    LoginView(currentScreen: currentScreen)
+                case .register:
+                    RegisterView(currentScreen: currentScreen)
+                case .adminAccount:
+                    AdminMainView()
+                case .studentAccount:
+                    StudentMainView()
+                case .teamDirectorAccount:
+                    TeamDirectorMainView()
+            }
+        }
+        .transition(.opacity)
+        .animation(.bouncy, value: currentScreen.currentScreen)
     }
 }
 

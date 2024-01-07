@@ -51,11 +51,15 @@
 		EEE76B842B32DA2B0092CAFC /* ChangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B832B32DA2B0092CAFC /* ChangeButton.swift */; };
 		EEE76B862B32EFD20092CAFC /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B852B32EFD20092CAFC /* TasksView.swift */; };
 		EEE76B882B331B1A0092CAFC /* CurrentTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B872B331B1A0092CAFC /* CurrentTasksView.swift */; };
-		EEE76B8E2B33757E0092CAFC /* StudentsSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B8D2B33757E0092CAFC /* StudentsSidebar.swift */; };
-		EEE76B902B3376410092CAFC /* TeamDirectorSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B8F2B3376410092CAFC /* TeamDirectorSidebar.swift */; };
-		EEE76B942B3376CD0092CAFC /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B932B3376CD0092CAFC /* Sidebar.swift */; };
+		EEE76B942B3376CD0092CAFC /* StudentMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B932B3376CD0092CAFC /* StudentMainView.swift */; };
 		EEE76B992B34808A0092CAFC /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B982B34808A0092CAFC /* Service.swift */; };
 		EEE76BC82B34D5F90092CAFC /* PostgresClientKit in Frameworks */ = {isa = PBXBuildFile; productRef = EEE76BC72B34D5F90092CAFC /* PostgresClientKit */; };
+		EEEB9CC32B497B070018B210 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEB9CC22B497B070018B210 /* RegisterView.swift */; };
+		EEEB9CC62B49B2E90018B210 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEB9CC52B49B2E90018B210 /* Screen.swift */; };
+		EEEB9CC82B49B4FE0018B210 /* AdminMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEB9CC72B49B4FE0018B210 /* AdminMainView.swift */; };
+		EEEB9CCA2B49B50D0018B210 /* TeamDirectorMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEB9CC92B49B50D0018B210 /* TeamDirectorMainView.swift */; };
+		EEEB9CCD2B49B8380018B210 /* AuthorizationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEB9CCC2B49B8380018B210 /* AuthorizationButton.swift */; };
+		EEEB9CD12B4A1A590018B210 /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEB9CD02B4A1A590018B210 /* UserProtocol.swift */; };
 		EEFE7FDC2B472967001A2E26 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFE7FDB2B472967001A2E26 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
@@ -106,10 +110,14 @@
 		EEE76B832B32DA2B0092CAFC /* ChangeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeButton.swift; sourceTree = "<group>"; };
 		EEE76B852B32EFD20092CAFC /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		EEE76B872B331B1A0092CAFC /* CurrentTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTasksView.swift; sourceTree = "<group>"; };
-		EEE76B8D2B33757E0092CAFC /* StudentsSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsSidebar.swift; sourceTree = "<group>"; };
-		EEE76B8F2B3376410092CAFC /* TeamDirectorSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDirectorSidebar.swift; sourceTree = "<group>"; };
-		EEE76B932B3376CD0092CAFC /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
+		EEE76B932B3376CD0092CAFC /* StudentMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMainView.swift; sourceTree = "<group>"; };
 		EEE76B982B34808A0092CAFC /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		EEEB9CC22B497B070018B210 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		EEEB9CC52B49B2E90018B210 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		EEEB9CC72B49B4FE0018B210 /* AdminMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMainView.swift; sourceTree = "<group>"; };
+		EEEB9CC92B49B50D0018B210 /* TeamDirectorMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDirectorMainView.swift; sourceTree = "<group>"; };
+		EEEB9CCC2B49B8380018B210 /* AuthorizationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationButton.swift; sourceTree = "<group>"; };
+		EEEB9CD02B4A1A590018B210 /* UserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProtocol.swift; sourceTree = "<group>"; };
 		EEFE7FDB2B472967001A2E26 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,21 +164,20 @@
 		EEC65F0F2B2CBF3C00CF7C9C /* StudentConstructionTeams */ = {
 			isa = PBXGroup;
 			children = (
-				EE09B8672B2E20A800EF5536 /* Data.swift */,
-				EEC65F102B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift */,
-				EEE76B982B34808A0092CAFC /* Service.swift */,
 				EEC65F122B2CBF3C00CF7C9C /* ContentView.swift */,
+				EEEB9CC42B497B160018B210 /* Authorization */,
+				EEEB9CCB2B49B52B0018B210 /* MainViews */,
+				EE09B8672B2E20A800EF5536 /* Data.swift */,
+				EEE76B982B34808A0092CAFC /* Service.swift */,
+				EEC65F102B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift */,
 				EEE76B792B3222D90092CAFC /* MyTeamView.swift */,
+				EEEB9CC52B49B2E90018B210 /* Screen.swift */,
 				EEE76B7B2B325C640092CAFC /* MyGroupView.swift */,
 				EEE76B7D2B325DEE0092CAFC /* MyEarningsView.swift */,
 				EEE76B7F2B32CC880092CAFC /* MyAccountView.swift */,
 				EEE76B832B32DA2B0092CAFC /* ChangeButton.swift */,
 				EEE76B812B32D98F0092CAFC /* ExitButton.swift */,
 				EEE76B852B32EFD20092CAFC /* TasksView.swift */,
-				EEE76B8F2B3376410092CAFC /* TeamDirectorSidebar.swift */,
-				EEE76B8D2B33757E0092CAFC /* StudentsSidebar.swift */,
-				EEE76B932B3376CD0092CAFC /* Sidebar.swift */,
-				EEFE7FDB2B472967001A2E26 /* LoginView.swift */,
 				EEE76B872B331B1A0092CAFC /* CurrentTasksView.swift */,
 				EEC65F1F2B2CC20600CF7C9C /* GeneralInformationView.swift */,
 				EE09B8862B2F691300EF5536 /* Charts */,
@@ -200,6 +207,7 @@
 				EE09B85F2B2E1A5600EF5536 /* TaskType.swift */,
 				EE09B85D2B2E1A1600EF5536 /* ConstructionTask.swift */,
 				EE09B8752B2F3C5D00EF5536 /* User.swift */,
+				EEEB9CD02B4A1A590018B210 /* UserProtocol.swift */,
 				EE09B8652B2E1CFD00EF5536 /* Team.swift */,
 				EE09B8612B2E1C1200EF5536 /* TaskStatus.swift */,
 				EE09B8692B2E21C300EF5536 /* TeamDirector.swift */,
@@ -236,6 +244,26 @@
 				EE09B8872B2F6A5200EF5536 /* EarningsOnTeams.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		EEEB9CC42B497B160018B210 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				EEFE7FDB2B472967001A2E26 /* LoginView.swift */,
+				EEEB9CCC2B49B8380018B210 /* AuthorizationButton.swift */,
+				EEEB9CC22B497B070018B210 /* RegisterView.swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		EEEB9CCB2B49B52B0018B210 /* MainViews */ = {
+			isa = PBXGroup;
+			children = (
+				EEEB9CC92B49B50D0018B210 /* TeamDirectorMainView.swift */,
+				EEEB9CC72B49B4FE0018B210 /* AdminMainView.swift */,
+				EEE76B932B3376CD0092CAFC /* StudentMainView.swift */,
+			);
+			path = MainViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,13 +347,14 @@
 				EE09B87C2B2F59AC00EF5536 /* TeamsAdminTable.swift in Sources */,
 				EEC65F132B2CBF3C00CF7C9C /* ContentView.swift in Sources */,
 				EE09B8662B2E1CFD00EF5536 /* Team.swift in Sources */,
-				EEE76B902B3376410092CAFC /* TeamDirectorSidebar.swift in Sources */,
 				EE09B8602B2E1A5600EF5536 /* TaskType.swift in Sources */,
 				EE09B8642B2E1CAC00EF5536 /* Group.swift in Sources */,
+				EEEB9CCA2B49B50D0018B210 /* TeamDirectorMainView.swift in Sources */,
 				EE09B8782B2F567D00EF5536 /* TaskTypeAdminTable.swift in Sources */,
 				EEC65F112B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift in Sources */,
+				EEEB9CC32B497B070018B210 /* RegisterView.swift in Sources */,
+				EEEB9CCD2B49B8380018B210 /* AuthorizationButton.swift in Sources */,
 				EEE76B882B331B1A0092CAFC /* CurrentTasksView.swift in Sources */,
-				EEE76B8E2B33757E0092CAFC /* StudentsSidebar.swift in Sources */,
 				EE09B86A2B2E21C300EF5536 /* TeamDirector.swift in Sources */,
 				EEC65F222B2CC30400CF7C9C /* GeneralInformation.swift in Sources */,
 				EE09B8682B2E20A800EF5536 /* Data.swift in Sources */,
@@ -340,10 +369,13 @@
 				EEE76B712B321F440092CAFC /* CompletedTasksOnMonths.swift in Sources */,
 				EEE76B822B32D98F0092CAFC /* ExitButton.swift in Sources */,
 				EE09B8702B2F298100EF5536 /* StudentsAdminTable.swift in Sources */,
-				EEE76B942B3376CD0092CAFC /* Sidebar.swift in Sources */,
+				EEE76B942B3376CD0092CAFC /* StudentMainView.swift in Sources */,
+				EEEB9CC62B49B2E90018B210 /* Screen.swift in Sources */,
 				EE09B8762B2F3C5D00EF5536 /* User.swift in Sources */,
 				EEE76B782B3221C20092CAFC /* CompletedTasksOnMonthsChart.swift in Sources */,
+				EEEB9CC82B49B4FE0018B210 /* AdminMainView.swift in Sources */,
 				EEE76B732B321F560092CAFC /* Months.swift in Sources */,
+				EEEB9CD12B4A1A590018B210 /* UserProtocol.swift in Sources */,
 				EEC65F2C2B2D02DB00CF7C9C /* Student.swift in Sources */,
 				EE09B8852B2F63A200EF5536 /* EarningsOnTeamsChart.swift in Sources */,
 				EEE76B7E2B325DEE0092CAFC /* MyEarningsView.swift in Sources */,
@@ -425,6 +457,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
 			};
 			name = Debug;
 		};
@@ -478,6 +511,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_STRICT_CONCURRENCY = complete;
 			};
 			name = Release;
 		};

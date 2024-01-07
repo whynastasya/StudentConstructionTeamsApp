@@ -14,10 +14,6 @@ struct UsersAdminTable: View {
         Table(users, selection: $selectedUser) {
             TableColumn("ФИО", value: \.fullName)
             
-            TableColumn("Команда") { user in
-                Text(user.team?.name ?? "")
-            }
-            
             TableColumn("Номер телефона", value: \.phone)
             
             TableColumn("День рождения") { user in

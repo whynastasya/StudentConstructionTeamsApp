@@ -34,10 +34,10 @@ var teamDirectors = [TeamDirector(id: 1, name: "Дима", surname: "Кулич"
                      TeamDirector(id: 4, name: "Дима", surname: "Садычок", patronymic: "", birthdate: Date(), phone: "3456789", team: Team(id: 4, name: "говно", countStudents: 23))
 ]
 
-var users = [User(id: 1, name: "Дима", surname: "Кулич", patronymic: "", birthdate: Date(), phone: "3456789", team: Team(id: 1, name: "ksfks", countStudents: 23)),
-             User(id: 2, name: "Дима", surname: "Цвырик", patronymic: "", birthdate: Date(), phone: "3456789", team: Team(id: 2, name: "ksвывfks", countStudents: 23)),
-             User(id: 3, name: "Дима", surname: "Лосяш", patronymic: "", birthdate: Date(), phone: "3456789", team: Team(id: 3, name: "123456нs", countStudents: 23)),
-             User(id: 4, name: "Дима", surname: "Садычок", patronymic: "", birthdate: Date(), phone: "3456789", team: Team(id: 4, name: "говно", countStudents: 23))
+var users = [User(id: 1, name: "Дима", surname: "Кулич", patronymic: "", birthdate: Date(), phone: "3456789"),
+             User(id: 2, name: "Дима", surname: "Цвырик", patronymic: "", birthdate: Date(), phone: "3456789"),
+             User(id: 3, name: "Дима", surname: "Лосяш", patronymic: "", birthdate: Date(), phone: "3456789"),
+             User(id: 4, name: "Дима", surname: "Садычок", patronymic: "", birthdate: Date(), phone: "3456789")
 ]
 
 var groups = [Group(id: 1, name: "02-21", faculty: "fklfklnf"),
@@ -46,18 +46,18 @@ var groups = [Group(id: 1, name: "02-21", faculty: "fklfklnf"),
               Group(id: 4, name: "01", faculty: "saffsafasfasf"),
 ]
 
-var teams = [Team(id: 1, name: "cats", countStudents: 543),
+var teams1 = [Team(id: 1, name: "cats", countStudents: 543),
              Team(id: 2, name: "dogs", countStudents: 34),
              Team(id: 3, name: "govno", countStudents: 4),
              Team(id: 4, name: "pigs", countStudents: 543133),
              Team(id: 5, name: "rats", countStudents: 6),
 ]
 
-var stayingInTeam = [StayingInTeam(id: 1, team: teams[2], user: users[2], startDate: Date(), endDate: Date()),
-                     StayingInTeam(id: 2, team: teams[1], user: users[0], startDate: Date()),
-                     StayingInTeam(id: 3, team: teams[0], user: users[3], startDate: Date(), endDate: Date()),
-                     StayingInTeam(id: 4, team: teams[4], user: users[1], startDate: Date()),
-                     StayingInTeam(id: 5, team: teams[2], user: users[1], startDate: Date(), endDate: Date())
+var stayingInTeam = [StayingInTeam(id: 1, team: teams1[2], user: users[2], startDate: Date(), endDate: Date()),
+                     StayingInTeam(id: 2, team: teams1[1], user: users[0], startDate: Date()),
+                     StayingInTeam(id: 3, team: teams1[0], user: users[3], startDate: Date(), endDate: Date()),
+                     StayingInTeam(id: 4, team: teams1[4], user: users[1], startDate: Date()),
+                     StayingInTeam(id: 5, team: teams1[2], user: users[1], startDate: Date(), endDate: Date())
 ]
 
 var earningsOnTeams: [EarningsOnTeams] = [EarningsOnTeams(teamName: "gfds", earnings: 1234),
