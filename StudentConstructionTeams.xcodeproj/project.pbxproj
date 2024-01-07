@@ -55,11 +55,14 @@
 		EEE76B992B34808A0092CAFC /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B982B34808A0092CAFC /* Service.swift */; };
 		EEE76BC82B34D5F90092CAFC /* PostgresClientKit in Frameworks */ = {isa = PBXBuildFile; productRef = EEE76BC72B34D5F90092CAFC /* PostgresClientKit */; };
 		EEEB9CC32B497B070018B210 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEB9CC22B497B070018B210 /* RegisterView.swift */; };
-		EEEB9CC62B49B2E90018B210 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEB9CC52B49B2E90018B210 /* Screen.swift */; };
+		EEEB9CC62B49B2E90018B210 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEB9CC52B49B2E90018B210 /* Session.swift */; };
 		EEEB9CC82B49B4FE0018B210 /* AdminMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEB9CC72B49B4FE0018B210 /* AdminMainView.swift */; };
 		EEEB9CCA2B49B50D0018B210 /* TeamDirectorMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEB9CC92B49B50D0018B210 /* TeamDirectorMainView.swift */; };
 		EEEB9CCD2B49B8380018B210 /* AuthorizationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEB9CCC2B49B8380018B210 /* AuthorizationButton.swift */; };
 		EEEB9CD12B4A1A590018B210 /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEB9CD02B4A1A590018B210 /* UserProtocol.swift */; };
+		EEEB9CD52B4B4DEB0018B210 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEB9CD42B4B4DEB0018B210 /* Extensions.swift */; };
+		EEEB9CD72B4B5A230018B210 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEB9CD62B4B5A230018B210 /* Role.swift */; };
+		EEEB9CD92B4B634E0018B210 /* AccountViewInSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEB9CD82B4B634E0018B210 /* AccountViewInSidebar.swift */; };
 		EEFE7FDC2B472967001A2E26 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFE7FDB2B472967001A2E26 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
@@ -113,11 +116,14 @@
 		EEE76B932B3376CD0092CAFC /* StudentMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMainView.swift; sourceTree = "<group>"; };
 		EEE76B982B34808A0092CAFC /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		EEEB9CC22B497B070018B210 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
-		EEEB9CC52B49B2E90018B210 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		EEEB9CC52B49B2E90018B210 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		EEEB9CC72B49B4FE0018B210 /* AdminMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMainView.swift; sourceTree = "<group>"; };
 		EEEB9CC92B49B50D0018B210 /* TeamDirectorMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDirectorMainView.swift; sourceTree = "<group>"; };
 		EEEB9CCC2B49B8380018B210 /* AuthorizationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationButton.swift; sourceTree = "<group>"; };
 		EEEB9CD02B4A1A590018B210 /* UserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProtocol.swift; sourceTree = "<group>"; };
+		EEEB9CD42B4B4DEB0018B210 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		EEEB9CD62B4B5A230018B210 /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
+		EEEB9CD82B4B634E0018B210 /* AccountViewInSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewInSidebar.swift; sourceTree = "<group>"; };
 		EEFE7FDB2B472967001A2E26 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,14 +170,16 @@
 		EEC65F0F2B2CBF3C00CF7C9C /* StudentConstructionTeams */ = {
 			isa = PBXGroup;
 			children = (
+				EEC65F102B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift */,
 				EEC65F122B2CBF3C00CF7C9C /* ContentView.swift */,
 				EEEB9CC42B497B160018B210 /* Authorization */,
 				EEEB9CCB2B49B52B0018B210 /* MainViews */,
 				EE09B8672B2E20A800EF5536 /* Data.swift */,
 				EEE76B982B34808A0092CAFC /* Service.swift */,
-				EEC65F102B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift */,
+				EEEB9CD82B4B634E0018B210 /* AccountViewInSidebar.swift */,
 				EEE76B792B3222D90092CAFC /* MyTeamView.swift */,
-				EEEB9CC52B49B2E90018B210 /* Screen.swift */,
+				EEEB9CD42B4B4DEB0018B210 /* Extensions.swift */,
+				EEEB9CC52B49B2E90018B210 /* Session.swift */,
 				EEE76B7B2B325C640092CAFC /* MyGroupView.swift */,
 				EEE76B7D2B325DEE0092CAFC /* MyEarningsView.swift */,
 				EEE76B7F2B32CC880092CAFC /* MyAccountView.swift */,
@@ -201,6 +209,7 @@
 		EEC65F252B2CCCB000CF7C9C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EEEB9CD62B4B5A230018B210 /* Role.swift */,
 				EEC65F212B2CC30400CF7C9C /* GeneralInformation.swift */,
 				EEC65F2B2B2D02DB00CF7C9C /* Student.swift */,
 				EE09B8632B2E1CAC00EF5536 /* Group.swift */,
@@ -367,12 +376,14 @@
 				EEE76B992B34808A0092CAFC /* Service.swift in Sources */,
 				EE09B87A2B2F57C800EF5536 /* GroupsAdminTable.swift in Sources */,
 				EEE76B712B321F440092CAFC /* CompletedTasksOnMonths.swift in Sources */,
+				EEEB9CD72B4B5A230018B210 /* Role.swift in Sources */,
 				EEE76B822B32D98F0092CAFC /* ExitButton.swift in Sources */,
 				EE09B8702B2F298100EF5536 /* StudentsAdminTable.swift in Sources */,
 				EEE76B942B3376CD0092CAFC /* StudentMainView.swift in Sources */,
-				EEEB9CC62B49B2E90018B210 /* Screen.swift in Sources */,
+				EEEB9CC62B49B2E90018B210 /* Session.swift in Sources */,
 				EE09B8762B2F3C5D00EF5536 /* User.swift in Sources */,
 				EEE76B782B3221C20092CAFC /* CompletedTasksOnMonthsChart.swift in Sources */,
+				EEEB9CD92B4B634E0018B210 /* AccountViewInSidebar.swift in Sources */,
 				EEEB9CC82B49B4FE0018B210 /* AdminMainView.swift in Sources */,
 				EEE76B732B321F560092CAFC /* Months.swift in Sources */,
 				EEEB9CD12B4A1A590018B210 /* UserProtocol.swift in Sources */,
@@ -389,6 +400,7 @@
 				EEE76B692B3213AD0092CAFC /* EarningsOnMonths.swift in Sources */,
 				EE09B85E2B2E1A1600EF5536 /* ConstructionTask.swift in Sources */,
 				EE09B8622B2E1C1200EF5536 /* TaskStatus.swift in Sources */,
+				EEEB9CD52B4B4DEB0018B210 /* Extensions.swift in Sources */,
 				EEC65F2A2B2D02B200CF7C9C /* MyTeamTable.swift in Sources */,
 				EE09B87E2B2F5BA000EF5536 /* StayingInTeamAdminTable.swift in Sources */,
 				EE09B8722B2F36A600EF5536 /* TeamDirectorsAdminTable.swift in Sources */,

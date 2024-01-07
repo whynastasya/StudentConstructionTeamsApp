@@ -8,26 +8,13 @@
 import SwiftUI
 
 struct StudentMainView: View {
-    @State var user = User(id: 1, name: "Nastasya", surname: "Grigorchuk", patronymic: "Timofeevna", phone: "")
-    @State var userType = "Student"
+    @State var student: Student
     
     var body: some View {
         NavigationSplitView {
             List {
                 NavigationLink(destination: MyAccountView()) {
-                    HStack {
-                        Image(systemName: "person.circle.fill")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                        
-                        VStack {
-                            Text(user.surname + " " + user.name)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            Text(userType)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .foregroundColor(.gray)
-                        }
-                    }
+                    AccountViewInSidebar(user: student, accountType: "Студент")
                 }
                 
                 NavigationLink(destination: MyTeamView()) {
@@ -64,8 +51,4 @@ struct StudentMainView: View {
         }
         .navigationTitle("Строительные отряды")
     }
-}
-
-#Preview {
-    StudentMainView()
 }

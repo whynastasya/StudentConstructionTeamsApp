@@ -10,10 +10,14 @@ import SwiftUI
 struct RegisterView: View {
     
     @State private var phone = ""
+    @State private var phoneIsNumber = true
     @State private var password = ""
     @State private var name = ""
+    @State private var nameIsRussian = true
     @State private var surname = ""
+    @State private var surnameIsRussian = true
     @State private var patronymic = ""
+    @State private var patronymicIsRussian = true
     @State private var birthdate = Date.now
     @State private var newBirthdate: Date? = nil
     @State private var selectedTeam: Team.ID = 0
@@ -22,8 +26,9 @@ struct RegisterView: View {
     @State private var teams: [Team]?
     @State private var groups: [Group]?
     
-    @StateObject var currentScreen: Screen
+    @StateObject var session: Session
     @State private var errorResult = false
+    @State private var successResult = false
     
     var body: some View {
         VStack {
@@ -37,6 +42,7 @@ struct RegisterView: View {
                 Image("login")
                     .resizable()
                     .frame(width: 250, height: 250)
+                
                 VStack {
                     Text("Регистрация")
                         .font(.title)
@@ -54,20 +60,57 @@ struct RegisterView: View {
                             .background(.red.opacity(0.1))
                     }
                     
+                    if successResult {
+                        Text("Новый пользователь создан. Авторизуйтесь")
+                            .textFieldStyle(.roundedBorder)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.green)
+                            .padding(EdgeInsets(top: 15, leading: 10, bottom: 15, trailing: 10))
+                            .background(RoundedRectangle(cornerRadius: 5, style: .circular).stroke(.green, lineWidth: 1))
+                            .background(.green.opacity(0.1))
+                    }
+                    
                     TextField("Ваша фамилия*", text: $surname)
                         .textFieldStyle(.roundedBorder)
                         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
                         .fontDesign(.rounded)
+                        .onChange(of: surname, {
+                            surnameIsRussian = surname.isContainsOnlyRussianCharacters
+                        })
+                    
+                    if !surnameIsRussian {
+                        Text("Допустимые значения - русский алфавит")
+                            .foregroundStyle(.red)
+                            .fontDesign(.rounded)
+                    }
                     
                     TextField("Ваше имя*", text: $name)
                         .textFieldStyle(.roundedBorder)
                         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
                         .fontDesign(.rounded)
+                        .onChange(of: name, {
+                            nameIsRussian = name.isContainsOnlyRussianCharacters
+                        })
+                    
+                    if !nameIsRussian {
+                        Text("Допустимые значения - русский алфавит")
+                            .foregroundStyle(.red)
+                            .fontDesign(.rounded)
+                    }
                     
                     TextField("Ваше отчество", text: $patronymic)
                         .textFieldStyle(.roundedBorder)
                         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
                         .fontDesign(.rounded)
+                        .onChange(of: patronymic, {
+                            patronymicIsRussian = patronymic.isContainsOnlyRussianCharacters
+                        })
+                    
+                    if !patronymicIsRussian {
+                        Text("Допустимые значения - русский алфавит")
+                            .foregroundStyle(.red)
+                            .fontDesign(.rounded)
+                    }
                     
                     HStack {
                         Text("День рождения")
@@ -97,10 +140,19 @@ struct RegisterView: View {
                         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
                         .fontDesign(.rounded)
                     
+                    if !phoneIsNumber {
+                        Text("Допустимые значения - цифры")
+                            .foregroundStyle(.red)
+                            .fontDesign(.rounded)
+                    }
+                    
                     SecureField("Пароль*", text: $password)
                         .textFieldStyle(.roundedBorder)
                         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
                         .fontDesign(.rounded)
+                        .onChange(of: phone, {
+                            phoneIsNumber = phone.isNumber
+                        })
                     
                     HStack {
                         Spacer()
@@ -130,7 +182,7 @@ struct RegisterView: View {
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                     
                     Button(action: {
-                        currentScreen.currentScreen = .login
+                        session.currentScreen = .login
                     }, label: {
                         Text("Уже есть аккаунт? Авторизация")
                             .foregroundStyle(.gray)
@@ -146,10 +198,14 @@ struct RegisterView: View {
         }
         .frame(width: 700, height: 600)
         .animation(.easeInOut, value: errorResult)
+        .animation(.easeInOut, value: phoneIsNumber)
+        .animation(.easeInOut, value: nameIsRussian)
+        .animation(.easeInOut, value: surnameIsRussian)
+        .animation(.easeInOut, value: patronymicIsRussian)
         .onAppear {
             do {
-                teams = try Service().fetchAllTeams()
-                groups = try Service().fetchAllGroups()
+                teams = try Service.service.fetchAllTeams()
+                groups = try Service.service.fetchAllGroups()
             } catch {
                 
             }
@@ -159,7 +215,19 @@ struct RegisterView: View {
     private func register() {
         Task {
             do {
-                try Service().registerNewUser(phone: phone, password: password, surname: surname, name: name, patronymic: patronymic, birthdate: newBirthdate, teamID: selectedTeam, groupID: selectedGroup, isStudent: isStudent)
+                try Service.service.registerNewUser(
+                    phone: phone,
+                    password: password,
+                    surname: surname,
+                    name: name,
+                    patronymic: patronymic,
+                    birthdate: newBirthdate,
+                    teamID: selectedTeam,
+                    groupID: selectedGroup,
+                    isStudent: isStudent
+                )
+                successResult = true
+                errorResult = false
             } catch {
                 errorResult = true
             }

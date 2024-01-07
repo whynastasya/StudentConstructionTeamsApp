@@ -21,7 +21,7 @@ struct MyAccountView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Text(user.name)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Text(user.patronymic)
+                    Text(user.patronymic ?? "")
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }

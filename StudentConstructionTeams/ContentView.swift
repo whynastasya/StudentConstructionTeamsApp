@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var currentScreen = Screen()
+    @StateObject private var session = Session(currentScreen: .register, user: User(id: 0, name: "", surname: "", patronymic: "", phone: ""))
     
     var body: some View {
         VStack {
-            switch currentScreen.currentScreen {
+            switch session.currentScreen {
                 case .login:
-                    LoginView(currentScreen: currentScreen)
+                    LoginView(session: session)
                 case .register:
-                    RegisterView(currentScreen: currentScreen)
+                    RegisterView(session: session)
                 case .adminAccount:
                     AdminMainView()
                 case .studentAccount:
-                    StudentMainView()
+                    StudentMainView(student: session.user as! Student)
                 case .teamDirectorAccount:
                     TeamDirectorMainView()
             }
         }
         .transition(.opacity)
-        .animation(.bouncy, value: currentScreen.currentScreen)
+        .animation(.bouncy, value: session.currentScreen)
     }
 }
 

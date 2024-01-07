@@ -7,8 +7,14 @@
 
 import Foundation
 
-class Screen: ObservableObject {
-    @Published var currentScreen: Screen = .register
+class Session: ObservableObject {
+    @Published var currentScreen: Screen = .login
+    @Published var user: any UserProtocol
+    
+    init(currentScreen: Screen, user: any UserProtocol) {
+        self.currentScreen = currentScreen
+        self.user = user
+    }
     
     enum Screen {
         case login

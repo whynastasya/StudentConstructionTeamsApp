@@ -10,8 +10,9 @@ import SwiftUI
 struct LoginView: View {
     @State private var phone = ""
     @State private var password = ""
-    @StateObject var currentScreen: Screen
+    @StateObject var session: Session
     @State private var errorResult = false
+    @State private var phoneIsNumber = true
     
     var body: some View {
         VStack {
@@ -45,6 +46,15 @@ struct LoginView: View {
                         .textFieldStyle(.roundedBorder)
                         .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 15))
                         .fontDesign(.rounded)
+                        .onChange(of: phone, {
+                            phoneIsNumber = phone.isNumber
+                        })
+                    
+                    if !phoneIsNumber {
+                        Text("Допустимые значения - цифры")
+                            .foregroundStyle(.red)
+                            .fontDesign(.rounded)
+                    }
                     
                     SecureField("Пароль", text: $password)
                         .textFieldStyle(.roundedBorder)
@@ -58,7 +68,7 @@ struct LoginView: View {
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                     
                     Button(action: {
-                        currentScreen.currentScreen = .register
+                        session.currentScreen = .register
                     }, label: {
                         Text("Нет аккаунта? Регистрация")
                             .foregroundStyle(.gray)
@@ -74,22 +84,26 @@ struct LoginView: View {
         }
         .frame(width: 600, height: 600)
         .animation(.easeInOut, value: errorResult)
+        .animation(.easeInOut, value: phoneIsNumber)
     }
     
     private func login() {
         Task {
             do {
-                var user = try Service().verificateUser(phone: phone, password: password)
-                    
+                var user = try Service.service.verificateUser(phone: phone, password: password)
+                
+                guard let user else { return errorResult = true }
+                
                 switch user {
-                    case is Student:
-                            currentScreen.currentScreen = .studentAccount
-                    case is TeamDirector:
-                            currentScreen.currentScreen = .teamDirectorAccount
-                    case is User:
-                            currentScreen.currentScreen = .adminAccount
-                    default:
-                        errorResult = true
+                    case let .student(student):
+                        session.currentScreen = .studentAccount
+                        session.user = student
+                    case let .teamDirector(teamDirector):
+                        session.currentScreen = .teamDirectorAccount
+                        session.user = teamDirector
+                    case let .admin(user):
+                        session.currentScreen = .adminAccount
+                        session.user = user
                 }
             } catch {
                 print(error)

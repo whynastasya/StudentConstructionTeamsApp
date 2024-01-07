@@ -9,9 +9,12 @@ import PostgresClientKit
 import Foundation
 
 final class Service {
-    private let connection: Connection
     
-    init() {
+    static var service: Service {
+        return Service()
+    }
+    
+    private init() {
         var configuration = ConnectionConfiguration()
         configuration.host = "127.0.0.1"
         configuration.port = 5432
@@ -23,7 +26,9 @@ final class Service {
         connection = try! Connection(configuration: configuration)
     }
     
-    func verificateUser(phone: String, password: String) throws -> (any UserProtocol)? {
+    private let connection: Connection
+    
+    func verificateUser(phone: String, password: String) throws -> Role? {
         var user = User(id: 0, name: "", surname: "", patronymic: "", phone: "")
         
         let query = "SELECT * FROM my_user WHERE phone = '\(phone)' AND password = '\(password)';"
@@ -58,7 +63,6 @@ final class Service {
                 birthdate: birthdate,
                 phone: phone
             )
-            print(user)
         }
         
         let studentQuery = "SELECT * FROM student WHERE ID = \(user.id)"
@@ -91,11 +95,7 @@ final class Service {
                 team: team
             )
             
-            if user.id == 0 {
-                return nil
-            }
-            
-            return student
+            return .student(student)
         }
         
         let teamDirectorQuery = "SELECT * FROM team_director WHERE ID = \(user.id)"
@@ -121,10 +121,14 @@ final class Service {
                 team: team
             )
             
-            return teamDirector
+            return .teamDirector(teamDirector)
         }
         
-        return user
+        if user.id == 0 {
+            return nil
+        }
+        
+        return .admin(user)
     }
     
     func fetchStudentGroup(with id: Int) throws -> Group? {
