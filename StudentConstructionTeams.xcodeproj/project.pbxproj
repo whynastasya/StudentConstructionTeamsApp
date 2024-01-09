@@ -184,7 +184,6 @@
 				EEE76B7D2B325DEE0092CAFC /* MyEarningsView.swift */,
 				EEE76B7F2B32CC880092CAFC /* MyAccountView.swift */,
 				EEE76B832B32DA2B0092CAFC /* ChangeButton.swift */,
-				EEE76B812B32D98F0092CAFC /* ExitButton.swift */,
 				EEE76B852B32EFD20092CAFC /* TasksView.swift */,
 				EEE76B872B331B1A0092CAFC /* CurrentTasksView.swift */,
 				EEC65F1F2B2CC20600CF7C9C /* GeneralInformationView.swift */,
@@ -261,6 +260,7 @@
 				EEFE7FDB2B472967001A2E26 /* LoginView.swift */,
 				EEEB9CCC2B49B8380018B210 /* AuthorizationButton.swift */,
 				EEEB9CC22B497B070018B210 /* RegisterView.swift */,
+				EEE76B812B32D98F0092CAFC /* ExitButton.swift */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";

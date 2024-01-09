@@ -13,7 +13,7 @@ struct StudentMainView: View {
     var body: some View {
         NavigationSplitView {
             List {
-                NavigationLink(destination: MyAccountView()) {
+                NavigationLink(destination: MyAccountView(user: student)) {
                     AccountViewInSidebar(user: student, accountType: "Студент")
                 }
                 

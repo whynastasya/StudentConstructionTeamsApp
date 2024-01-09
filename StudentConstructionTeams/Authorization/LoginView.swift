@@ -10,7 +10,7 @@ import SwiftUI
 struct LoginView: View {
     @State private var phone = ""
     @State private var password = ""
-    @StateObject var session: Session
+    @StateObject var session = Session.shared
     @State private var errorResult = false
     @State private var phoneIsNumber = true
     

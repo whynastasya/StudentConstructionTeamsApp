@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MyAccountView: View {
-    @State var user = User(id: 1, name: "Nastasya", surname: "Grigorchuk", patronymic: "Timofeevna", birthdate: nil, phone: "79939383820")
+    @State var user: any UserProtocol
+    
     var body: some View {
         VStack {
             HStack {
@@ -63,8 +64,4 @@ struct MyAccountView: View {
         }
         .padding()
     }
-}
-
-#Preview {
-    MyAccountView()
 }

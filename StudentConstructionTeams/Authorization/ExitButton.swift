@@ -11,7 +11,7 @@ struct ExitButton: View {
     var body: some View {
         Button(
             action: {
-                
+                Session.shared.currentScreen = .login
             }, label: {
                 Text("Выйти")
                     .padding(EdgeInsets(top: 8, leading: 24, bottom: 8, trailing: 24))

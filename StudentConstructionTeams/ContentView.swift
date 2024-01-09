@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var session = Session(currentScreen: .register, user: User(id: 0, name: "", surname: "", patronymic: "", phone: ""))
+    @StateObject var session = Session.shared
     
     var body: some View {
         VStack {
             switch session.currentScreen {
                 case .login:
-                    LoginView(session: session)
+                    LoginView()
                 case .register:
-                    RegisterView(session: session)
+                    RegisterView()
                 case .adminAccount:
                     AdminMainView()
                 case .studentAccount:

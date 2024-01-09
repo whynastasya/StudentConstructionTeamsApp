@@ -26,7 +26,7 @@ struct RegisterView: View {
     @State private var teams: [Team]?
     @State private var groups: [Group]?
     
-    @StateObject var session: Session
+    @StateObject var session = Session.shared
     @State private var errorResult = false
     @State private var successResult = false
     
