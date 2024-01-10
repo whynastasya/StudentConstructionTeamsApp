@@ -5,6 +5,12 @@ CREATE TABLE student_group (
     PRIMARY KEY(ID)
 );
 
+CREATE TABLE user_type (
+    ID SERIAL,
+    name VARCHAR(20) UNIQUE,
+    PRIMARY KEY(ID)
+);
+
 CREATE TABLE my_user (
     ID SERIAL,
     surname VARCHAR(40) NOT NULL,
@@ -13,33 +19,36 @@ CREATE TABLE my_user (
     birthdate DATE,
     phone VARCHAR(15) NOT NULL UNIQUE,
     password VARCHAR(30) NOT NULL,
-    PRIMARY KEY(ID)
+    user_type_ID INT NOT NULL,
+    PRIMARY KEY(ID),
+    CONSTRAINT user_type_id_fk FOREIGN KEY(user_type_ID) REFERENCES user_type(ID)
 );
 
 CREATE TABLE team (
     ID SERIAL,
     name VARCHAR(30) NOT NULL UNIQUE,
-    count_students INT,
     PRIMARY KEY(ID)
 );
 
 CREATE TABLE student (
-    ID INT NOT NULL,
+    ID SERIAL,
+    userID INT NOT NULL UNIQUE,
     is_elder BOOLEAN DEFAULT FALSE,
     earnings INT DEFAULT 0,
-    groupID INT NOT NULL,
+    groupID INT,
     teamID INT,
     PRIMARY KEY(ID),
-    CONSTRAINT user_id_fk FOREIGN KEY(ID) REFERENCES my_user(ID),
+    CONSTRAINT user_id_fk FOREIGN KEY(userID) REFERENCES my_user(ID),
     CONSTRAINT group_id_fk FOREIGN KEY(groupID) REFERENCES student_group(ID),
     CONSTRAINT team_id_fk FOREIGN KEY(teamID) REFERENCES team(ID)
 );
 
 CREATE TABLE team_director (
-    ID INT NOT NULL,
+    ID SERIAL,
+    userID INT NOT NULL UNIQUE,
     teamID INT,
     PRIMARY KEY(ID),
-    CONSTRAINT user_id_fk FOREIGN KEY(ID) REFERENCES my_user(ID),
+    CONSTRAINT user_id_fk FOREIGN KEY(userID) REFERENCES my_user(ID),
     CONSTRAINT team_id_fk FOREIGN KEY(teamID) REFERENCES team(ID)
 );
 
@@ -67,7 +76,8 @@ CREATE TABLE task (
     PRIMARY KEY(ID),
     CONSTRAINT type_id_fk FOREIGN KEY (typeID) REFERENCES task_type(ID),
     CONSTRAINT status_id_fk FOREIGN KEY (statusID) REFERENCES task_status(ID),
-    CONSTRAINT team_id_fk FOREIGN KEY (teamID) REFERENCES team(ID)
+    CONSTRAINT team_id_fk FOREIGN KEY (teamID) REFERENCES team(ID),
+    CONSTRAINT valid_date_range CHECK (start_date IS NULL OR end_date IS NULL OR start_date < end_date)
 );
 
 CREATE TABLE staying_in_team (
@@ -78,5 +88,6 @@ CREATE TABLE staying_in_team (
     end_date DATE,
     PRIMARY KEY (ID),
     CONSTRAINT team_id_fk FOREIGN KEY (teamID) REFERENCES team(ID),
-    CONSTRAINT student_id_fk FOREIGN KEY (studentID) REFERENCES student(ID)
+    CONSTRAINT student_id_fk FOREIGN KEY (studentID) REFERENCES student(ID),
+    CONSTRAINT valid_date_range CHECK (start_date IS NULL OR end_date IS NULL OR start_date < end_date)
 );
