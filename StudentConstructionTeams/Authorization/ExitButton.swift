@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct ExitButton: View {
+    @StateObject var session: Session
+    
     var body: some View {
         Button(
             action: {
-                Session.shared.currentScreen = .login
+                session.currentScreen = .login
             }, label: {
                 Text("Выйти")
                     .padding(EdgeInsets(top: 8, leading: 24, bottom: 8, trailing: 24))
@@ -20,8 +22,4 @@ struct ExitButton: View {
         .background(Capsule().stroke(.red, lineWidth: 1))
         .foregroundStyle(.red)
     }
-}
-
-#Preview {
-    ExitButton()
 }

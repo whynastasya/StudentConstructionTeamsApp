@@ -9,6 +9,8 @@ import SwiftUI
 import Charts
 
 struct CompletedTasksOnTeamsChart: View {
+    var completedTasksOnTeams = [CompletedTasksOnTeams]()
+    
     var body: some View {
         Chart {
             ForEach(completedTasksOnTeams) {
@@ -34,8 +36,4 @@ struct CompletedTasksOnTeamsChart: View {
         .background()
         .clipShape(.rect(cornerRadius: 25))
     }
-}
-
-#Preview {
-    CompletedTasksOnTeamsChart()
 }

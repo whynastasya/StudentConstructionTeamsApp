@@ -9,9 +9,10 @@ import SwiftUI
 
 struct TeamsAdminTable: View {
     @State private var selectedTeam: Team.ID? = nil
+    var teams: [Team]
     
     var body: some View {
-        Table(teams1, selection: $selectedTeam) {
+        Table(teams, selection: $selectedTeam) {
             TableColumn("Название", value: \.name)
             
             TableColumn("Количество участников") { team in
@@ -19,8 +20,4 @@ struct TeamsAdminTable: View {
             }
         }
     }
-}
-
-#Preview {
-    TeamsAdminTable()
 }

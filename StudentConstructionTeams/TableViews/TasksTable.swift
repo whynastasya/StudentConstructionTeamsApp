@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TasksTable: View {
     @State private var selectedTask: ConstructionTask.ID? = nil
+    var tasks: [ConstructionTask]
     
     var body: some View {
         Table(tasks, selection: $selectedTask) {
@@ -27,14 +28,10 @@ struct TasksTable: View {
             }
             
             TableColumn("Статус") { task in
-                Text(task.status.rawValue)
-                    .foregroundStyle(task.status == .free ? .green : task.status == .completed ? .red : .white)
+                Text(task.status.name)
+                    .foregroundStyle(task.status.name ==  "Выполнено" ? .green : task.status.name == "Свободно" ? .red : .white)
             }
         }
         .clipShape(.rect(cornerRadius: 25))
     }
-}
-
-#Preview {
-    TasksTable()
 }

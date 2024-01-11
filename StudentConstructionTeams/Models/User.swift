@@ -14,6 +14,7 @@ struct User: UserProtocol, Identifiable {
     var patronymic: String?
     var birthdate: Date?
     var phone: String
+    var userType: UserType
     
     var fullName: String { surname + " " + name + " " + (patronymic ?? "") }
 }

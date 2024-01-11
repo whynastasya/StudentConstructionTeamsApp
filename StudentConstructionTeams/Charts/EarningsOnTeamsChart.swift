@@ -10,6 +10,7 @@ import SwiftUI
 
 
 struct EarningsOnTeamsChart: View {
+    private var earningsOnTeams: [EarningsOnTeams]
     
     var body: some View {
         Chart {
@@ -36,8 +37,4 @@ struct EarningsOnTeamsChart: View {
         .background()
         .clipShape(.rect(cornerRadius: 25))
     }
-}
-
-#Preview {
-    EarningsOnTeamsChart()
 }

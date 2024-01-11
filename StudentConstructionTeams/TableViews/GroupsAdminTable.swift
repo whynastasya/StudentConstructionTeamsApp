@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GroupsAdminTable: View {
     @State private var selectedGroup: Group.ID? = nil
+    var groups: [Group]
     
     var body: some View {
         Table(groups, selection: $selectedGroup) {
@@ -17,8 +18,4 @@ struct GroupsAdminTable: View {
             TableColumn("Факультет", value: \.faculty)
         }
     }
-}
-
-#Preview {
-    GroupsAdminTable()
 }

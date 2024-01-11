@@ -26,7 +26,7 @@ struct RegisterView: View {
     @State private var teams: [Team]?
     @State private var groups: [Group]?
     
-    @StateObject var session = Session.shared
+    @StateObject var session: Session
     @State private var errorResult = false
     @State private var successResult = false
     
@@ -165,7 +165,7 @@ struct RegisterView: View {
                     }
                     
                     if isStudent {
-                        Picker("Выберите группу", selection: $selectedGroup) {
+                        Picker("Выберите группу*", selection: $selectedGroup) {
                             Text("").tag(0)
                             ForEach(groups ?? [Group](), id: \.self) { group in
                                 Text(group.name).tag(group.id)
@@ -178,7 +178,11 @@ struct RegisterView: View {
                     VStack {
                         AuthorizationButton(action: { register() }, text: "Зарегистрироваться")
                     }
-                    .disabled((phone.isEmpty || password.isEmpty || name.isEmpty || surname.isEmpty))
+                    .disabled(
+                        (phone.isEmpty || password.isEmpty || name.isEmpty || surname.isEmpty || !phoneIsNumber || 
+                         !surnameIsRussian || !nameIsRussian || !patronymicIsRussian
+                        )
+                    )
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                     
                     Button(action: {

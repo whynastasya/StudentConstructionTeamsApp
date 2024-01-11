@@ -13,7 +13,7 @@ struct MyGroupView: View {
     var body: some View {
         VStack {
             GeneralInformationView(information: groupInformation)
-            MyGroupTable()
+            MyGroupTable(students: students)
         }
         .padding()
     }

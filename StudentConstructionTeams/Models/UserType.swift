@@ -1,13 +1,13 @@
 //
-//  TaskStatus.swift
+//  UserType.swift
 //  StudentConstructionTeams
 //
-//  Created by nastasya on 16.12.2023.
+//  Created by nastasya on 11.01.2024.
 //
 
 import Foundation
 
-struct TaskStatus: Identifiable {
+struct UserType: Hashable {
     var id: Int
     var name: String
 }

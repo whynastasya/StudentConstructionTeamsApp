@@ -8,7 +8,8 @@
 import Foundation
 
 struct ConstructionTask: Identifiable {
-    var id: Int
+    let id: Int
+    
     var taskType: TaskType
     var countHours: Int
     var status: TaskStatus

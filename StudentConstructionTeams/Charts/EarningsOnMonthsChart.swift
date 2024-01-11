@@ -9,6 +9,7 @@ import SwiftUI
 import Charts
 
 struct EarningsOnMonthsChart: View {
+    var earningsOnMonths = [EarningsOnMonths]()
     var body: some View {
         Chart {
             ForEach(earningsOnMonths) {

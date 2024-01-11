@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TeamDirectorsAdminTable: View {
     @State private var selectedTeamDirector: TeamDirector.ID? = nil
+    private var teamDirectors: [TeamDirector]
     
     var body: some View {
         Table(teamDirectors, selection: $selectedTeamDirector) {
@@ -27,8 +28,4 @@ struct TeamDirectorsAdminTable: View {
             }
         }
     }
-}
-
-#Preview {
-    TeamDirectorsAdminTable()
 }

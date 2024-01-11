@@ -10,7 +10,7 @@ import SwiftUI
 struct LoginView: View {
     @State private var phone = ""
     @State private var password = ""
-    @StateObject var session = Session.shared
+    @StateObject var session: Session
     @State private var errorResult = false
     @State private var phoneIsNumber = true
     
@@ -64,7 +64,7 @@ struct LoginView: View {
                     VStack {
                         AuthorizationButton(action: { login() }, text: "Войти")
                     }
-                    .disabled((phone.isEmpty || password.isEmpty))
+                    .disabled((phone.isEmpty || password.isEmpty || !phoneIsNumber))
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                     
                     Button(action: {
@@ -112,7 +112,3 @@ struct LoginView: View {
         }
     }
 }
-
-//#Preview {
-//    LoginView()
-//}

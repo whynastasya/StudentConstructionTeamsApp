@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TaskTypeAdminTable: View {
     @State private var selectedTaskType: TaskType.ID? = nil
+    var taskTypes: [TaskType]
     
     var body: some View {
         Table(taskTypes, selection: $selectedTaskType) {
@@ -19,8 +20,4 @@ struct TaskTypeAdminTable: View {
             }
         }
     }
-}
-
-#Preview {
-    TaskTypeAdminTable()
 }

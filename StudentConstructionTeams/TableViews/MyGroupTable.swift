@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MyGroupTable: View {
     @State private var selectedStudent: Student.ID? = nil
+    var students: [Student]
     
     var body: some View {
         Table(students, selection: $selectedStudent) {
@@ -28,8 +29,4 @@ struct MyGroupTable: View {
         }
         .clipShape(.rect(cornerRadius: 15))
     }
-}
-
-#Preview {
-    MyGroupTable()
 }

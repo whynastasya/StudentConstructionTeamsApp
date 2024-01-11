@@ -9,6 +9,7 @@ import Foundation
 
 struct TeamDirector: UserProtocol, Identifiable {
     var id: Int
+    var userID: Int
     var name: String
     var surname: String
     var patronymic: String?

@@ -9,11 +9,12 @@ import SwiftUI
 
 struct StudentMainView: View {
     @State var student: Student
+    @StateObject var session: Session
     
     var body: some View {
         NavigationSplitView {
             List {
-                NavigationLink(destination: MyAccountView(user: student)) {
+                NavigationLink(destination: MyAccountView(user: student, session: session)) {
                     AccountViewInSidebar(user: student, accountType: "Студент")
                 }
                 

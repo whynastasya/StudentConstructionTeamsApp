@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StudentsAdminTable: View {
     @State private var selectedStudent: Student.ID? = nil
+    private var students: [Student]
     
     var body: some View {
         Table(students, selection: $selectedStudent) {
@@ -44,8 +45,4 @@ struct StudentsAdminTable: View {
             }
         }
     }
-}
-
-#Preview {
-    StudentsAdminTable()
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MyAccountView: View {
     @State var user: any UserProtocol
+    @StateObject var session: Session
     
     var body: some View {
         VStack {
@@ -60,7 +61,7 @@ struct MyAccountView: View {
             .background()
             .clipShape(.rect(cornerRadius: 12))
             Spacer()
-            ExitButton()
+            ExitButton(session: session)
         }
         .padding()
     }

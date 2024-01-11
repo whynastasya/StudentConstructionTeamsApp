@@ -26,7 +26,3 @@ struct AuthorizationButton: View {
         .clipShape(.capsule)
     }
 }
-
-//#Preview {
-//    AuthorizationButton(action: () -> Void, text: "Button")
-//}

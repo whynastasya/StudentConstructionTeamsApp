@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StayingInTeamAdminTable: View {
     @State private var selected: Team.ID? = nil
+    private var stayingInTeam: [StayingInTeam]
     
     var body: some View {
         Table(stayingInTeam, selection: $selected) {
@@ -27,8 +28,4 @@ struct StayingInTeamAdminTable: View {
             }
         }
     }
-}
-
-#Preview {
-    StayingInTeamAdminTable()
 }

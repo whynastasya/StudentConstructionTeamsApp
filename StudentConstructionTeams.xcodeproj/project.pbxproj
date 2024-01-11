@@ -63,6 +63,7 @@
 		EEEB9CD52B4B4DEB0018B210 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEB9CD42B4B4DEB0018B210 /* Extensions.swift */; };
 		EEEB9CD72B4B5A230018B210 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEB9CD62B4B5A230018B210 /* Role.swift */; };
 		EEEB9CD92B4B634E0018B210 /* AccountViewInSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEB9CD82B4B634E0018B210 /* AccountViewInSidebar.swift */; };
+		EEEB9CDB2B5018570018B210 /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEB9CDA2B5018570018B210 /* UserType.swift */; };
 		EEFE7FDC2B472967001A2E26 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFE7FDB2B472967001A2E26 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +125,7 @@
 		EEEB9CD42B4B4DEB0018B210 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EEEB9CD62B4B5A230018B210 /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		EEEB9CD82B4B634E0018B210 /* AccountViewInSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewInSidebar.swift; sourceTree = "<group>"; };
+		EEEB9CDA2B5018570018B210 /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
 		EEFE7FDB2B472967001A2E26 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				EEEB9CD62B4B5A230018B210 /* Role.swift */,
+				EEEB9CDA2B5018570018B210 /* UserType.swift */,
 				EEC65F212B2CC30400CF7C9C /* GeneralInformation.swift */,
 				EEC65F2B2B2D02DB00CF7C9C /* Student.swift */,
 				EE09B8632B2E1CAC00EF5536 /* Group.swift */,
@@ -352,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEC65F202B2CC20600CF7C9C /* GeneralInformationView.swift in Sources */,
+				EEEB9CDB2B5018570018B210 /* UserType.swift in Sources */,
 				EEE76B6F2B321C3F0092CAFC /* CompletedTasksOnTeamsChart.swift in Sources */,
 				EE09B87C2B2F59AC00EF5536 /* TeamsAdminTable.swift in Sources */,
 				EEC65F132B2CBF3C00CF7C9C /* ContentView.swift in Sources */,
