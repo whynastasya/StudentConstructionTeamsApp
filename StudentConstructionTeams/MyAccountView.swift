@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct MyAccountView: View {
-    @State var user: any UserProtocol
+    @State var user = User(id: 0, name: "", surname: "", phone: "", userType: UserType(id: 0, name: ""))
     @StateObject var session: Session
+    @State var isEditModalPresented = false
+    @State var isLogoutModalPresented = false
     
     var body: some View {
         VStack {
@@ -60,9 +62,45 @@ struct MyAccountView: View {
             .padding()
             .background()
             .clipShape(.rect(cornerRadius: 12))
+            
+            HStack {
+                Spacer()
+                EditButton(action: editUser)
+            }
+            
             Spacer()
-            ExitButton(session: session)
+            
+            HStack {
+                Spacer()
+                ExitButton(session: session, isLogoutModalPresented: isLogoutModalPresented)
+            }
         }
         .padding()
+        .sheet(isPresented: $isLogoutModalPresented) {
+            
+        }
+        .sheet(isPresented: $isEditModalPresented) {
+            EditingUserView(user: user, cancelAction: cancel)
+        }
+        .onAppear {
+            do {
+                if let user = try Service.service.fetchUser(with: session.userID) {
+                    self.user = user
+                } else {
+                    session.currentScreen = .login
+                    session.userID = 0
+                }
+            } catch {
+                
+            }
+        }
+    }
+    
+    func editUser() {
+        isEditModalPresented.toggle()
+    }
+    
+    private func cancel() {
+        isEditModalPresented = false
     }
 }

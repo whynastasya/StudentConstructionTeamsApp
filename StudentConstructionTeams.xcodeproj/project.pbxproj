@@ -13,7 +13,6 @@
 		EE09B8622B2E1C1200EF5536 /* TaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8612B2E1C1200EF5536 /* TaskStatus.swift */; };
 		EE09B8642B2E1CAC00EF5536 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8632B2E1CAC00EF5536 /* Group.swift */; };
 		EE09B8662B2E1CFD00EF5536 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8652B2E1CFD00EF5536 /* Team.swift */; };
-		EE09B8682B2E20A800EF5536 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8672B2E20A800EF5536 /* Data.swift */; };
 		EE09B86A2B2E21C300EF5536 /* TeamDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8692B2E21C300EF5536 /* TeamDirector.swift */; };
 		EE09B86C2B2F20FB00EF5536 /* TasksTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B86B2B2F20FB00EF5536 /* TasksTable.swift */; };
 		EE09B86E2B2F28BD00EF5536 /* TasksAdminTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B86D2B2F28BD00EF5536 /* TasksAdminTable.swift */; };
@@ -28,6 +27,8 @@
 		EE09B8802B2F5C4600EF5536 /* StayingInTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B87F2B2F5C4600EF5536 /* StayingInTeam.swift */; };
 		EE09B8852B2F63A200EF5536 /* EarningsOnTeamsChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8842B2F63A200EF5536 /* EarningsOnTeamsChart.swift */; };
 		EE09B8882B2F6A5200EF5536 /* EarningsOnTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8872B2F6A5200EF5536 /* EarningsOnTeams.swift */; };
+		EE7EC5462B50A999005FC875 /* EditingUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EC5452B50A999005FC875 /* EditingUserView.swift */; };
+		EE7EC54A2B515974005FC875 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EC5492B515974005FC875 /* CancelButton.swift */; };
 		EEC65F112B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC65F102B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift */; };
 		EEC65F132B2CBF3C00CF7C9C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC65F122B2CBF3C00CF7C9C /* ContentView.swift */; };
 		EEC65F152B2CBF3E00CF7C9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEC65F142B2CBF3E00CF7C9C /* Assets.xcassets */; };
@@ -48,7 +49,7 @@
 		EEE76B7E2B325DEE0092CAFC /* MyEarningsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B7D2B325DEE0092CAFC /* MyEarningsView.swift */; };
 		EEE76B802B32CC880092CAFC /* MyAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B7F2B32CC880092CAFC /* MyAccountView.swift */; };
 		EEE76B822B32D98F0092CAFC /* ExitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B812B32D98F0092CAFC /* ExitButton.swift */; };
-		EEE76B842B32DA2B0092CAFC /* ChangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B832B32DA2B0092CAFC /* ChangeButton.swift */; };
+		EEE76B842B32DA2B0092CAFC /* EditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B832B32DA2B0092CAFC /* EditButton.swift */; };
 		EEE76B862B32EFD20092CAFC /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B852B32EFD20092CAFC /* TasksView.swift */; };
 		EEE76B882B331B1A0092CAFC /* CurrentTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B872B331B1A0092CAFC /* CurrentTasksView.swift */; };
 		EEE76B942B3376CD0092CAFC /* StudentMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B932B3376CD0092CAFC /* StudentMainView.swift */; };
@@ -74,7 +75,6 @@
 		EE09B8612B2E1C1200EF5536 /* TaskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatus.swift; sourceTree = "<group>"; };
 		EE09B8632B2E1CAC00EF5536 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		EE09B8652B2E1CFD00EF5536 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
-		EE09B8672B2E20A800EF5536 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		EE09B8692B2E21C300EF5536 /* TeamDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDirector.swift; sourceTree = "<group>"; };
 		EE09B86B2B2F20FB00EF5536 /* TasksTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTable.swift; sourceTree = "<group>"; };
 		EE09B86D2B2F28BD00EF5536 /* TasksAdminTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksAdminTable.swift; sourceTree = "<group>"; };
@@ -89,6 +89,8 @@
 		EE09B87F2B2F5C4600EF5536 /* StayingInTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StayingInTeam.swift; sourceTree = "<group>"; };
 		EE09B8842B2F63A200EF5536 /* EarningsOnTeamsChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsOnTeamsChart.swift; sourceTree = "<group>"; };
 		EE09B8872B2F6A5200EF5536 /* EarningsOnTeams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsOnTeams.swift; sourceTree = "<group>"; };
+		EE7EC5452B50A999005FC875 /* EditingUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserView.swift; sourceTree = "<group>"; };
+		EE7EC5492B515974005FC875 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
 		EEC65F0D2B2CBF3C00CF7C9C /* StudentConstructionTeams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentConstructionTeams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEC65F102B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentConstructionTeamsApp.swift; sourceTree = "<group>"; };
 		EEC65F122B2CBF3C00CF7C9C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,7 +113,7 @@
 		EEE76B7D2B325DEE0092CAFC /* MyEarningsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEarningsView.swift; sourceTree = "<group>"; };
 		EEE76B7F2B32CC880092CAFC /* MyAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountView.swift; sourceTree = "<group>"; };
 		EEE76B812B32D98F0092CAFC /* ExitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitButton.swift; sourceTree = "<group>"; };
-		EEE76B832B32DA2B0092CAFC /* ChangeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeButton.swift; sourceTree = "<group>"; };
+		EEE76B832B32DA2B0092CAFC /* EditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButton.swift; sourceTree = "<group>"; };
 		EEE76B852B32EFD20092CAFC /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		EEE76B872B331B1A0092CAFC /* CurrentTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTasksView.swift; sourceTree = "<group>"; };
 		EEE76B932B3376CD0092CAFC /* StudentMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMainView.swift; sourceTree = "<group>"; };
@@ -153,6 +155,24 @@
 			path = Charts;
 			sourceTree = "<group>";
 		};
+		EE7EC5472B51589E005FC875 /* Editing Views */ = {
+			isa = PBXGroup;
+			children = (
+				EE7EC5452B50A999005FC875 /* EditingUserView.swift */,
+			);
+			path = "Editing Views";
+			sourceTree = "<group>";
+		};
+		EE7EC5482B515955005FC875 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				EEE76B832B32DA2B0092CAFC /* EditButton.swift */,
+				EEE76B812B32D98F0092CAFC /* ExitButton.swift */,
+				EE7EC5492B515974005FC875 /* CancelButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		EEC65F042B2CBF3C00CF7C9C = {
 			isa = PBXGroup;
 			children = (
@@ -174,18 +194,18 @@
 			children = (
 				EEC65F102B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift */,
 				EEC65F122B2CBF3C00CF7C9C /* ContentView.swift */,
+				EEE76B982B34808A0092CAFC /* Service.swift */,
 				EEEB9CC42B497B160018B210 /* Authorization */,
 				EEEB9CCB2B49B52B0018B210 /* MainViews */,
-				EE09B8672B2E20A800EF5536 /* Data.swift */,
-				EEE76B982B34808A0092CAFC /* Service.swift */,
-				EEEB9CD82B4B634E0018B210 /* AccountViewInSidebar.swift */,
+				EE7EC5472B51589E005FC875 /* Editing Views */,
+				EE7EC5482B515955005FC875 /* Buttons */,
 				EEE76B792B3222D90092CAFC /* MyTeamView.swift */,
 				EEEB9CD42B4B4DEB0018B210 /* Extensions.swift */,
+				EEEB9CD82B4B634E0018B210 /* AccountViewInSidebar.swift */,
 				EEEB9CC52B49B2E90018B210 /* Session.swift */,
 				EEE76B7B2B325C640092CAFC /* MyGroupView.swift */,
 				EEE76B7D2B325DEE0092CAFC /* MyEarningsView.swift */,
 				EEE76B7F2B32CC880092CAFC /* MyAccountView.swift */,
-				EEE76B832B32DA2B0092CAFC /* ChangeButton.swift */,
 				EEE76B852B32EFD20092CAFC /* TasksView.swift */,
 				EEE76B872B331B1A0092CAFC /* CurrentTasksView.swift */,
 				EEC65F1F2B2CC20600CF7C9C /* GeneralInformationView.swift */,
@@ -263,7 +283,6 @@
 				EEFE7FDB2B472967001A2E26 /* LoginView.swift */,
 				EEEB9CCC2B49B8380018B210 /* AuthorizationButton.swift */,
 				EEEB9CC22B497B070018B210 /* RegisterView.swift */,
-				EEE76B812B32D98F0092CAFC /* ExitButton.swift */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -369,9 +388,10 @@
 				EEEB9CCD2B49B8380018B210 /* AuthorizationButton.swift in Sources */,
 				EEE76B882B331B1A0092CAFC /* CurrentTasksView.swift in Sources */,
 				EE09B86A2B2E21C300EF5536 /* TeamDirector.swift in Sources */,
+				EE7EC54A2B515974005FC875 /* CancelButton.swift in Sources */,
 				EEC65F222B2CC30400CF7C9C /* GeneralInformation.swift in Sources */,
-				EE09B8682B2E20A800EF5536 /* Data.swift in Sources */,
 				EEE76B862B32EFD20092CAFC /* TasksView.swift in Sources */,
+				EE7EC5462B50A999005FC875 /* EditingUserView.swift in Sources */,
 				EE09B86C2B2F20FB00EF5536 /* TasksTable.swift in Sources */,
 				EEE76B6B2B3215750092CAFC /* EarningsOnMonthsChart.swift in Sources */,
 				EEE76B7C2B325C640092CAFC /* MyGroupView.swift in Sources */,
@@ -408,7 +428,7 @@
 				EEC65F2A2B2D02B200CF7C9C /* MyTeamTable.swift in Sources */,
 				EE09B87E2B2F5BA000EF5536 /* StayingInTeamAdminTable.swift in Sources */,
 				EE09B8722B2F36A600EF5536 /* TeamDirectorsAdminTable.swift in Sources */,
-				EEE76B842B32DA2B0092CAFC /* ChangeButton.swift in Sources */,
+				EEE76B842B32DA2B0092CAFC /* EditButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var session = Session(currentScreen: .login, user: User(id: 0, name: "", surname: "", phone: "", userType: UserType(id: 0, name: "")))
+    @StateObject var session = Session(currentScreen: .studentAccount, userID: 19)
     
     var body: some View {
         VStack {
@@ -20,7 +20,7 @@ struct ContentView: View {
                 case .adminAccount:
                     AdminMainView(session: session)
                 case .studentAccount:
-                    StudentMainView(student: session.user as! Student, session: session)
+                    StudentMainView(session: session)
                 case .teamDirectorAccount:
                     TeamDirectorMainView(session: session)
             }

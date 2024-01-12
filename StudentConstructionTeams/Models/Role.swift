@@ -8,5 +8,5 @@
 import Foundation
 
 enum Role {
-    case admin(User), student(Student), teamDirector(TeamDirector)
+    case admin(User.ID), student(User.ID), teamDirector(User.ID)
 }

@@ -7,22 +7,20 @@
 
 import SwiftUI
 
-struct ChangeButton: View {
+struct EditButton: View {
+    var action: () -> Void
     var body: some View {
         Button(
             action: {
-                
+                action()
             }, label: {
                 Text("Изменить")
+                    .fontWeight(.bold)
             })
-        .buttonStyle(.link)
         .padding()
         .background()
+        .buttonStyle(.plain)
         .clipShape(.rect(cornerRadius: 12))
-        .foregroundStyle(.purple)
+        .foregroundStyle(.orange)
     }
-}
-
-#Preview {
-    ChangeButton()
 }

@@ -139,6 +139,9 @@ struct RegisterView: View {
                         .textFieldStyle(.roundedBorder)
                         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
                         .fontDesign(.rounded)
+                        .onChange(of: phone, {
+                            phoneIsNumber = phone.isNumber
+                        })
                     
                     if !phoneIsNumber {
                         Text("Допустимые значения - цифры")
@@ -150,9 +153,7 @@ struct RegisterView: View {
                         .textFieldStyle(.roundedBorder)
                         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
                         .fontDesign(.rounded)
-                        .onChange(of: phone, {
-                            phoneIsNumber = phone.isNumber
-                        })
+                        
                     
                     HStack {
                         Spacer()

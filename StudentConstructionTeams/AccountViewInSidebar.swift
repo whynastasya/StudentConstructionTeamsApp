@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct AccountViewInSidebar: View {
-    var user: any UserProtocol
-    var accountType: String
+    @State var user = User(id: 0, name: "", surname: "", phone: "", userType: UserType(id: 0, name: ""))
+    @ObservedObject var session: Session
     
     var body: some View {
         HStack {
@@ -20,9 +20,21 @@ struct AccountViewInSidebar: View {
             VStack {
                 Text(user.surname + " " + user.name)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text(accountType)
+                Text(user.userType.name)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(.gray)
+            }
+        }
+        .onAppear {
+            do {
+                if let user = try Service.service.fetchUser(with: session.userID) {
+                    self.user = user
+                } else {
+                    session.currentScreen = .login
+                    session.userID = 0
+                }
+            } catch {
+                
             }
         }
     }

@@ -9,11 +9,11 @@ import Foundation
 
 final class Session: ObservableObject {
     @Published var currentScreen: Screen = .login
-    @Published var user: any UserProtocol
+    @Published var userID: Int
     
-    init(currentScreen: Screen, user: any UserProtocol) {
+    init(currentScreen: Screen, userID: Int) {
         self.currentScreen = currentScreen
-        self.user = user
+        self.userID = userID
     }
     
     enum Screen {

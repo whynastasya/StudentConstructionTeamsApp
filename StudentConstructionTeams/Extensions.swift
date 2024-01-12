@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 extension String {
     var isNumber: Bool {
@@ -20,5 +21,11 @@ extension String {
         return self.range(
             of: "^[а-яА-Я]*$",
             options: .regularExpression) != nil
+    }
+}
+
+extension Binding {
+     func toUnwrapped<T>(defaultValue: T) -> Binding<T> where Value == Optional<T>  {
+        Binding<T>(get: { self.wrappedValue ?? defaultValue }, set: { self.wrappedValue = $0 })
     }
 }

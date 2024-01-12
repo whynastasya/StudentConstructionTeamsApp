@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct StudentMainView: View {
-    @State var student: Student
+    @State var student = Student(id: 0, userID: 0, name: "", surname: "", phone: "")
     @StateObject var session: Session
     
     var body: some View {
         NavigationSplitView {
             List {
-                NavigationLink(destination: MyAccountView(user: student, session: session)) {
-                    AccountViewInSidebar(user: student, accountType: "Студент")
+                NavigationLink(destination: MyAccountView(session: session)) {
+                    AccountViewInSidebar(session: session)
                 }
                 
                 NavigationLink(destination: MyTeamView()) {
@@ -48,8 +48,20 @@ struct StudentMainView: View {
                 }
             }
         } detail: {
-            
+            MyTeamView()
         }
         .navigationTitle("Строительные отряды")
+        .onAppear {
+            do {
+                if let student = try Service.service.fetchStudent(with: session.userID) {
+                    self.student = student
+                } else {
+                    session.currentScreen = .login
+                    session.userID = 0
+                }
+            } catch {
+                
+            }
+        }
     }
 }

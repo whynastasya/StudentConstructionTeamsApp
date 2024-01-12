@@ -97,13 +97,13 @@ struct LoginView: View {
                 switch user {
                     case let .student(student):
                         session.currentScreen = .studentAccount
-                        session.user = student
+                        session.userID = student
                     case let .teamDirector(teamDirector):
                         session.currentScreen = .teamDirectorAccount
-                        session.user = teamDirector
+                        session.userID = teamDirector
                     case let .admin(user):
                         session.currentScreen = .adminAccount
-                        session.user = user
+                        session.userID = user
                 }
             } catch {
                 print(error)
