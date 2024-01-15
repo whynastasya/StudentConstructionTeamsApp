@@ -18,7 +18,7 @@ struct StudentMainView: View {
                     AccountViewInSidebar(session: session)
                 }
                 
-                NavigationLink(destination: MyTeamView()) {
+                NavigationLink(destination: MyTeamView(session: session)) {
                     HStack {
                         Image("my_team_icon")
                             .resizable()
@@ -48,7 +48,7 @@ struct StudentMainView: View {
                 }
             }
         } detail: {
-            MyTeamView()
+            MyTeamView(session: session)
         }
         .navigationTitle("Строительные отряды")
         .onAppear {

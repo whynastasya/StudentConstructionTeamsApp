@@ -58,34 +58,41 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION add_my_user(
     p_surname VARCHAR(40),
     p_name VARCHAR(40),
-    p_patronymic VARCHAR(40),
-    p_birthdate DATE,
     p_phone VARCHAR(15),
     p_password VARCHAR(30),
-    p_user_type_ID INT
+    p_user_type_ID INT,
+	p_patronymic VARCHAR(40) DEFAULT NULL,
+    p_birthdate DATE DEFAULT NULL
 )
 RETURNS VOID AS $$
 BEGIN
-    INSERT INTO my_user (surname, name, patronymic, birthdate, phone, password, user_type_ID) 
-    VALUES (p_surname, p_name, p_patronymic, p_birthdate, p_phone, p_password, p_user_type_ID);
+    INSERT INTO my_user (surname, name, phone, password, user_type_ID, patronymic, birthdate) 
+    VALUES (
+        p_surname, 
+        p_name, 
+        p_phone, 
+        p_password, 
+        p_user_type_ID,
+		NULLIF(p_patronymic, ''),
+        p_birthdate
+    );
 END;
 $$ LANGUAGE plpgsql;
+
 
 CREATE OR REPLACE FUNCTION update_my_user(
     p_id INT,
     p_surname VARCHAR(40),
     p_name VARCHAR(40),
-    p_patronymic VARCHAR(40),
-    p_birthdate DATE,
-    p_phone VARCHAR(15),
-    p_password VARCHAR(30),
-    p_user_type_ID INT
+    p_user_type_ID INT,
+	p_patronymic VARCHAR(40) DEFAULT '',
+	p_birthdate DATE DEFAULT NULL
 )
 RETURNS VOID AS $$
 BEGIN
     UPDATE my_user 
     SET surname = p_surname, name = p_name, patronymic = p_patronymic, 
-        birthdate = p_birthdate, phone = p_phone, password = p_password, 
+        birthdate = p_birthdate, phone = p_phone, 
         user_type_ID = p_user_type_ID 
     WHERE ID = p_id;
 END;
@@ -128,10 +135,10 @@ $$ LANGUAGE plpgsql;
 -- student
 CREATE OR REPLACE FUNCTION add_student(
     p_userID INT,
-    p_is_elder BOOLEAN,
-    p_earnings INT,
-    p_groupID INT,
-    p_teamID INT
+    p_is_elder BOOLEAN DEFAULT FALSE,
+    p_earnings INT DEFAULT 0,
+    p_groupID INT DEFAULT NULL,
+    p_teamID INT DEFAULT NULL
 )
 RETURNS VOID AS $$
 BEGIN

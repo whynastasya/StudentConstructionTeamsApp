@@ -29,6 +29,8 @@
 		EE09B8882B2F6A5200EF5536 /* EarningsOnTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8872B2F6A5200EF5536 /* EarningsOnTeams.swift */; };
 		EE7EC5462B50A999005FC875 /* EditingUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EC5452B50A999005FC875 /* EditingUserView.swift */; };
 		EE7EC54A2B515974005FC875 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EC5492B515974005FC875 /* CancelButton.swift */; };
+		EE97AE242B52CB220013951B /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97AE232B52CB220013951B /* AddButton.swift */; };
+		EE97AE272B52D83D0013951B /* EditingUserTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97AE262B52D83D0013951B /* EditingUserTeam.swift */; };
 		EEC65F112B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC65F102B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift */; };
 		EEC65F132B2CBF3C00CF7C9C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC65F122B2CBF3C00CF7C9C /* ContentView.swift */; };
 		EEC65F152B2CBF3E00CF7C9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEC65F142B2CBF3E00CF7C9C /* Assets.xcassets */; };
@@ -91,6 +93,8 @@
 		EE09B8872B2F6A5200EF5536 /* EarningsOnTeams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsOnTeams.swift; sourceTree = "<group>"; };
 		EE7EC5452B50A999005FC875 /* EditingUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserView.swift; sourceTree = "<group>"; };
 		EE7EC5492B515974005FC875 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
+		EE97AE232B52CB220013951B /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
+		EE97AE262B52D83D0013951B /* EditingUserTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserTeam.swift; sourceTree = "<group>"; };
 		EEC65F0D2B2CBF3C00CF7C9C /* StudentConstructionTeams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentConstructionTeams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEC65F102B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentConstructionTeamsApp.swift; sourceTree = "<group>"; };
 		EEC65F122B2CBF3C00CF7C9C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				EE7EC5452B50A999005FC875 /* EditingUserView.swift */,
+				EE97AE262B52D83D0013951B /* EditingUserTeam.swift */,
 			);
 			path = "Editing Views";
 			sourceTree = "<group>";
@@ -169,8 +174,24 @@
 				EEE76B832B32DA2B0092CAFC /* EditButton.swift */,
 				EEE76B812B32D98F0092CAFC /* ExitButton.swift */,
 				EE7EC5492B515974005FC875 /* CancelButton.swift */,
+				EE97AE232B52CB220013951B /* AddButton.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		EE97AE252B52D4D30013951B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EEE76B792B3222D90092CAFC /* MyTeamView.swift */,
+				EEEB9CD82B4B634E0018B210 /* AccountViewInSidebar.swift */,
+				EEE76B7D2B325DEE0092CAFC /* MyEarningsView.swift */,
+				EEE76B7B2B325C640092CAFC /* MyGroupView.swift */,
+				EEE76B7F2B32CC880092CAFC /* MyAccountView.swift */,
+				EEE76B852B32EFD20092CAFC /* TasksView.swift */,
+				EEE76B872B331B1A0092CAFC /* CurrentTasksView.swift */,
+				EEC65F1F2B2CC20600CF7C9C /* GeneralInformationView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		EEC65F042B2CBF3C00CF7C9C = {
@@ -195,23 +216,16 @@
 				EEC65F102B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift */,
 				EEC65F122B2CBF3C00CF7C9C /* ContentView.swift */,
 				EEE76B982B34808A0092CAFC /* Service.swift */,
+				EEEB9CC52B49B2E90018B210 /* Session.swift */,
 				EEEB9CC42B497B160018B210 /* Authorization */,
 				EEEB9CCB2B49B52B0018B210 /* MainViews */,
 				EE7EC5472B51589E005FC875 /* Editing Views */,
 				EE7EC5482B515955005FC875 /* Buttons */,
-				EEE76B792B3222D90092CAFC /* MyTeamView.swift */,
-				EEEB9CD42B4B4DEB0018B210 /* Extensions.swift */,
-				EEEB9CD82B4B634E0018B210 /* AccountViewInSidebar.swift */,
-				EEEB9CC52B49B2E90018B210 /* Session.swift */,
-				EEE76B7B2B325C640092CAFC /* MyGroupView.swift */,
-				EEE76B7D2B325DEE0092CAFC /* MyEarningsView.swift */,
-				EEE76B7F2B32CC880092CAFC /* MyAccountView.swift */,
-				EEE76B852B32EFD20092CAFC /* TasksView.swift */,
-				EEE76B872B331B1A0092CAFC /* CurrentTasksView.swift */,
-				EEC65F1F2B2CC20600CF7C9C /* GeneralInformationView.swift */,
+				EE97AE252B52D4D30013951B /* Views */,
 				EE09B8862B2F691300EF5536 /* Charts */,
 				EEC65F262B2CF88700CF7C9C /* TableViews */,
 				EEC65F252B2CCCB000CF7C9C /* Models */,
+				EEEB9CD42B4B4DEB0018B210 /* Extensions.swift */,
 				EEC65F142B2CBF3E00CF7C9C /* Assets.xcassets */,
 				EEC65F162B2CBF3E00CF7C9C /* StudentConstructionTeams.entitlements */,
 				EEC65F172B2CBF3E00CF7C9C /* Preview Content */,
@@ -379,6 +393,7 @@
 				EE09B87C2B2F59AC00EF5536 /* TeamsAdminTable.swift in Sources */,
 				EEC65F132B2CBF3C00CF7C9C /* ContentView.swift in Sources */,
 				EE09B8662B2E1CFD00EF5536 /* Team.swift in Sources */,
+				EE97AE242B52CB220013951B /* AddButton.swift in Sources */,
 				EE09B8602B2E1A5600EF5536 /* TaskType.swift in Sources */,
 				EE09B8642B2E1CAC00EF5536 /* Group.swift in Sources */,
 				EEEB9CCA2B49B50D0018B210 /* TeamDirectorMainView.swift in Sources */,
@@ -418,6 +433,7 @@
 				EE09B8742B2F3C2400EF5536 /* UsersAdminTable.swift in Sources */,
 				EEFE7FDC2B472967001A2E26 /* LoginView.swift in Sources */,
 				EE09B8882B2F6A5200EF5536 /* EarningsOnTeams.swift in Sources */,
+				EE97AE272B52D83D0013951B /* EditingUserTeam.swift in Sources */,
 				EE09B8802B2F5C4600EF5536 /* StayingInTeam.swift in Sources */,
 				EEE76B6D2B321C370092CAFC /* CompletedTasksOnTeams.swift in Sources */,
 				EE09B85A2B2D15B100EF5536 /* MyGroupTable.swift in Sources */,

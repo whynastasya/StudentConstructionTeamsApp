@@ -1,15 +1,15 @@
 //
-//  ChangeButton.swift
+//  AddingButton.swift
 //  StudentConstructionTeams
 //
-//  Created by nastasya on 20.12.2023.
+//  Created by nastasya on 13.01.2024.
 //
 
 import SwiftUI
 
-struct EditButton: View {
+struct AddButton: View {
     var action: () -> Void
-    var name = "Изменить"
+    var name: String = "Добавить"
     var body: some View {
         Button(
             action: {
@@ -19,9 +19,9 @@ struct EditButton: View {
                     .fontWeight(.bold)
             })
         .padding()
-        .background()
-        .buttonStyle(.plain)
+        .background(.accent)
+        .buttonStyle(.link)
         .clipShape(.rect(cornerRadius: 12))
-        .foregroundStyle(.orange)
+        .foregroundStyle(.white)
     }
 }

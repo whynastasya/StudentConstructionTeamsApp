@@ -494,11 +494,120 @@ final class Service {
         } else if birthdateString == nil && patronymic == "" {
             query = "SELECT update_my_user(\(userID), '\(surname)', '\(name)', '\(phone)', \(userTypeID))"
         }
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+    }
+    
+    func updateUserTeam(userID: Int, teamID: Int) throws {
+        var query = "UPDATE student SET teamID = \(teamID) WHERE userID = \(userID)"
+        
+        if teamID == 0 {
+            query = "UPDATE student SET teamID = NULL WHERE userID = \(userID)"
+        }
+        
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+    }
+    
+    func fetchUserTeam(with userID: Int) throws -> GeneralInformation? {
+        let query = "SELECT team.name AS team_name, my_user.surname AS team_director_surname, my_user.name AS team_director_name, my_user.patronymic AS team_director_patronymic, my_user.phone AS team_director_phone, COUNT(student.ID) AS participants_count FROM student JOIN team ON student.teamID = team.ID LEFT JOIN team_director ON team.ID = team_director.teamID LEFT JOIN my_user ON team_director.userID = my_user.ID WHERE student.userID = 19 GROUP BY team.ID, team.name, team_director.ID, my_user.name, my_user.surname, my_user.patronymic, my_user.phone;"
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let teamName = try columns[0].string()
+            let teamDirectorSurname = try columns[1].string()
+            let teamDirectorName = try columns[2].string()
+            let teamDirectorPatronymic = try columns[3].optionalString()
+            let teamDirectorPhone = try columns[4].string()
+            let studentsCount = try columns[5].int()
+            
+            var teamDirectorFullName = teamDirectorSurname + " " + teamDirectorName
+            if let patronymic = teamDirectorPatronymic {
+                teamDirectorFullName += " " + patronymic
+            }
+            
+            let generalInformation = GeneralInformation(teamName: teamName, director: GeneralInformation.Person(name: teamDirectorFullName, phone: teamDirectorPhone), countStudents: studentsCount)
+            return generalInformation
+        }
+        return nil
+    }
+    
+    func fetchUserCurrentTask(userID: Int) throws -> GeneralInformation? {
+        let query = "SELECT task_type.name AS task_type, task.start_date FROM task JOIN task_type ON task.typeID = task_type.ID JOIN student ON task.teamID = student.teamID WHERE student.userID = \(userID)  AND task.start_date >= CURRENT_DATE  ORDER BY task.start_date LIMIT 1;"
+        
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let taskType = try columns[0].string()
+            
+            var startDate: Date? = nil
+            let date = try columns[1].optionalDate()?.description
+            if let date = date {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                startDate = dateFormatter.date(from: date)
+            }
+            
+            let generalInformation = GeneralInformation(taskType: TaskType(id: 0, name: taskType, ratePerHour: 0), startDate: startDate)
+            return generalInformation
+        }
+        return nil
+    }
+    
+    func fetchTeammates(userID: Int) throws -> [Student] {
+        let query = "SELECT student.ID AS student_id, my_user.surname, my_user.name, my_user.patronymic, my_user.birthdate, my_user.phone, student_group.name AS group_name FROM student JOIN my_user ON student.userID = my_user.ID JOIN student_group ON student.groupID = student_group.ID JOIN team ON student.teamID = team.ID WHERE team.ID IN (SELECT teamID FROM student WHERE userID = \(userID))"
+//        AND student.userID != \(userID);
         print(query)
         let statement = try connection.prepareStatement(text: query)
         defer { statement.close() }
         
         let cursor = try statement.execute(parameterValues: [])
         defer { cursor.close() }
+        
+        var students = [Student]()
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let studentID = try columns[0].int()
+            let surname = try columns[1].string()
+            let name = try columns[2].string()
+            let patronymic = try columns[3].optionalString()
+            
+            var birthdate: Date? = nil
+            let date = try columns[4].optionalDate()?.description
+            if let date = date {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                birthdate = dateFormatter.date(from: date)
+            }
+            
+            let phone = try columns[5].string()
+            
+            var groupName = ""
+            if let name = try columns[6].optionalString() {
+                groupName = name
+            }
+            
+            let student = Student(id: studentID, userID: 0, name: name, surname: surname, patronymic: patronymic, birthdate: birthdate, phone: phone, group: Group(id: 0, name: groupName, faculty: ""))
+            
+            students.append(student)
+        }
+        return students
     }
 }

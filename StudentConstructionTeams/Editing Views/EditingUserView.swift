@@ -17,6 +17,7 @@ struct EditingUserView: View {
     @State var password = ""
     @State var cancelAction: () -> Void
     @State private var errorResult = false
+    @State private var successResult = false
     
     var body: some View {
         VStack {
@@ -27,12 +28,22 @@ struct EditingUserView: View {
                 .foregroundStyle(.accent)
             
             if errorResult {
-                Text("Номер уже зарегистрирован. Введите другой")
+                Text("Номер уже зарегистрирован. Введите другой номер")
                     .fontWeight(.semibold)
                     .foregroundStyle(.red)
                     .padding(EdgeInsets(top: 15, leading: 10, bottom: 15, trailing: 10))
                     .background(RoundedRectangle(cornerRadius: 5, style: .circular).stroke(.red, lineWidth: 1))
                     .background(.red.opacity(0.1))
+            }
+            
+            if successResult {
+                Text("Данные пользователя изменены")
+                    .textFieldStyle(.roundedBorder)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.green)
+                    .padding(EdgeInsets(top: 15, leading: 10, bottom: 15, trailing: 10))
+                    .background(RoundedRectangle(cornerRadius: 5, style: .circular).stroke(.green, lineWidth: 1))
+                    .background(.green.opacity(0.1))
             }
             
             TextField("Фамилия*", text: $user.surname)
@@ -67,8 +78,10 @@ struct EditingUserView: View {
                 .textFieldStyle(.roundedBorder)
                 .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
                 .fontDesign(.rounded)
-                .onChange(of: user.name, {
-                    nameIsRussian = user.name.isContainsOnlyRussianCharacters
+                .onChange(of: user.patronymic, {
+                    if let patronymic = user.patronymic {
+                        patronymicIsRussian = patronymic.isContainsOnlyRussianCharacters
+                    }
                 })
             
             if !patronymicIsRussian {
@@ -108,19 +121,29 @@ struct EditingUserView: View {
             HStack {
                 CancelButton(action: cancelAction)
                 EditButton(action: editUser)
+                    .disabled(!surnameIsRussian || user.surname.isEmpty || !nameIsRussian || user.name.isEmpty || !patronymicIsRussian || !phoneIsNumber || user.phone.isEmpty)
             }
         }
+        .frame(minWidth: 300, minHeight: 350)
         .padding()
         .background(.black.opacity(0.2))
         .animation(.easeInOut, value: errorResult)
+        .animation(.easeInOut, value: phoneIsNumber)
+        .animation(.easeInOut, value: nameIsRussian)
+        .animation(.easeInOut, value: surnameIsRussian)
+        .animation(.easeInOut, value: patronymicIsRussian)
+        .animation(.easeInOut, value: successResult)
     }
-
+    
     private func editUser() {
         do {
             try Service.service.updateUser(with: user.id, surname: user.surname, name: user.name, patronymic: user.patronymic, phone: user.phone, birthdate: newBirthdate, userTypeID: user.userType.id, password: password)
+            successResult = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                cancelAction()
+            }
         } catch {
             errorResult = true
         }
-        cancelAction()
     }
 }

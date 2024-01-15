@@ -10,7 +10,7 @@ import SwiftUI
 struct MyAccountView: View {
     @State var user = User(id: 0, name: "", surname: "", phone: "", userType: UserType(id: 0, name: ""))
     @StateObject var session: Session
-    @State var isEditModalPresented = false
+    @State var isEditingModalPresented = false
     @State var isLogoutModalPresented = false
     
     var body: some View {
@@ -39,7 +39,7 @@ struct MyAccountView: View {
             
             VStack {
                 if let birthdate = user.birthdate {
-                    Text(birthdate, style: .date)
+                    Text(makeDateOnRussian(date: birthdate))
                         .frame(maxWidth: .infinity, alignment: .leading)
                 } else {
                     Text("-")
@@ -79,28 +79,40 @@ struct MyAccountView: View {
         .sheet(isPresented: $isLogoutModalPresented) {
             
         }
-        .sheet(isPresented: $isEditModalPresented) {
+        .sheet(isPresented: $isEditingModalPresented, onDismiss: {
+            loadData()
+        }, content: {
             EditingUserView(user: user, cancelAction: cancel)
-        }
+        })
         .onAppear {
-            do {
-                if let user = try Service.service.fetchUser(with: session.userID) {
-                    self.user = user
-                } else {
-                    session.currentScreen = .login
-                    session.userID = 0
-                }
-            } catch {
-                
-            }
+            loadData()
         }
     }
     
-    func editUser() {
-        isEditModalPresented.toggle()
+    private func editUser() {
+        isEditingModalPresented = true
     }
     
     private func cancel() {
-        isEditModalPresented = false
+        isEditingModalPresented = false
+    }
+    
+    private func loadData() {
+        do {
+            if let user = try Service.service.fetchUser(with: session.userID) {
+                self.user = user
+            } else {
+                session.currentScreen = .login
+                session.userID = 0
+            }
+        } catch {}
+    }
+    
+    private func makeDateOnRussian(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.dateFormat = "dd MMMM YYYY"
+        let newDate = dateFormatter.string(from: date)
+        return newDate
     }
 }

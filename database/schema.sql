@@ -1,7 +1,7 @@
 CREATE TABLE student_group (
     ID SERIAL,
     name VARCHAR(40) NOT NULL UNIQUE,
-    departament VARCHAR(40),
+    faculty VARCHAR(40),
     PRIMARY KEY(ID)
 );
 
