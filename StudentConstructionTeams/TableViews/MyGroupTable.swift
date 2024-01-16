@@ -23,10 +23,18 @@ struct MyGroupTable: View {
             
             TableColumn("День рождения") { student in
                 if let birthdate = student.birthdate {
-                    Text(birthdate, style: .date)
-                } 
+                    Text(makeDateOnRussian(date: birthdate))
+                }
             }
         }
         .clipShape(.rect(cornerRadius: 15))
+    }
+    
+    private func makeDateOnRussian(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.dateFormat = "dd MMMM YYYY"
+        let newDate = dateFormatter.string(from: date)
+        return newDate
     }
 }

@@ -8,17 +8,55 @@
 import SwiftUI
 
 struct MyGroupView: View {
-    @State var groupInformation = GeneralInformation(groupName: "БСБО-02-21", elder: .init(name: "Иван Иваныч", phone: "12341234"), countStudents: 25)
+    @StateObject var session: Session
+    @State var groupInformation: GeneralInformation? = nil
     @State var students = [Student]()
+    @State var isEditingModalPresented = false
+    
     var body: some View {
         VStack {
-            GeneralInformationView(information: groupInformation)
-            MyGroupTable(students: students)
+            if let information = groupInformation {
+                GeneralInformationView(information: information)
+                MyGroupTable(students: students)
+                HStack {
+                    Spacer()
+                    
+                    EditButton(action: editGroup, name: "Изменить группу")
+                }
+            } else {
+                Text("Вы не состоите в группе😢")
+                    .fontDesign(.rounded)
+                    .fontWeight(.bold)
+                    .font(.title)
+                    .padding()
+                
+                AddButton(action: editGroup, name: "Выбрать свою группу😇")
+            }
         }
         .padding()
+        .onAppear {
+            loadData()
+        }
+        .sheet(isPresented: $isEditingModalPresented, 
+               onDismiss: {
+            loadData()
+        }, content: {
+            EditingStudentGroup(session: session, cancelAction: cancel)
+        })
     }
-}
-
-#Preview {
-    MyGroupView()
+    
+    private func editGroup() {
+        isEditingModalPresented = true
+    }
+    
+    private func loadData() {
+        do {
+            groupInformation = try Service.service.fetchStudentGroup(with: session.userID)
+            students = try Service.service.fetchGroupmates(with: session.userID)
+        } catch { }
+    }
+    
+    private func cancel() {
+        isEditingModalPresented = false
+    }
 }

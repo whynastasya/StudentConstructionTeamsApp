@@ -15,12 +15,4 @@ final class Session: ObservableObject {
         self.currentScreen = currentScreen
         self.userID = userID
     }
-    
-    enum Screen {
-        case login
-        case register
-        case adminAccount
-        case studentAccount
-        case teamDirectorAccount
-    }
 }

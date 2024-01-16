@@ -28,7 +28,7 @@ struct StudentMainView: View {
                     }
                 }
                 
-                NavigationLink(destination: MyGroupView()) {
+                NavigationLink(destination: MyGroupView(session: session)) {
                     HStack {
                         Image("my_group_icon")
                             .resizable()

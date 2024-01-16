@@ -31,6 +31,8 @@
 		EE7EC54A2B515974005FC875 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EC5492B515974005FC875 /* CancelButton.swift */; };
 		EE97AE242B52CB220013951B /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97AE232B52CB220013951B /* AddButton.swift */; };
 		EE97AE272B52D83D0013951B /* EditingUserTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97AE262B52D83D0013951B /* EditingUserTeam.swift */; };
+		EE97AE292B569B7B0013951B /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97AE282B569B7B0013951B /* Screen.swift */; };
+		EE97AE2B2B569E1E0013951B /* EditingStudentGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97AE2A2B569E1E0013951B /* EditingStudentGroup.swift */; };
 		EEC65F112B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC65F102B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift */; };
 		EEC65F132B2CBF3C00CF7C9C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC65F122B2CBF3C00CF7C9C /* ContentView.swift */; };
 		EEC65F152B2CBF3E00CF7C9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEC65F142B2CBF3E00CF7C9C /* Assets.xcassets */; };
@@ -95,6 +97,8 @@
 		EE7EC5492B515974005FC875 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
 		EE97AE232B52CB220013951B /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		EE97AE262B52D83D0013951B /* EditingUserTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserTeam.swift; sourceTree = "<group>"; };
+		EE97AE282B569B7B0013951B /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		EE97AE2A2B569E1E0013951B /* EditingStudentGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingStudentGroup.swift; sourceTree = "<group>"; };
 		EEC65F0D2B2CBF3C00CF7C9C /* StudentConstructionTeams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentConstructionTeams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEC65F102B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentConstructionTeamsApp.swift; sourceTree = "<group>"; };
 		EEC65F122B2CBF3C00CF7C9C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 			children = (
 				EE7EC5452B50A999005FC875 /* EditingUserView.swift */,
 				EE97AE262B52D83D0013951B /* EditingUserTeam.swift */,
+				EE97AE2A2B569E1E0013951B /* EditingStudentGroup.swift */,
 			);
 			path = "Editing Views";
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 		EEC65F252B2CCCB000CF7C9C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EE97AE282B569B7B0013951B /* Screen.swift */,
 				EEEB9CD62B4B5A230018B210 /* Role.swift */,
 				EEEB9CDA2B5018570018B210 /* UserType.swift */,
 				EEC65F212B2CC30400CF7C9C /* GeneralInformation.swift */,
@@ -426,6 +432,8 @@
 				EEEB9CC82B49B4FE0018B210 /* AdminMainView.swift in Sources */,
 				EEE76B732B321F560092CAFC /* Months.swift in Sources */,
 				EEEB9CD12B4A1A590018B210 /* UserProtocol.swift in Sources */,
+				EE97AE292B569B7B0013951B /* Screen.swift in Sources */,
+				EE97AE2B2B569E1E0013951B /* EditingStudentGroup.swift in Sources */,
 				EEC65F2C2B2D02DB00CF7C9C /* Student.swift in Sources */,
 				EE09B8852B2F63A200EF5536 /* EarningsOnTeamsChart.swift in Sources */,
 				EEE76B7E2B325DEE0092CAFC /* MyEarningsView.swift in Sources */,
