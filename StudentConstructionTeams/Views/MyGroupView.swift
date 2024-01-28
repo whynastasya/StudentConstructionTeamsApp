@@ -51,8 +51,8 @@ struct MyGroupView: View {
     
     private func loadData() {
         do {
-            groupInformation = try Service.service.fetchStudentGroup(with: session.userID)
-            students = try Service.service.fetchGroupmates(with: session.userID)
+            groupInformation = try Service.shared.fetchStudentGroup(with: session.userID)
+            students = try Service.shared.fetchGroupmates(with: session.userID)
         } catch { }
     }
     

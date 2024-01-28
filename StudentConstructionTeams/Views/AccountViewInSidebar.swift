@@ -27,7 +27,7 @@ struct AccountViewInSidebar: View {
         }
         .onAppear {
             do {
-                if let user = try Service.service.fetchUser(with: session.userID) {
+                if let user = try Service.shared.fetchUser(with: session.userID) {
                     self.user = user
                 } else {
                     session.currentScreen = .login

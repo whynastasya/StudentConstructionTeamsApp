@@ -53,7 +53,7 @@ struct StudentMainView: View {
         .navigationTitle("Строительные отряды")
         .onAppear {
             do {
-                if let student = try Service.service.fetchStudent(with: session.userID) {
+                if let student = try Service.shared.fetchStudent(with: session.userID) {
                     self.student = student
                 } else {
                     session.currentScreen = .login

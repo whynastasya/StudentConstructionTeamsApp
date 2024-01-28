@@ -71,9 +71,9 @@ struct MyTeamViewForStudent: View {
     
     private func loadData() {
         do {
-            teamInformation = try Service.service.fetchStudentTeam(with: session.userID)
-            currentTaskInformation = try Service.service.fetchUserCurrentTask(userID: session.userID)
-            students = try Service.service.fetchTeammates(userID: session.userID)
+            teamInformation = try Service.shared.fetchStudentTeam(with: session.userID)
+            currentTaskInformation = try Service.shared.fetchUserCurrentTask(userID: session.userID)
+            students = try Service.shared.fetchTeammates(userID: session.userID)
         } catch { }
     }
 }

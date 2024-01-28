@@ -34,6 +34,8 @@
 		EE7F11552B65AE1500CAFE8D /* UserTypesAdminTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7F11542B65AE1500CAFE8D /* UserTypesAdminTable.swift */; };
 		EE7F11582B65AEFC00CAFE8D /* UserTypesAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7F11572B65AEFC00CAFE8D /* UserTypesAdminView.swift */; };
 		EE7F115A2B65B5B300CAFE8D /* EditingUserTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7F11592B65B5B300CAFE8D /* EditingUserTypeView.swift */; };
+		EE7F115C2B66E9AA00CAFE8D /* GroupsAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7F115B2B66E9AA00CAFE8D /* GroupsAdminView.swift */; };
+		EE7F115E2B66E9F000CAFE8D /* AdminEditingGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7F115D2B66E9F000CAFE8D /* AdminEditingGroup.swift */; };
 		EE97AE242B52CB220013951B /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97AE232B52CB220013951B /* AddButton.swift */; };
 		EE97AE272B52D83D0013951B /* EditingUserTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97AE262B52D83D0013951B /* EditingUserTeam.swift */; };
 		EE97AE292B569B7B0013951B /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97AE282B569B7B0013951B /* Screen.swift */; };
@@ -108,6 +110,8 @@
 		EE7F11542B65AE1500CAFE8D /* UserTypesAdminTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypesAdminTable.swift; sourceTree = "<group>"; };
 		EE7F11572B65AEFC00CAFE8D /* UserTypesAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypesAdminView.swift; sourceTree = "<group>"; };
 		EE7F11592B65B5B300CAFE8D /* EditingUserTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserTypeView.swift; sourceTree = "<group>"; };
+		EE7F115B2B66E9AA00CAFE8D /* GroupsAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsAdminView.swift; sourceTree = "<group>"; };
+		EE7F115D2B66E9F000CAFE8D /* AdminEditingGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminEditingGroup.swift; sourceTree = "<group>"; };
 		EE97AE232B52CB220013951B /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		EE97AE262B52D83D0013951B /* EditingUserTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserTeam.swift; sourceTree = "<group>"; };
 		EE97AE282B569B7B0013951B /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 				EE97AE2A2B569E1E0013951B /* EditingStudentGroup.swift */,
 				EE7F11502B655C2600CAFE8D /* AdminEditingUserView.swift */,
 				EE7F11592B65B5B300CAFE8D /* EditingUserTypeView.swift */,
+				EE7F115D2B66E9F000CAFE8D /* AdminEditingGroup.swift */,
 				EE7F11522B65769F00CAFE8D /* DeletingView.swift */,
 			);
 			path = "Editing Views";
@@ -243,6 +248,7 @@
 			children = (
 				EE97AE2E2B56CE760013951B /* UsersAdminView.swift */,
 				EE7F11572B65AEFC00CAFE8D /* UserTypesAdminView.swift */,
+				EE7F115B2B66E9AA00CAFE8D /* GroupsAdminView.swift */,
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -460,6 +466,7 @@
 				EEE76B7C2B325C640092CAFC /* MyGroupView.swift in Sources */,
 				EE09B86E2B2F28BD00EF5536 /* TasksAdminTable.swift in Sources */,
 				EEE76B802B32CC880092CAFC /* MyAccountView.swift in Sources */,
+				EE7F115C2B66E9AA00CAFE8D /* GroupsAdminView.swift in Sources */,
 				EEE76B992B34808A0092CAFC /* Service.swift in Sources */,
 				EE7F11512B655C2600CAFE8D /* AdminEditingUserView.swift in Sources */,
 				EE09B87A2B2F57C800EF5536 /* GroupsAdminTable.swift in Sources */,
@@ -484,6 +491,7 @@
 				EEC65F2C2B2D02DB00CF7C9C /* Student.swift in Sources */,
 				EE09B8852B2F63A200EF5536 /* EarningsOnTeamsChart.swift in Sources */,
 				EEE76B7E2B325DEE0092CAFC /* MyEarningsView.swift in Sources */,
+				EE7F115E2B66E9F000CAFE8D /* AdminEditingGroup.swift in Sources */,
 				EEE76B7A2B3222D90092CAFC /* MyTeamViewForStudent.swift in Sources */,
 				EE09B8742B2F3C2400EF5536 /* UsersAdminTable.swift in Sources */,
 				EEFE7FDC2B472967001A2E26 /* LoginView.swift in Sources */,

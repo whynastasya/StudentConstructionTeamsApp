@@ -161,9 +161,9 @@ struct AdminEditingUserView: View {
         .animation(.easeInOut, value: successResultForAdding)
         .onAppear {
             do {
-                userTypes = try Service.service.fetchAllUserTypes()
+                userTypes = try Service.shared.fetchAllUserTypes()
                 if let id = userID {
-                    user = try Service.service.fetchUser(with: id)!
+                    user = try Service.shared.fetchUser(with: id)!
                 }
             } catch { }
         }
@@ -172,7 +172,7 @@ struct AdminEditingUserView: View {
     private func editUser() {
         if title == "Добавление" {
             do {
-                try Service.service.addNewUser(phone: user.phone, surname: user.surname, name: user.name, patronymic: user.patronymic, birthdate: user.birthdate, userTypeID: user.userType.id, userTypeName: user.userType.name)
+                try Service.shared.addNewUser(phone: user.phone, surname: user.surname, name: user.name, patronymic: user.patronymic, birthdate: user.birthdate, userTypeID: user.userType.id, userTypeName: user.userType.name)
                 successResultForAdding = true
                 errorResult = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -180,10 +180,11 @@ struct AdminEditingUserView: View {
                 }
             } catch {
                 errorResult = true
+                print(error)
             }
         } else {
             do {
-                try Service.service.adminUpdateUser(with: user.id, phone: user.phone, surname: user.surname, name: user.name, patronymic: user.patronymic, birthdate: user.birthdate, userTypeID: user.userType.id)
+                try Service.shared.adminUpdateUser(with: user.id, phone: user.phone, surname: user.surname, name: user.name, patronymic: user.patronymic, birthdate: user.birthdate, userTypeID: user.userType.id)
                 successResultForEditing = true
                 errorResult = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -191,6 +192,7 @@ struct AdminEditingUserView: View {
                 }
             } catch {
                 errorResult = true
+                print(error)
             }
         }
     }

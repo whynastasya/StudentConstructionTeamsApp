@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct GroupsAdminTable: View {
-    @State private var selectedGroup: Group.ID? = nil
+    @StateObject var session: Session
     var groups: [Group]
     
     var body: some View {
-        Table(groups, selection: $selectedGroup) {
+        Table(groups, selection: $session.selectedCellID) {
             TableColumn("Название", value: \.name)
             
             TableColumn("Факультет", value: \.faculty)

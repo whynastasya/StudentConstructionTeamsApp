@@ -53,9 +53,9 @@ struct EditingUserTeam: View {
         .onAppear {
             do {
                 if session.currentScreen == .studentAccount {
-                    teams = try Service.service.fetchAllTeams()
+                    teams = try Service.shared.fetchAllTeams()
                 } else if session.currentScreen == .teamDirectorAccount {
-                    teams = try Service.service.fetchFreeTeamsForTeamDirector(with: session.userID)
+                    teams = try Service.shared.fetchFreeTeamsForTeamDirector(with: session.userID)
                 }
             } catch { }
         }
@@ -63,7 +63,7 @@ struct EditingUserTeam: View {
     
     func editUserTeam() {
         do {
-            try Service.service.updateUserTeam(userID: session.userID, teamID: selectedTeam, typeUser: session.currentScreen)
+            try Service.shared.updateUserTeam(userID: session.userID, teamID: selectedTeam, typeUser: session.currentScreen)
         } catch { }
         successResult = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {

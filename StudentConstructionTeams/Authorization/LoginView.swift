@@ -90,7 +90,7 @@ struct LoginView: View {
     private func login() {
         Task {
             do {
-                var user = try Service.service.verificateUser(phone: phone, password: password)
+                var user = try Service.shared.verificateUser(phone: phone, password: password)
                 
                 guard let user else { return errorResult = true }
                 

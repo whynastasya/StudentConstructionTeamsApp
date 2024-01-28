@@ -65,7 +65,7 @@ struct UsersAdminView: View {
     
     private func loadData() {
         do {
-            users = try Service.service.fetchAllUsers()
+            users = try Service.shared.fetchAllUsers()
         } catch { }
     }
     
@@ -77,14 +77,14 @@ struct UsersAdminView: View {
     
     private func deleteUser() {
         do {
-            try Service.service.deleteUser(with: session.selectedCellID!)
+            try Service.shared.deleteUser(with: session.selectedCellID!)
         } catch { print(error )}
         cancel()
     }
     
     private func loadSelectedUser() -> String {
         do {
-            selectedUser = try Service.service.fetchUser(with: session.selectedCellID!)!
+            selectedUser = try Service.shared.fetchUser(with: session.selectedCellID!)!
         } catch { }
         return "Пользователя '\(selectedUser.fullName)'?"
     }

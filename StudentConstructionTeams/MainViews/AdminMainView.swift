@@ -36,6 +36,16 @@ struct AdminMainView: View {
                         Text("Типы пользователей")
                     }
                 }
+                
+                NavigationLink(destination: GroupsAdminView(session: session)) {
+                    HStack {
+                        Image(systemName: "shared.with.you")
+                            .resizable()
+                            .frame(width: 20, height: 18)
+                        
+                        Text("Студенческие группы")
+                    }
+                }
             }
         } detail: {
             UsersAdminView(session: session)

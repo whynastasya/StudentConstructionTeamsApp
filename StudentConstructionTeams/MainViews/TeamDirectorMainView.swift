@@ -44,7 +44,7 @@ struct TeamDirectorMainView: View {
         .navigationTitle("Строительные отряды")
         .onAppear {
             do {
-                if let teamDirector = try Service.service.fetchTeamDirector(with: session.userID) {
+                if let teamDirector = try Service.shared.fetchTeamDirector(with: session.userID) {
                     self.teamDirector = teamDirector
                 } else {
                     session.currentScreen = .login

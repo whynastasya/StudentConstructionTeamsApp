@@ -136,7 +136,7 @@ struct EditingUserView: View {
     
     private func editUser() {
         do {
-            try Service.service.updateUser(with: user.id, surname: user.surname, name: user.name, patronymic: user.patronymic, phone: user.phone, birthdate: newBirthdate, userTypeID: user.userType.id)
+            try Service.shared.updateUser(with: user.id, surname: user.surname, name: user.name, patronymic: user.patronymic, phone: user.phone, birthdate: newBirthdate, userTypeID: user.userType.id)
             successResult = true
             errorResult = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {

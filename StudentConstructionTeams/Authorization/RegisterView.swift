@@ -209,8 +209,8 @@ struct RegisterView: View {
         .animation(.easeInOut, value: patronymicIsRussian)
         .onAppear {
             do {
-                teams = try Service.service.fetchAllTeams()
-                groups = try Service.service.fetchAllGroups()
+                teams = try Service.shared.fetchAllTeams()
+                groups = try Service.shared.fetchAllGroups()
             } catch {
                 
             }
@@ -220,7 +220,7 @@ struct RegisterView: View {
     private func register() {
         Task {
             do {
-                try Service.service.registerNewUser(
+                try Service.shared.registerNewUser(
                     phone: phone,
                     password: password,
                     surname: surname,

@@ -52,14 +52,14 @@ struct EditingStudentGroup: View {
         .frame(minWidth: 350, minHeight: 210)
         .onAppear {
             do {
-                groups = try Service.service.fetchAllGroups()
+                groups = try Service.shared.fetchAllGroups()
             } catch { }
         }
     }
     
     private func editStudentGroup() {
         do {
-            try Service.service.updateStudentGroup(userID: session.userID, groupID: selectedGroup)
+            try Service.shared.updateGroupForStudent(userID: session.userID, groupID: selectedGroup)
         } catch { }
         successResult = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {

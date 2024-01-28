@@ -1,5 +1,5 @@
 //
-//  UserTypesAdminView.swift
+//  GroupsAdminView.swift
 //  StudentConstructionTeams
 //
 //  Created by nastasya on 28.01.2024.
@@ -7,23 +7,23 @@
 
 import SwiftUI
 
-struct UserTypesAdminView: View {
+struct GroupsAdminView: View {
     @StateObject var session: Session
-    @State private var userTypes = [UserType]()
+    @State private var groups = [Group]()
     @State private var isEditingModalPresented = false
     @State private var isAddingModalPresented = false
     @State private var isDeletingModalPresented = false
-    @State private var selectedUserType = UserType(id: 0, name: "")
+    @State private var selectedGroup = Group(id: 0, name: "", faculty: "")
     
     var body: some View {
         VStack {
             VStack {
-                Text("Типы пользователей")
+                Text("Студенческие группы")
                     .font(.title)
                     .fontWeight(.bold)
                     .fontDesign(.rounded)
                 
-                UserTypesAdminTable(session: session, userTypes: userTypes)
+                GroupsAdminTable(session: session, groups: groups)
             }
             .padding()
             .background()
@@ -45,18 +45,18 @@ struct UserTypesAdminView: View {
         }
         .sheet(isPresented: $isAddingModalPresented,
                onDismiss: { loadData() },
-               content: { EditingUserTypeView(cancelAction: cancel)})
+               content: { AdminEditingGroup(cancelAction: cancel)})
         .sheet(isPresented: $isEditingModalPresented,
                onDismiss: { loadData() },
-               content: { EditingUserTypeView(title: "Изменение", titleButton: "Изменить", userTypeID: session.selectedCellID, cancelAction: cancel) })
+               content: { AdminEditingGroup(title: "Изменение", titleButton: "Изменить", groupID: session.selectedCellID, cancelAction: cancel) })
         .sheet(isPresented: $isDeletingModalPresented,
                onDismiss: { loadData() },
-               content: { DeletingView(cancelAction: cancel, deleteAction: deleteUserType, loadData: loadSelectedUserType )})
+               content: { DeletingView(cancelAction: cancel, deleteAction: deleteGroup, loadData: loadSelectedGroup )})
     }
     
     private func loadData() {
         do {
-            userTypes = try Service.shared.fetchAllUserTypes()
+            groups = try Service.shared.fetchAllGroups()
         } catch { }
     }
     
@@ -66,18 +66,18 @@ struct UserTypesAdminView: View {
         isDeletingModalPresented = false
     }
     
-    private func loadSelectedUserType() -> String {
+    private func loadSelectedGroup() -> String {
         do {
-            selectedUserType = try Service.shared.fetchUserType(with: session.selectedCellID!)
+            selectedGroup = try Service.shared.fetchStudentGroup(with: session.selectedCellID!)
         } catch { }
         
-        return "Тип пользователя '\(selectedUserType.name)'?"
+        return "Группу '\(selectedGroup.name)'?"
     }
     
-    private func deleteUserType() {
+    private func deleteGroup() {
         do {
-            try Service.shared.deleteUserType(with: session.selectedCellID!)
-        } catch { }
+            try Service.shared.deleteGroup(with: session.selectedCellID!)
+        } catch { print(error)}
         cancel()
     }
 }

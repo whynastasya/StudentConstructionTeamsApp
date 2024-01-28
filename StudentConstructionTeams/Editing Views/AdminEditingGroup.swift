@@ -1,5 +1,5 @@
 //
-//  EditingUserTypeView.swift
+//  AdminEditingGroup.swift
 //  StudentConstructionTeams
 //
 //  Created by nastasya on 28.01.2024.
@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct EditingUserTypeView: View {
+struct AdminEditingGroup: View {
     @State var title = "Добавление"
     @State var titleButton = "Добавить"
-    @State private var userType = UserType(id: 0, name: "")
-    @State var userTypeID: Int?
+    @State private var group = Group(id: 0, name: "", faculty: "")
+    @State var groupID: Int?
     @State private var nameIsRussian = true
+    @State private var facultyIsRussian = true
     var cancelAction : () -> Void
     @State private var errorResult = false
     @State private var successResultForEditing = false
@@ -36,7 +37,7 @@ struct EditingUserTypeView: View {
             }
             
             if successResultForEditing {
-                Text("Тип пользователя изменен")
+                Text("Группа изменена")
                     .textFieldStyle(.roundedBorder)
                     .fontWeight(.semibold)
                     .foregroundStyle(.green)
@@ -46,7 +47,7 @@ struct EditingUserTypeView: View {
             }
             
             if successResultForAdding {
-                Text("Тип пользователя добавлен")
+                Text("Группа добавлена")
                     .textFieldStyle(.roundedBorder)
                     .fontWeight(.semibold)
                     .foregroundStyle(.green)
@@ -55,12 +56,12 @@ struct EditingUserTypeView: View {
                     .background(.green.opacity(0.1))
             }
             
-            TextField("Название*", text: $userType.name)
+            TextField("Название*", text: $group.name)
                 .textFieldStyle(.roundedBorder)
                 .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
                 .fontDesign(.rounded)
-                .onChange(of: userType.name, {
-                    nameIsRussian = userType.name.isContainsOnlyRussianCharacters
+                .onChange(of: group.name, {
+                    nameIsRussian = group.name.isContainsOnlyRussianCharacters
                 })
             
             if !nameIsRussian {
@@ -69,33 +70,48 @@ struct EditingUserTypeView: View {
                     .fontDesign(.rounded)
             }
             
+            TextField("Факультет*", text: $group.faculty)
+                .textFieldStyle(.roundedBorder)
+                .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+                .fontDesign(.rounded)
+                .onChange(of: group.faculty, {
+                    facultyIsRussian = group.faculty.isContainsOnlyRussianCharacters
+                })
+            
+            if !facultyIsRussian {
+                Text("Допустимые значения - русский алфавит")
+                    .foregroundStyle(.red)
+                    .fontDesign(.rounded)
+            }
+            
             HStack {
                 CancelButton(action: cancelAction)
                 
-                EditButton(action: editUserType, name: titleButton)
-                    .disabled(!nameIsRussian || userType.name.isEmpty)
+                EditButton(action: editGroup, name: titleButton)
+                    .disabled(!nameIsRussian || group.name.isEmpty || !facultyIsRussian || group.faculty.isEmpty)
             }
         }
         .padding()
         .onAppear {
             do {
-                if let id = userTypeID {
-                    userType = try Service.shared.fetchUserType(with: id)
+                if let id = groupID {
+                    group = try Service.shared.fetchStudentGroup(with: id)
                 }
             } catch { }
         }
         .animation(.easeInOut, value: nameIsRussian)
+        .animation(.easeInOut, value: facultyIsRussian)
         .animation(.easeInOut, value: successResultForAdding)
         .animation(.easeInOut, value: successResultForEditing)
         .animation(.easeInOut, value: errorResult)
-        .frame(minWidth: 350, minHeight: 220)
+        .frame(minWidth: 320, minHeight: 320)
         .background(.black.opacity(0.2))
     }
     
-    private func editUserType() {
+    private func editGroup() {
         if title == "Добавление" {
             do {
-                try Service.shared.addNewUserType(name: userType.name)
+                try Service.shared.addGroup(with: group.name, faculty: group.faculty)
                 successResultForAdding = true
                 errorResult = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -103,10 +119,11 @@ struct EditingUserTypeView: View {
                 }
             } catch {
                 errorResult = true
+                print(error)
             }
         } else {
             do {
-                try Service.shared.updateUserType(with: userType.id, newName: userType.name)
+                try Service.shared.updateGroup(with: group.id, newName: group.name, newFaculty: group.faculty)
                 successResultForEditing = true
                 errorResult = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
