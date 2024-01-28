@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserType: Hashable {
+struct UserType: Hashable, Identifiable {
     var id: Int
     var name: String
 }

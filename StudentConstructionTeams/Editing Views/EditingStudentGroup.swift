@@ -47,6 +47,7 @@ struct EditingStudentGroup: View {
             }
         }
         .padding()
+        .background(.black.opacity(0.2))
         .animation(.easeInOut, value: successResult)
         .frame(minWidth: 350, minHeight: 210)
         .onAppear {

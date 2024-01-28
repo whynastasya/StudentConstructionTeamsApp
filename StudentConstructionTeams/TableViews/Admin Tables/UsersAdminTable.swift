@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct UsersAdminTable: View {
-    @State private var selectedUser: User.ID? = nil
-    var users: [User]
+    @StateObject var session: Session
+    var users: [User]    
     
     var body: some View {
-        Table(users, selection: $selectedUser) {
+        Table(users, selection: $session.selectedCellID) {
             TableColumn("ФИО", value: \.fullName)
             
             TableColumn("Номер телефона", value: \.phone)
@@ -22,6 +22,8 @@ struct UsersAdminTable: View {
                     Text(birthdate, style: .date)
                 }
             }
+            
+            TableColumn("Тип пользователя", value: \.userType.name)
         }
     }
 }

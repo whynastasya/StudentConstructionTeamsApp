@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var session = Session(currentScreen: .studentAccount, userID: 19)
+    @StateObject var session = Session(currentScreen: .adminAccount, userID: 5, selectedCellID: nil)
     
     var body: some View {
         VStack {

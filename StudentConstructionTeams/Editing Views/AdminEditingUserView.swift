@@ -1,26 +1,32 @@
 //
-//  EditingUserView.swift
+//  AdminEditingUserView.swift
 //  StudentConstructionTeams
 //
-//  Created by nastasya on 12.01.2024.
+//  Created by nastasya on 27.01.2024.
 //
 
 import SwiftUI
 
-struct EditingUserView: View {
-    @State var user: User
-    @State var surnameIsRussian = true
-    @State var nameIsRussian = true
-    @State var patronymicIsRussian = true
-    @State var phoneIsNumber = true
+struct AdminEditingUserView: View {
+    @State private var user = User(id: 0, name: "", surname: "", patronymic: "", phone: "", userType: UserType(id: 0, name: ""))
+    @State var userID: Int?
+    @State private var surnameIsRussian = true
+    @State private var nameIsRussian = true
+    @State private var patronymicIsRussian = true
+    @State private var phoneIsNumber = true
     @State private var newBirthdate: Date? = nil
-    @State var cancelAction: () -> Void
+    @State var password = ""
+    var cancelAction: () -> Void
     @State private var errorResult = false
-    @State private var successResult = false
+    @State private var successResultForEditing = false
+    @State private var successResultForAdding = false
+    @State private var userTypes = [UserType]()
+    @State var title = "Добавление"
+    @State var titleButton = "Добавить"
     
     var body: some View {
         VStack {
-            Text("Редактирование")
+            Text(title)
                 .font(.title)
                 .fontWeight(.bold)
                 .fontDesign(.rounded)
@@ -35,8 +41,18 @@ struct EditingUserView: View {
                     .background(.red.opacity(0.1))
             }
             
-            if successResult {
+            if successResultForEditing {
                 Text("Данные пользователя изменены")
+                    .textFieldStyle(.roundedBorder)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.green)
+                    .padding(EdgeInsets(top: 15, leading: 10, bottom: 15, trailing: 10))
+                    .background(RoundedRectangle(cornerRadius: 5, style: .circular).stroke(.green, lineWidth: 1))
+                    .background(.green.opacity(0.1))
+            }
+            
+            if successResultForAdding {
+                Text("Данные пользователя добавлены")
                     .textFieldStyle(.roundedBorder)
                     .fontWeight(.semibold)
                     .foregroundStyle(.green)
@@ -103,7 +119,7 @@ struct EditingUserView: View {
                     })
             }
             
-            TextField("Ваш номер телефона*", text: $user.phone)
+            TextField("Номер телефона*", text: $user.phone)
                 .textFieldStyle(.roundedBorder)
                 .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
                 .fontDesign(.rounded)
@@ -117,10 +133,20 @@ struct EditingUserView: View {
                     .fontDesign(.rounded)
             }
             
+            Picker("Тип пользователя*", selection: $user.userType.id) {
+                Text("").tag(0)
+                ForEach(userTypes, id: \.self) { userType in
+                    Text(userType.name).tag(userType.id)
+                }
+            }
+            .fontDesign(.rounded)
+            .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 15))
+            
             HStack {
                 CancelButton(action: cancelAction)
-                EditButton(action: editUser)
-                    .disabled(!surnameIsRussian || user.surname.isEmpty || !nameIsRussian || user.name.isEmpty || !patronymicIsRussian || !phoneIsNumber || user.phone.isEmpty)
+                
+                EditButton(action: editUser, name: titleButton)
+                    .disabled(!surnameIsRussian || user.surname.isEmpty || !nameIsRussian || user.name.isEmpty || !patronymicIsRussian || !phoneIsNumber || user.phone.isEmpty || (user.userType.id == 0))
             }
         }
         .frame(minWidth: 300, minHeight: 350)
@@ -131,19 +157,41 @@ struct EditingUserView: View {
         .animation(.easeInOut, value: nameIsRussian)
         .animation(.easeInOut, value: surnameIsRussian)
         .animation(.easeInOut, value: patronymicIsRussian)
-        .animation(.easeInOut, value: successResult)
+        .animation(.easeInOut, value: successResultForEditing)
+        .animation(.easeInOut, value: successResultForAdding)
+        .onAppear {
+            do {
+                userTypes = try Service.service.fetchAllUserTypes()
+                if let id = userID {
+                    user = try Service.service.fetchUser(with: id)!
+                }
+            } catch { }
+        }
     }
     
     private func editUser() {
-        do {
-            try Service.service.updateUser(with: user.id, surname: user.surname, name: user.name, patronymic: user.patronymic, phone: user.phone, birthdate: newBirthdate, userTypeID: user.userType.id)
-            successResult = true
-            errorResult = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                cancelAction()
+        if title == "Добавление" {
+            do {
+                try Service.service.addNewUser(phone: user.phone, surname: user.surname, name: user.name, patronymic: user.patronymic, birthdate: user.birthdate, userTypeID: user.userType.id, userTypeName: user.userType.name)
+                successResultForAdding = true
+                errorResult = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    cancelAction()
+                }
+            } catch {
+                errorResult = true
             }
-        } catch {
-            errorResult = true
+        } else {
+            do {
+                try Service.service.adminUpdateUser(with: user.id, phone: user.phone, surname: user.surname, name: user.name, patronymic: user.patronymic, birthdate: user.birthdate, userTypeID: user.userType.id)
+                successResultForEditing = true
+                errorResult = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    cancelAction()
+                }
+            } catch {
+                errorResult = true
+            }
         }
     }
 }

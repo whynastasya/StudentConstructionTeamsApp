@@ -10,9 +10,11 @@ import Foundation
 final class Session: ObservableObject {
     @Published var currentScreen: Screen = .login
     @Published var userID: Int
+    @Published var selectedCellID: Int?
     
-    init(currentScreen: Screen, userID: Int) {
+    init(currentScreen: Screen, userID: Int, selectedCellID: Int?) {
         self.currentScreen = currentScreen
         self.userID = userID
+        self.selectedCellID = selectedCellID
     }
 }

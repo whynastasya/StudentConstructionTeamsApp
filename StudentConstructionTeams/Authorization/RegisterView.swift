@@ -126,15 +126,6 @@ struct RegisterView: View {
                             })
                     }
                     
-                    Picker("Выберите команду", selection: $selectedTeam) {
-                        Text("").tag(0)
-                        ForEach(teams ?? [Team](), id: \.self) { team in
-                            Text(team.name).tag(team.id)
-                        }
-                    }
-                    .fontDesign(.rounded)
-                    .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 15))
-                    
                     TextField("Ваш номер телефона*", text: $phone)
                         .textFieldStyle(.roundedBorder)
                         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
@@ -174,6 +165,15 @@ struct RegisterView: View {
                         }
                         .fontDesign(.rounded)
                         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+                        
+                        Picker("Выберите команду", selection: $selectedTeam) {
+                            Text("").tag(0)
+                            ForEach(teams ?? [Team](), id: \.self) { team in
+                                Text(team.name).tag(team.id)
+                            }
+                        }
+                        .fontDesign(.rounded)
+                        .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 15))
                     }
                     
                     VStack {

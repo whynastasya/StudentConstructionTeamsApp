@@ -47,11 +47,16 @@ struct EditingUserTeam: View {
             }
         }
         .padding()
+        .background(.black.opacity(0.2))
         .animation(.easeInOut, value: successResult)
         .frame(minWidth: 350, minHeight: 210)
         .onAppear {
             do {
-                teams = try Service.service.fetchAllTeams()
+                if session.currentScreen == .studentAccount {
+                    teams = try Service.service.fetchAllTeams()
+                } else if session.currentScreen == .teamDirectorAccount {
+                    teams = try Service.service.fetchFreeTeamsForTeamDirector(with: session.userID)
+                }
             } catch { }
         }
     }

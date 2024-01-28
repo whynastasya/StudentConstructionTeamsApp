@@ -1,15 +1,14 @@
 //
-//  MyTeamView.swift
+//  MyTeamViewForTeamDirector.swift
 //  StudentConstructionTeams
 //
-//  Created by nastasya on 19.12.2023.
+//  Created by nastasya on 16.01.2024.
 //
 
 import SwiftUI
 
-struct MyTeamView: View {
+struct MyTeamViewForTeamDirector: View {
     @State var teamInformation: GeneralInformation? = nil
-    @State var currentTaskInformation: GeneralInformation? = nil
     @State var students = [Student]()
     @StateObject var session: Session
     @State var isEditingModalPresented = false
@@ -18,17 +17,6 @@ struct MyTeamView: View {
         VStack {
             if let information = teamInformation {
                 GeneralInformationView(information: information)
-                
-                if let information = currentTaskInformation {
-                    GeneralInformationView(information: information)
-                } else {
-                    Text("Заданий нет")
-                        .font(.title2)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding()
-                        .background()
-                        .clipShape(.rect(cornerRadius: 20))
-                }
                 
                 MyTeamTable(students: students)
                 HStack {
@@ -61,19 +49,18 @@ struct MyTeamView: View {
         })
     }
     
-    private func editTeam() {
-        isEditingModalPresented = true
-    }
-    
     private func cancel() {
         isEditingModalPresented = false
     }
     
+    private func editTeam() {
+        isEditingModalPresented = true
+    }
+    
     private func loadData() {
         do {
-            teamInformation = try Service.service.fetchUserTeam(with: session.userID)
-            currentTaskInformation = try Service.service.fetchUserCurrentTask(userID: session.userID)
-            students = try Service.service.fetchTeammates(userID: session.userID)
-        } catch { }
+            teamInformation = try Service.service.fetchTeamDirectorTeam(with: session.userID)
+        } catch {}
     }
 }
+
