@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EditingTaskTypes: View {
+struct EditingTaskTypesView: View {
     @State var title = "Добавление"
     @State var titleButton = "Добавить"
     @State private var taskType = TaskType(id: 0, name: "", ratePerHour: "")

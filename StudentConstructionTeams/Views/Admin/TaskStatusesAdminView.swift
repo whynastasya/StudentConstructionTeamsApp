@@ -1,29 +1,29 @@
 //
-//  GroupsAdminView.swift
+//  TaskStatusAdminView.swift
 //  StudentConstructionTeams
 //
-//  Created by nastasya on 28.01.2024.
+//  Created by nastasya on 29.01.2024.
 //
 
 import SwiftUI
 
-struct GroupsAdminView: View {
+struct TaskStatusesAdminView: View {
     @StateObject var session: Session
-    @State private var groups = [Group]()
+    @State private var taskStatuses = [TaskStatus]()
     @State private var isEditingModalPresented = false
     @State private var isAddingModalPresented = false
     @State private var isDeletingModalPresented = false
-    @State private var selectedGroup = Group(id: 0, name: "", faculty: "")
+    @State private var selectedTaskStatus = TaskStatus(id: 0, name: "")
     
     var body: some View {
         VStack {
             VStack {
-                Text("Студенческие группы")
+                Text("Статусы выполнения заданий")
                     .font(.title)
                     .fontWeight(.bold)
                     .fontDesign(.rounded)
                 
-                GroupsAdminTable(session: session, groups: groups)
+                TaskStatusesAdminTable(session: session, taskStatuses: taskStatuses)
             }
             .padding()
             .background()
@@ -45,10 +45,10 @@ struct GroupsAdminView: View {
         }
         .sheet(isPresented: $isAddingModalPresented,
                onDismiss: { loadData() },
-               content: { AdminEditingGroupView(cancelAction: cancel)})
+               content: { EditingTaskStatusView(cancelAction: cancel)})
         .sheet(isPresented: $isEditingModalPresented,
                onDismiss: { loadData() },
-               content: { AdminEditingGroupView(title: "Изменение", titleButton: "Изменить", groupID: session.selectedCellID, cancelAction: cancel) })
+               content: { EditingTaskStatusView(title: "Изменение", titleButton: "Изменить", taskStatusID: session.selectedCellID, cancelAction: cancel) })
         .sheet(isPresented: $isDeletingModalPresented,
                onDismiss: { loadData() },
                content: { DeletingView(cancelAction: cancel, deleteAction: deleteGroup, loadData: loadSelectedGroup )})
@@ -56,7 +56,7 @@ struct GroupsAdminView: View {
     
     private func loadData() {
         do {
-            groups = try Service.shared.fetchAllGroups()
+            taskStatuses = try Service.shared.fetchAllTaskStatuses()
         } catch { }
     }
     
@@ -68,17 +68,16 @@ struct GroupsAdminView: View {
     
     private func loadSelectedGroup() -> String {
         do {
-            selectedGroup = try Service.shared.fetchStudentGroup(with: session.selectedCellID!)
+            selectedTaskStatus = try Service.shared.fetchTaskStatus(with: session.selectedCellID!)
         } catch { }
         
-        return "Группу '\(selectedGroup.name)'?"
+        return "Статус задачи '\(selectedTaskStatus.name)'?"
     }
     
     private func deleteGroup() {
         do {
-            try Service.shared.deleteGroup(with: session.selectedCellID!)
-        } catch { print(error)}
+            try Service.shared.deleteTaskStatus(with: session.selectedCellID!)
+        } catch { }
         cancel()
     }
 }
-

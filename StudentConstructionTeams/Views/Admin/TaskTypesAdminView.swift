@@ -45,10 +45,10 @@ struct TaskTypesAdminView: View {
         }
         .sheet(isPresented: $isAddingModalPresented,
                onDismiss: { loadData() },
-               content: { EditingTaskTypes(cancelAction: cancel)})
+               content: { EditingTaskTypesView(cancelAction: cancel)})
         .sheet(isPresented: $isEditingModalPresented,
                onDismiss: { loadData() },
-               content: { EditingTaskTypes(title: "Изменение", titleButton: "Изменить", taskTypeID: session.selectedCellID, cancelAction: cancel) })
+               content: { EditingTaskTypesView(title: "Изменение", titleButton: "Изменить", taskTypeID: session.selectedCellID, cancelAction: cancel) })
         .sheet(isPresented: $isDeletingModalPresented,
                onDismiss: { loadData() },
                content: { DeletingView(cancelAction: cancel, deleteAction: deleteGroup, loadData: loadSelectedGroup )})

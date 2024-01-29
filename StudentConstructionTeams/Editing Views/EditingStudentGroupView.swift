@@ -1,16 +1,16 @@
 //
-//  EditingUserTeam.swift
+//  EditingStudentGroup.swift
 //  StudentConstructionTeams
 //
-//  Created by nastasya on 13.01.2024.
+//  Created by nastasya on 16.01.2024.
 //
 
 import SwiftUI
 
-struct EditingUserTeam: View {
+struct EditingStudentGroupView: View {
     @StateObject var session: Session
-    @State var selectedTeam: Team.ID = 0
-    @State var teams: [Team]?
+    @State var selectedGroup: Group.ID = 0
+    @State var groups: [Group]?
     var cancelAction: () -> Void
     @State private var successResult = false
     
@@ -23,7 +23,7 @@ struct EditingUserTeam: View {
                 .foregroundStyle(.accent)
             
             if successResult {
-                Text("Данные команды пользователя изменены")
+                Text("Данные группы пользователя изменены")
                     .textFieldStyle(.roundedBorder)
                     .fontWeight(.semibold)
                     .foregroundStyle(.green)
@@ -32,10 +32,10 @@ struct EditingUserTeam: View {
                     .background(.green.opacity(0.1))
             }
             
-            Picker("Выберите команду", selection: $selectedTeam) {
-                Text("Нет команды").tag(0)
-                ForEach(teams ?? [Team](), id: \.self) { team in
-                    Text(team.name).tag(team.id)
+            Picker("Выберите группу", selection: $selectedGroup) {
+                Text("Нет группы").tag(0)
+                ForEach(groups ?? [Group](), id: \.self) { group in
+                    Text(group.name).tag(group.id)
                 }
             }
             .fontDesign(.rounded)
@@ -43,7 +43,7 @@ struct EditingUserTeam: View {
             
             HStack {
                 CancelButton(action: cancelAction)
-                EditButton(action: editUserTeam)
+                EditButton(action: editStudentGroup)
             }
         }
         .padding()
@@ -52,18 +52,14 @@ struct EditingUserTeam: View {
         .frame(minWidth: 350, minHeight: 210)
         .onAppear {
             do {
-                if session.currentScreen == .studentAccount {
-                    teams = try Service.shared.fetchAllTeams()
-                } else if session.currentScreen == .teamDirectorAccount {
-                    teams = try Service.shared.fetchFreeTeamsForTeamDirector(with: session.userID)
-                }
+                groups = try Service.shared.fetchAllGroups()
             } catch { }
         }
     }
     
-    func editUserTeam() {
+    private func editStudentGroup() {
         do {
-            try Service.shared.updateUserTeam(userID: session.userID, teamID: selectedTeam, typeUser: session.currentScreen)
+            try Service.shared.updateGroupForStudent(userID: session.userID, groupID: selectedGroup)
         } catch { }
         successResult = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -71,3 +67,5 @@ struct EditingUserTeam: View {
         }
     }
 }
+
+

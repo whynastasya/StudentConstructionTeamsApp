@@ -56,6 +56,16 @@ struct AdminMainView: View {
                         Text("Типы заданий")
                     }
                 }
+                
+                NavigationLink(destination: TaskStatusesAdminView(session: session)) {
+                    HStack {
+                        Image(systemName: "gauge.with.needle")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        
+                        Text("Статусы выполнения задания")
+                    }
+                }
             }
         } detail: {
             UsersAdminView(session: session)

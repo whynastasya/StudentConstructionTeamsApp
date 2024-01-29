@@ -41,7 +41,7 @@ struct MyGroupView: View {
                onDismiss: {
             loadData()
         }, content: {
-            EditingStudentGroup(session: session, cancelAction: cancel)
+            EditingStudentGroupView(session: session, cancelAction: cancel)
         })
     }
     

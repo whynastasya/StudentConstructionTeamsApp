@@ -1009,4 +1009,77 @@ final class Service {
         let cursor = try statement.execute(parameterValues: [])
         defer { cursor.close() }
     }
+    
+    func fetchAllTaskStatuses() throws -> [TaskStatus] {
+        let query = "SELECT * FROM task_status"
+        
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        var taskStatuses = [TaskStatus]()
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let id = try columns[0].int()
+            let name = try columns[1].string()
+            
+            let taskStatus = TaskStatus(id: id, name: name)
+            taskStatuses.append(taskStatus)
+        }
+        
+        return taskStatuses
+    }
+    
+    func fetchTaskStatus(with id: Int) throws -> TaskStatus {
+        let query = "SELECT * FROM task_status WHERE id = \(id)"
+        
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let name = try columns[1].string()
+            
+            let taskStatus = TaskStatus(id: id, name: name)
+            return taskStatus
+        }
+        
+        return TaskStatus(id: 0, name: "")
+    }
+    
+    func addNewTaskStatus(name: String) throws {
+        let query = "SELECT add_task_status('\(name)')"
+        
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+    }
+    
+    func updateTaskStatus(with id: Int, newName: String) throws {
+        let query = "SELECT update_task_status(\(id), '\(newName)')"
+        
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+    }
+    
+    func deleteTaskStatus(with id: Int) throws {
+        let query = "SELECT delete_task_status(\(id))"
+        
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+    }
 }

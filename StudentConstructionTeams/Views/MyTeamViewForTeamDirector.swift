@@ -45,7 +45,7 @@ struct MyTeamViewForTeamDirector: View {
                onDismiss: {
             loadData()
         }, content: {
-            EditingUserTeam(session: session, cancelAction: cancel)
+            EditingUserTeamView(session: session, cancelAction: cancel)
         })
     }
     
