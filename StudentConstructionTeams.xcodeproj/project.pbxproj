@@ -20,7 +20,7 @@
 		EE09B8722B2F36A600EF5536 /* TeamDirectorsAdminTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8712B2F36A600EF5536 /* TeamDirectorsAdminTable.swift */; };
 		EE09B8742B2F3C2400EF5536 /* UsersAdminTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8732B2F3C2400EF5536 /* UsersAdminTable.swift */; };
 		EE09B8762B2F3C5D00EF5536 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8752B2F3C5D00EF5536 /* User.swift */; };
-		EE09B8782B2F567D00EF5536 /* TaskTypeAdminTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8772B2F567D00EF5536 /* TaskTypeAdminTable.swift */; };
+		EE09B8782B2F567D00EF5536 /* TaskTypesAdminTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8772B2F567D00EF5536 /* TaskTypesAdminTable.swift */; };
 		EE09B87A2B2F57C800EF5536 /* GroupsAdminTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8792B2F57C800EF5536 /* GroupsAdminTable.swift */; };
 		EE09B87C2B2F59AC00EF5536 /* TeamsAdminTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B87B2B2F59AC00EF5536 /* TeamsAdminTable.swift */; };
 		EE09B87E2B2F5BA000EF5536 /* StayingInTeamAdminTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B87D2B2F5BA000EF5536 /* StayingInTeamAdminTable.swift */; };
@@ -36,6 +36,8 @@
 		EE7F115A2B65B5B300CAFE8D /* EditingUserTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7F11592B65B5B300CAFE8D /* EditingUserTypeView.swift */; };
 		EE7F115C2B66E9AA00CAFE8D /* GroupsAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7F115B2B66E9AA00CAFE8D /* GroupsAdminView.swift */; };
 		EE7F115E2B66E9F000CAFE8D /* AdminEditingGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7F115D2B66E9F000CAFE8D /* AdminEditingGroup.swift */; };
+		EE7F11602B6706A000CAFE8D /* TaskTypesAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7F115F2B6706A000CAFE8D /* TaskTypesAdminView.swift */; };
+		EE7F11622B670DF900CAFE8D /* EditingTaskTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7F11612B670DF900CAFE8D /* EditingTaskTypes.swift */; };
 		EE97AE242B52CB220013951B /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97AE232B52CB220013951B /* AddButton.swift */; };
 		EE97AE272B52D83D0013951B /* EditingUserTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97AE262B52D83D0013951B /* EditingUserTeam.swift */; };
 		EE97AE292B569B7B0013951B /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97AE282B569B7B0013951B /* Screen.swift */; };
@@ -96,7 +98,7 @@
 		EE09B8712B2F36A600EF5536 /* TeamDirectorsAdminTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDirectorsAdminTable.swift; sourceTree = "<group>"; };
 		EE09B8732B2F3C2400EF5536 /* UsersAdminTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersAdminTable.swift; sourceTree = "<group>"; };
 		EE09B8752B2F3C5D00EF5536 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		EE09B8772B2F567D00EF5536 /* TaskTypeAdminTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTypeAdminTable.swift; sourceTree = "<group>"; };
+		EE09B8772B2F567D00EF5536 /* TaskTypesAdminTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTypesAdminTable.swift; sourceTree = "<group>"; };
 		EE09B8792B2F57C800EF5536 /* GroupsAdminTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsAdminTable.swift; sourceTree = "<group>"; };
 		EE09B87B2B2F59AC00EF5536 /* TeamsAdminTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsAdminTable.swift; sourceTree = "<group>"; };
 		EE09B87D2B2F5BA000EF5536 /* StayingInTeamAdminTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StayingInTeamAdminTable.swift; sourceTree = "<group>"; };
@@ -112,6 +114,8 @@
 		EE7F11592B65B5B300CAFE8D /* EditingUserTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserTypeView.swift; sourceTree = "<group>"; };
 		EE7F115B2B66E9AA00CAFE8D /* GroupsAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsAdminView.swift; sourceTree = "<group>"; };
 		EE7F115D2B66E9F000CAFE8D /* AdminEditingGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminEditingGroup.swift; sourceTree = "<group>"; };
+		EE7F115F2B6706A000CAFE8D /* TaskTypesAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTypesAdminView.swift; sourceTree = "<group>"; };
+		EE7F11612B670DF900CAFE8D /* EditingTaskTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTaskTypes.swift; sourceTree = "<group>"; };
 		EE97AE232B52CB220013951B /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		EE97AE262B52D83D0013951B /* EditingUserTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserTeam.swift; sourceTree = "<group>"; };
 		EE97AE282B569B7B0013951B /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 				EE7F11502B655C2600CAFE8D /* AdminEditingUserView.swift */,
 				EE7F11592B65B5B300CAFE8D /* EditingUserTypeView.swift */,
 				EE7F115D2B66E9F000CAFE8D /* AdminEditingGroup.swift */,
+				EE7F11612B670DF900CAFE8D /* EditingTaskTypes.swift */,
 				EE7F11522B65769F00CAFE8D /* DeletingView.swift */,
 			);
 			path = "Editing Views";
@@ -214,14 +219,13 @@
 			children = (
 				EE09B8732B2F3C2400EF5536 /* UsersAdminTable.swift */,
 				EE7F11542B65AE1500CAFE8D /* UserTypesAdminTable.swift */,
-				EE09B8772B2F567D00EF5536 /* TaskTypeAdminTable.swift */,
+				EE09B8772B2F567D00EF5536 /* TaskTypesAdminTable.swift */,
 				EE09B86F2B2F298100EF5536 /* StudentsAdminTable.swift */,
 				EE09B86D2B2F28BD00EF5536 /* TasksAdminTable.swift */,
 				EE09B87B2B2F59AC00EF5536 /* TeamsAdminTable.swift */,
 				EE09B8792B2F57C800EF5536 /* GroupsAdminTable.swift */,
 				EE09B87D2B2F5BA000EF5536 /* StayingInTeamAdminTable.swift */,
 				EE09B8712B2F36A600EF5536 /* TeamDirectorsAdminTable.swift */,
-				EEC65F252B2CCCB000CF7C9C /* Models */,
 			);
 			path = "Admin Tables";
 			sourceTree = "<group>";
@@ -249,6 +253,7 @@
 				EE97AE2E2B56CE760013951B /* UsersAdminView.swift */,
 				EE7F11572B65AEFC00CAFE8D /* UserTypesAdminView.swift */,
 				EE7F115B2B66E9AA00CAFE8D /* GroupsAdminView.swift */,
+				EE7F115F2B6706A000CAFE8D /* TaskTypesAdminView.swift */,
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 				EE7EC5482B515955005FC875 /* Buttons */,
 				EE97AE252B52D4D30013951B /* Views */,
 				EE09B8862B2F691300EF5536 /* Charts */,
+				EEC65F252B2CCCB000CF7C9C /* Models */,
 				EEC65F262B2CF88700CF7C9C /* TableViews */,
 				EEEB9CD42B4B4DEB0018B210 /* Extensions.swift */,
 				EEC65F142B2CBF3E00CF7C9C /* Assets.xcassets */,
@@ -450,8 +456,9 @@
 				EE09B8602B2E1A5600EF5536 /* TaskType.swift in Sources */,
 				EE09B8642B2E1CAC00EF5536 /* Group.swift in Sources */,
 				EEEB9CCA2B49B50D0018B210 /* TeamDirectorMainView.swift in Sources */,
-				EE09B8782B2F567D00EF5536 /* TaskTypeAdminTable.swift in Sources */,
+				EE09B8782B2F567D00EF5536 /* TaskTypesAdminTable.swift in Sources */,
 				EEC65F112B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift in Sources */,
+				EE7F11602B6706A000CAFE8D /* TaskTypesAdminView.swift in Sources */,
 				EEEB9CC32B497B070018B210 /* RegisterView.swift in Sources */,
 				EEEB9CCD2B49B8380018B210 /* AuthorizationButton.swift in Sources */,
 				EEE76B882B331B1A0092CAFC /* CurrentTasksView.swift in Sources */,
@@ -507,6 +514,7 @@
 				EEC65F2A2B2D02B200CF7C9C /* MyTeamTable.swift in Sources */,
 				EE7F11532B65769F00CAFE8D /* DeletingView.swift in Sources */,
 				EE09B87E2B2F5BA000EF5536 /* StayingInTeamAdminTable.swift in Sources */,
+				EE7F11622B670DF900CAFE8D /* EditingTaskTypes.swift in Sources */,
 				EE09B8722B2F36A600EF5536 /* TeamDirectorsAdminTable.swift in Sources */,
 				EEE76B842B32DA2B0092CAFC /* EditButton.swift in Sources */,
 			);

@@ -106,7 +106,3 @@ struct GeneralInformationView: View {
         .clipShape(.rect(cornerRadius: 30))
     }
 }
-
-#Preview {
-    GeneralInformationView(information: GeneralInformation(groupName: "BSBO-02-21", teamName: "Cats", elder: GeneralInformation.Person(name: "Григорчук Настасья", phone: "89260819584"), director: GeneralInformation.Person(name: "Директор Цирка", phone: "12345678"), taskType: TaskType(id: 1, name: "Покраска", ratePerHour: 23), startDate: Date(), countStudents: 23, allEarnings: 12345, currentMonthEarnings: 543))
-}

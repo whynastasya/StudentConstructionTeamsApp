@@ -461,8 +461,27 @@ final class Service {
         
     }
     
-    func fetchAllTaskTypes() {
+    func fetchAllTaskTypes() throws -> [TaskType] {
+        let query = "SELECT * FROM task_type;"
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
         
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        var taskTypes = [TaskType]()
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let id = try columns[0].int()
+            let name = try columns[1].string()
+            let ratePerHour = try columns[2].int()
+            
+            let taskType = TaskType(id: id, name: name, ratePerHour: String(ratePerHour))
+            taskTypes.append(taskType)
+        }
+        
+        return taskTypes
     }
     
     func updateUser(
@@ -569,7 +588,7 @@ final class Service {
                 startDate = dateFormatter.date(from: date)
             }
             
-            let generalInformation = GeneralInformation(taskType: TaskType(id: 0, name: taskType, ratePerHour: 0), startDate: startDate)
+            let generalInformation = GeneralInformation(taskType: TaskType(id: 0, name: taskType, ratePerHour: ""), startDate: startDate)
             return generalInformation
         }
         return nil
@@ -934,6 +953,55 @@ final class Service {
     
     func addGroup(with name: String, faculty: String) throws {
         let query = "SELECT add_student_group('\(name)', '\(faculty)')"
+        
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+    }
+    
+    func fetchTaskType(with id: Int) throws -> TaskType {
+        let query = "SELECT * FROM task_type WHERE ID = \(id)"
+        
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let name = try columns[1].string()
+            let ratePerHour = try columns[2].int()
+         
+            return TaskType(id: id, name: name, ratePerHour: String(ratePerHour))
+        }
+        return TaskType(id: 0, name: "", ratePerHour: "")
+    }
+    
+    func updateTaskType(with id: Int, newName: String, ratePerHour: Int) throws {
+        let query = "SELECT update_task_type(\(id), '\(newName)', \(ratePerHour))"
+        
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+    }
+    
+    func addNewTaskType(name: String, ratePerHour: Int) throws {
+        let query = "SELECT add_task_type('\(name)', \(ratePerHour))"
+        
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+    }
+    
+    func deleteTaskType(with id: Int) throws {
+        let query = "SELECT delete_task_type(\(id))"
         
         let statement = try connection.prepareStatement(text: query)
         defer { statement.close() }

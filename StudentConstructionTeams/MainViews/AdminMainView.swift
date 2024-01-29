@@ -46,6 +46,16 @@ struct AdminMainView: View {
                         Text("Студенческие группы")
                     }
                 }
+                
+                NavigationLink(destination: TaskTypesAdminView(session: session)) {
+                    HStack {
+                        Image(systemName: "list.bullet.circle")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        
+                        Text("Типы заданий")
+                    }
+                }
             }
         } detail: {
             UsersAdminView(session: session)

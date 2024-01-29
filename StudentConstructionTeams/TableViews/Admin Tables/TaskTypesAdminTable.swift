@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct TaskTypeAdminTable: View {
-    @State private var selectedTaskType: TaskType.ID? = nil
+struct TaskTypesAdminTable: View {
+    @StateObject var session: Session
     var taskTypes: [TaskType]
     
     var body: some View {
-        Table(taskTypes, selection: $selectedTaskType) {
+        Table(taskTypes, selection: $session.selectedCellID) {
             TableColumn("Тип работы", value: \.name)
             
             TableColumn("Оплата в час") { taskType in
