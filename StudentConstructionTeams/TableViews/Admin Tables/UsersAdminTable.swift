@@ -13,6 +13,9 @@ struct UsersAdminTable: View {
     
     var body: some View {
         Table(users, selection: $session.selectedCellID) {
+            TableColumn("ID") { user in
+                Text("\(user.id)")
+            }
             TableColumn("ФИО", value: \.fullName)
             
             TableColumn("Номер телефона", value: \.phone)

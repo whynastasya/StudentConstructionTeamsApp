@@ -71,9 +71,19 @@ struct AdminMainView: View {
                     HStack {
                         Image(systemName: "checklist")
                             .resizable()
-                            .frame(width: 20, height: 20)
+                            .frame(width: 18, height: 18)
                         
                         Text("Задачи")
+                    }
+                }
+                
+                NavigationLink(destination: TeamDirectorsAdminView(session: session)) {
+                    HStack {
+                        Image(systemName: "figure.and.child.holdinghands")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        
+                        Text("Руководители")
                     }
                 }
             }
