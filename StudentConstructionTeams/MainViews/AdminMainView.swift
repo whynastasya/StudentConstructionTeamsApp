@@ -63,7 +63,17 @@ struct AdminMainView: View {
                             .resizable()
                             .frame(width: 20, height: 20)
                         
-                        Text("Статусы выполнения задания")
+                        Text("Статусы выполнения заданий")
+                    }
+                }
+                
+                NavigationLink(destination: TasksAdminView(session: session)) {
+                    HStack {
+                        Image(systemName: "checklist")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        
+                        Text("Задачи")
                     }
                 }
             }

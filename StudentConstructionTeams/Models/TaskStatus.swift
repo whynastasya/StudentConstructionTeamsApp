@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TaskStatus: Identifiable {
+struct TaskStatus: Identifiable, Hashable {
     var id: Int
     var name: String
 }

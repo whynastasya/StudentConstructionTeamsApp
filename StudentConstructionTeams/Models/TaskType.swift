@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TaskType: Identifiable {
+struct TaskType: Identifiable, Hashable {
     var id: Int
     var name: String
     var ratePerHour: String

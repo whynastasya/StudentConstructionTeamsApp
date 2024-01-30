@@ -457,8 +457,55 @@ final class Service {
         return users
     }
     
-    func fetchAllTask() {
+    func fetchAllTasks() throws -> [ConstructionTask] {
+        let query = "SELECT t.ID AS task_id, tt.name AS task_type, tt.id, t.hours, tt.rate_per_hour, ts.id, ts.name AS task_status, tm.id, tm.name AS team_name, t.start_date, t.end_date FROM task t JOIN task_type tt ON t.typeID = tt.ID JOIN task_status ts ON t.statusID = ts.ID LEFT JOIN team tm ON t.teamID = tm.ID"
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
         
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        var tasks = [ConstructionTask]()
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let id = try columns[0].int()
+            let typeName = try columns[1].string()
+            let typeID = try columns[2].int()
+            let hours = try columns[3].int()
+            let ratePerHour = try columns[4].int()
+            let statusID = try columns[5].int()
+            let statusName = try columns[6].string()
+            let teamID = try columns[7].optionalInt()
+            let teamName = try columns[8].optionalString()
+            
+            var startDate: Date? = nil
+            let sDate = try columns[9].optionalDate()?.description
+            if let date = sDate {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                startDate = dateFormatter.date(from: date)
+            }
+            
+            var endDate: Date? = nil
+            let eDate = try columns[10].optionalDate()?.description
+            if let date = eDate {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                endDate = dateFormatter.date(from: date)
+            }
+            
+            
+            var team: Team? = nil
+            if let id = teamID, let name = teamName {
+                team = Team(id: id, name: name, countStudents: 0)
+            }
+            
+            let task = ConstructionTask(id: id, taskType: TaskType(id: typeID, name: typeName, ratePerHour: String(ratePerHour)), countHours: String(hours), status: TaskStatus(id: statusID, name: statusName), team: team, startDate: startDate, endDate: endDate)
+            tasks.append(task)
+        }
+        
+        return tasks
     }
     
     func fetchAllTaskTypes() throws -> [TaskType] {
@@ -1075,6 +1122,153 @@ final class Service {
     
     func deleteTaskStatus(with id: Int) throws {
         let query = "SELECT delete_task_status(\(id))"
+        
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+    }
+    
+    func fetchTask(with id: Int) throws -> ConstructionTask {
+        let query = "SELECT t.ID AS task_id, tt.name AS task_type, tt.id, t.hours, tt.rate_per_hour, ts.id, ts.name AS task_status, tm.id, tm.name AS team_name, t.start_date, t.end_date FROM task t JOIN task_type tt ON t.typeID = tt.ID JOIN task_status ts ON t.statusID = ts.ID LEFT JOIN team tm ON t.teamID = tm.ID WHERE t.id = \(id)"
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let id = try columns[0].int()
+            let typeName = try columns[1].string()
+            let typeID = try columns[2].int()
+            let hours = try columns[3].int()
+            let ratePerHour = try columns[4].int()
+            let statusID = try columns[5].int()
+            let statusName = try columns[6].string()
+            let teamID = try columns[7].optionalInt()
+            let teamName = try columns[8].optionalString()
+            
+            var startDate: Date? = nil
+            let sDate = try columns[9].optionalDate()?.description
+            if let date = sDate {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                startDate = dateFormatter.date(from: date)
+            }
+            
+            var endDate: Date? = nil
+            let eDate = try columns[10].optionalDate()?.description
+            if let date = eDate {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                endDate = dateFormatter.date(from: date)
+            }
+            
+            
+            var team: Team? = Team(id: 0, name: "", countStudents: 0)
+            if let id = teamID, let name = teamName {
+                team = Team(id: id, name: name, countStudents: 0)
+            }
+            
+            let task = ConstructionTask(id: id, taskType: TaskType(id: typeID, name: typeName, ratePerHour: String(ratePerHour)), countHours: String(hours), status: TaskStatus(id: statusID, name: statusName), team: team, startDate: startDate, endDate: endDate)
+            return task
+        }
+        
+        return ConstructionTask(id: 0, taskType: TaskType(id: 0, name: "", ratePerHour: ""), countHours: "", status: TaskStatus(id: 0, name: ""))
+    }
+    
+    func addNewTask(typeID: Int, hours: Int, statusID: Int, teamID: Int?, startDate: Date?, endDate: Date?) throws {
+        var startDateString: String? = nil
+        var endDateString: String? = nil
+
+        if let date = startDate {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            startDateString = dateFormatter.string(from: date)
+        }
+        
+        if let date = endDate {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            endDateString = dateFormatter.string(from: date)
+        }
+        
+        var newTeamID: Int? = nil
+        if teamID != 0 || teamID != 0 {
+            newTeamID = teamID
+        }
+        
+        var query = ""
+        
+        if startDateString != nil && endDateString != nil && newTeamID != nil {
+            query = "SELECT add_task(\(typeID), \(hours), \(statusID), \(teamID!), '\(startDateString!)', '\(endDateString!)')"
+        } else if startDateString == nil && endDateString == nil && newTeamID != nil {
+            query = "SELECT add_task(\(typeID), \(hours), \(statusID), \(teamID!), null, null)"
+        } else if startDateString != nil && endDateString == nil && newTeamID != nil {
+            query = "SELECT add_task(\(typeID), \(hours), \(statusID), \(teamID!), '\(startDateString!)', null)"
+        } else if startDateString != nil && endDateString != nil && newTeamID == nil {
+            query = "SELECT add_task(\(typeID), \(hours), \(statusID), \(teamID!), '\(startDateString!)', null)"
+        } else if startDateString != nil && endDateString == nil && newTeamID == nil {
+                query = "SELECT add_task(\(typeID), \(hours), \(statusID), null, '\(startDateString!)', null)"
+        } else if startDateString == nil && endDateString == nil && newTeamID == nil {
+            query = "SELECT add_task(\(typeID), \(hours), \(statusID))"
+        }
+
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+    }
+    
+    func updateTask(with id: Int, typeID: Int, hours: Int, statusID: Int, teamID: Int?, startDate: Date?, endDate: Date?) throws {
+        var startDateString: String? = nil
+        var endDateString: String? = nil
+
+        if let date = startDate {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            startDateString = dateFormatter.string(from: date)
+        }
+        
+        if let date = endDate {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            endDateString = dateFormatter.string(from: date)
+        }
+        
+        var newTeamID: Int? = nil
+        if teamID != 0 || teamID != 0 {
+            newTeamID = teamID
+        }
+        
+        var query = ""
+        
+        if startDateString != nil && endDateString != nil && newTeamID != nil {
+            query = "SELECT update_task(\(id), \(typeID), \(hours), \(statusID), \(teamID!), '\(startDateString!)', '\(endDateString!)')"
+        } else if startDateString == nil && endDateString == nil && newTeamID != nil {
+            query = "SELECT update_task(\(id), \(typeID), \(hours), \(statusID), \(teamID!), null, null)"
+        } else if startDateString != nil && endDateString == nil && newTeamID != nil {
+            query = "SELECT update_task(\(id), \(typeID), \(hours), \(statusID), \(teamID!), '\(startDateString!)', null)"
+        } else if startDateString != nil && endDateString != nil && newTeamID == nil {
+            query = "SELECT update_task(\(id), \(typeID), \(hours), \(statusID), \(teamID!), '\(startDateString!)', null)"
+        } else if startDateString != nil && endDateString == nil && newTeamID == nil {
+                query = "SELECT update_task(\(id), \(typeID), \(hours), \(statusID), null, '\(startDateString!)', null)"
+        } else if startDateString == nil && endDateString == nil && newTeamID == nil {
+            query = "SELECT update_task(\(id), \(typeID), \(hours), \(statusID))"
+        }
+
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+    }
+    
+    func deleteTask(with id: Int) throws {
+        let query = "SELECT delete_task(\(id))"
         
         let statement = try connection.prepareStatement(text: query)
         defer { statement.close() }

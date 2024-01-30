@@ -11,7 +11,7 @@ struct ConstructionTask: Identifiable {
     let id: Int
     
     var taskType: TaskType
-    var countHours: Int
+    var countHours: String
     var status: TaskStatus
     var team: Team?
     var startDate: Date?

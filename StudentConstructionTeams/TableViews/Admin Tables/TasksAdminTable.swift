@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct TasksAdminTable: View {
-    @State private var selectedTask: ConstructionTask.ID? = nil
+    @StateObject var session: Session
     var tasks: [ConstructionTask]
     
     var body: some View {
-        Table(tasks, selection: $selectedTask) {
+        Table(tasks, selection: $session.selectedCellID) {
             TableColumn("Тип работы", value: \ConstructionTask.taskType.name)
             
             TableColumn("Количество часов") { task in
@@ -27,22 +27,22 @@ struct TasksAdminTable: View {
                 Text(task.team?.name ?? "")
             }
             
-//            TableColumn("Статус") { task in
-//                Text(task.status.rawValue)
-//                    .foregroundStyle(task.status == .free ? .green : task.status == .completed ? .red : .white)
-//            }
-//            
-//            TableColumn("Дата начала") { task in
-//                if let date = task.startDate {
-//                    Text(date, style: .date)
-//                }
-//            }
+            TableColumn("Статус") { task in
+                Text(task.status.name)
+                    .foregroundStyle(task.status.name == "Свободно" ? .green : task.status.name == "Выполнено" ? .red : .white)
+            }
             
-//            TableColumn("Дата окончания") { task in
-//                if let date = task.endDate {
-//                    Text(date, style: .date)
-//                }
-//            }
+            TableColumn("Дата начала") { task in
+                if let date = task.startDate {
+                    Text(date, style: .date)
+                }
+            }
+            
+            TableColumn("Дата окончания") { task in
+                if let date = task.endDate {
+                    Text(date, style: .date)
+                }
+            }
         }
     }
 }
