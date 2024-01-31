@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct StudentsAdminTable: View {
-    @State private var selectedStudent: Student.ID? = nil
-    private var students: [Student]
+    @StateObject var session: Session
+    var students: [Student]
     
     var body: some View {
-        Table(students, selection: $selectedStudent) {
+        Table(students, selection: $session.selectedCellID) {
             TableColumn("ФИО", value: \.fullName)
             
             TableColumn("Группа") { student in
@@ -31,7 +31,7 @@ struct StudentsAdminTable: View {
             
             TableColumn("День рождения") { student in
                 if let birthdate = student.birthdate {
-                    Text(birthdate, style: .date)
+                    Text(birthdate.formatted(.dateTime.day().month().year().locale(Locale(identifier: "ru_RU"))))
                 }
             }
             

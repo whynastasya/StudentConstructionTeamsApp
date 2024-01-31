@@ -110,6 +110,7 @@ struct EditingTeamDirectorView: View {
                 Spacer()
                 DatePicker("", selection: $teamDirector.birthdate.toUnwrapped(defaultValue: Date()), in: ...Date(), displayedComponents: .date)
                     .fixedSize()
+                    .environment(\.locale, Locale.init(identifier: "ru_RU"))
                     .labelsHidden()
                     .datePickerStyle(.field)
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 15))

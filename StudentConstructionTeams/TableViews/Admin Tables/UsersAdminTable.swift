@@ -22,7 +22,7 @@ struct UsersAdminTable: View {
             
             TableColumn("День рождения") { user in
                 if let birthdate = user.birthdate {
-                    Text(birthdate, style: .date)
+                    Text(birthdate.formatted(.dateTime.day().month().year().locale(Locale(identifier: "ru_RU"))))
                 }
             }
             

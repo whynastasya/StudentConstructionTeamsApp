@@ -34,13 +34,13 @@ struct TasksAdminTable: View {
             
             TableColumn("Дата начала") { task in
                 if let date = task.startDate {
-                    Text(date, style: .date)
+                    Text(date.formatted(.dateTime.day().month().year().hour().minute().locale(Locale(identifier: "ru_RU"))))
                 }
             }
             
             TableColumn("Дата окончания") { task in
                 if let date = task.endDate {
-                    Text(date, style: .date)
+                    Text(date.formatted(.dateTime.day().month().year().hour().minute().locale(Locale(identifier: "ru_RU"))))
                 }
             }
         }

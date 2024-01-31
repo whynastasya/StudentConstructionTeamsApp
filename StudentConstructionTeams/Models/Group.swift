@@ -11,4 +11,5 @@ struct Group: Identifiable, Hashable {
     var id: Int
     var name: String
     var faculty: String
+    var elderID: Int?
 }

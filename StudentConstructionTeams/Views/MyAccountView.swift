@@ -39,7 +39,7 @@ struct MyAccountView: View {
             
             VStack {
                 if let birthdate = user.birthdate {
-                    Text(makeDateOnRussian(date: birthdate))
+                    Text(birthdate.formatted(.dateTime.day().month().year().locale(Locale(identifier: "ru_RU"))))
                         .frame(maxWidth: .infinity, alignment: .leading)
                 } else {
                     Text("-")
@@ -106,13 +106,5 @@ struct MyAccountView: View {
                 session.userID = 0
             }
         } catch {}
-    }
-    
-    private func makeDateOnRussian(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ru_RU")
-        dateFormatter.dateFormat = "dd MMMM YYYY"
-        let newDate = dateFormatter.string(from: date)
-        return newDate
     }
 }

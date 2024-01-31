@@ -18,12 +18,12 @@ struct StayingInTeamAdminTable: View {
             TableColumn("Команда", value: \.team.name)
             
             TableColumn("Дата вступления в команду") {
-                Text($0.startDate, style: .date)
+                Text($0.startDate.formatted(.dateTime.day().month().year().hour().minute().locale(Locale(identifier: "ru_RU"))))
             }
             
             TableColumn("Дата выхода из команды") {
                 if let date = $0.endDate {
-                    Text(date, style: .date)
+                    Text(date.formatted(.dateTime.day().month().year().locale(Locale(identifier: "ru_RU"))))
                 }
             }
         }

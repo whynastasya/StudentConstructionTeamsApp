@@ -86,6 +86,16 @@ struct AdminMainView: View {
                         Text("Руководители")
                     }
                 }
+                
+                NavigationLink(destination: StudentsAdminView(session: session)) {
+                    HStack {
+                        Image(systemName: "graduationcap.fill")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        
+                        Text("Студенты")
+                    }
+                }
             }
         } detail: {
             UsersAdminView(session: session)

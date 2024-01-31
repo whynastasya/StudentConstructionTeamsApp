@@ -1,5 +1,5 @@
 //
-//  TeamDirectorsAdminView.swift
+//  StudentsAdminView.swift
 //  StudentConstructionTeams
 //
 //  Created by nastasya on 30.01.2024.
@@ -7,23 +7,23 @@
 
 import SwiftUI
 
-struct TeamDirectorsAdminView: View {
+struct StudentsAdminView: View {
     @StateObject var session: Session
-    @State private var teamDirectors = [TeamDirector]()
+    @State private var students = [Student]()
     @State private var isEditingModalPresented = false
     @State private var isAddingModalPresented = false
     @State private var isDeletingModalPresented = false
-    @State private var selectedTeamDirector = TeamDirector(id: 0, userID: 0, name: "", surname: "", phone: "")
+    @State private var selectedStudent = Student(id: 0, userID: 0, name: "", surname: "", phone: "")
     
     var body: some View {
         VStack {
             VStack {
-                Text("Руководители команд")
+                Text("Студенты")
                     .font(.title)
                     .fontWeight(.bold)
                     .fontDesign(.rounded)
                 
-                TeamDirectorsAdminTable(session: session, teamDirectors: teamDirectors)
+                StudentsAdminTable(session: session, students: students)
             }
             .padding()
             .background()
@@ -45,18 +45,18 @@ struct TeamDirectorsAdminView: View {
         }
         .sheet(isPresented: $isAddingModalPresented,
                onDismiss: { loadData() },
-               content: { EditingTeamDirectorView(cancelAction: cancel) })
+               content: { EditingStudentView(cancelAction: cancel) })
         .sheet(isPresented: $isEditingModalPresented,
                onDismiss: { loadData() },
-               content: { EditingTeamDirectorView(title: "Изменение", titleButton: "Изменить", teamDirectorID: session.selectedCellID, cancelAction: cancel) })
+               content: { EditingStudentView(title: "Изменение", titleButton: "Изменить", studentID: session.selectedCellID, cancelAction: cancel) })
         .sheet(isPresented: $isDeletingModalPresented,
                onDismiss: { loadData() },
-               content: { DeletingView(cancelAction: cancel, deleteAction: deleteTeamDirector, loadData: loadSelectedTeamDirector )})
+               content: { DeletingView(cancelAction: cancel, deleteAction: deleteStudent, loadData: loadSelectedStudent )})
     }
     
     private func loadData() {
         do {
-            teamDirectors = try Service.shared.fetchAllTeamDirectors()
+            students = try Service.shared.fetchAllStudents()
         } catch { }
     }
     
@@ -66,19 +66,20 @@ struct TeamDirectorsAdminView: View {
         isDeletingModalPresented = false
     }
     
-    private func loadSelectedTeamDirector() -> String {
+    private func loadSelectedStudent() -> String {
         do {
-            selectedTeamDirector = try Service.shared.fetchTeamDirector(with: session.selectedCellID!)!
+            selectedStudent = try Service.shared.fetchStudent(with: session.selectedCellID!)!
         } catch { }
         
-        return "Руководителя '\(selectedTeamDirector.fullName)'?"
+        return "Студента '\(selectedStudent.fullName)'?"
     }
     
-    private func deleteTeamDirector() {
+    private func deleteStudent() {
         do {
-            try Service.shared.deleteTeamDirector(with: session.selectedCellID!, userID: selectedTeamDirector.userID)
-        } catch { }
+            try Service.shared.deleteStudent(with: session.selectedCellID!, userID: selectedStudent.userID)
+        } catch { print(error) }
         cancel()
     }
 }
+
 
