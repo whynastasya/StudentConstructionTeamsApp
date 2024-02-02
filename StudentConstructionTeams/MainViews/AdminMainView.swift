@@ -106,6 +106,16 @@ struct AdminMainView: View {
                         Text("Команды")
                     }
                 }
+                
+                NavigationLink(destination: StayingInTeamAdminView(session: session)) {
+                    HStack {
+                        Image(systemName: "clock.arrow.circlepath")
+                            .resizable()
+                            .frame(width: 20, height: 18)
+                        
+                        Text("Пребывания в команде")
+                    }
+                }
             }
         } detail: {
             UsersAdminView(session: session)

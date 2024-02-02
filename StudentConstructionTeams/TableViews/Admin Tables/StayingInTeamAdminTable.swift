@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct StayingInTeamAdminTable: View {
-    @State private var selected: Team.ID? = nil
-    private var stayingInTeam: [StayingInTeam]
+    @StateObject var session: Session
+    var stayingInTeam: [StayingInTeam]
     
     var body: some View {
-        Table(stayingInTeam, selection: $selected) {
-            TableColumn("Пользователь", value: \.user.fullName)
+        Table(stayingInTeam, selection: $session.selectedCellID) {
+            TableColumn("Пользователь", value: \.student.fullName)
             
             TableColumn("Команда", value: \.team.name)
             
             TableColumn("Дата вступления в команду") {
-                Text($0.startDate.formatted(.dateTime.day().month().year().hour().minute().locale(Locale(identifier: "ru_RU"))))
+                Text($0.startDate.formatted(.dateTime.day().month().year().locale(Locale(identifier: "ru_RU"))))
             }
             
             TableColumn("Дата выхода из команды") {

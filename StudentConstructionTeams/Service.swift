@@ -1271,7 +1271,6 @@ final class Service {
                 endDate = dateFormatter.date(from: date)
             }
             
-            
             var team: Team? = Team(id: 0, name: "", countStudents: 0)
             if let id = teamID, let name = teamName {
                 team = Team(id: id, name: name, countStudents: 0)
@@ -1384,7 +1383,7 @@ final class Service {
     
     func addNewTeamDirector(name: String, surname: String, patronymic: String, phone: String, birthdate: Date?, teamID: Int?) throws {
         let queryUserType = "SELECT id FROM user_type WHERE name = 'Руководитель команды'"
-        print(queryUserType)
+
         let statementUserType = try connection.prepareStatement(text: queryUserType)
         defer { statementUserType.close() }
         
@@ -1401,7 +1400,7 @@ final class Service {
         try addNewUser(phone: phone, surname: surname, name: name, patronymic: patronymic, birthdate: birthdate, userTypeID: userTypeID, userTypeName: "Руководитель команды")
         
         let queryTeamDirectorID = "SELECT td.ID AS team_director_id FROM team_director td JOIN my_user u ON td.userID = u.ID JOIN team t ON td.teamID = t.ID WHERE u.phone = '\(phone)';"
-        print(queryTeamDirectorID)
+
         let statementTeamDirectorID = try connection.prepareStatement(text: queryTeamDirectorID)
         defer { statementTeamDirectorID.close() }
         
@@ -1427,7 +1426,7 @@ final class Service {
         } else {
             query = "SELECT update_team_director(\(teamDirectorID))"
         }
-        print(query)
+
         let statement = try connection.prepareStatement(text: query)
         defer { statement.close() }
         
@@ -1465,7 +1464,6 @@ final class Service {
         } else {
             query = "SELECT update_team_director(\(id))"
         }
-        print(query)
         
         let statement = try connection.prepareStatement(text: query)
         defer { statement.close() }
@@ -1547,7 +1545,7 @@ final class Service {
         } else {
             query = "SELECT update_student(\(studentID), \(isElder), null, null)"
         }
-        print(query)
+
         let statement = try connection.prepareStatement(text: query)
         defer { statement.close() }
         
@@ -1593,7 +1591,7 @@ final class Service {
         } else {
             query = "SELECT update_student(\(id), \(isElder), null, null)"
         }
-        print(query)
+
         let statement = try connection.prepareStatement(text: query)
         defer { statement.close() }
         
@@ -1603,7 +1601,7 @@ final class Service {
     
     func fetchTeam(with id: Int) throws -> Team {
         let query = "SELECT team.ID AS team_id, team.name AS team_name, COUNT(student.ID) AS student_count FROM team LEFT JOIN student ON team.ID = student.teamID WHERE team.id = \(id) GROUP BY team.ID, team.name ORDER BY team.ID;"
-        print(query)
+        
         let statement = try connection.prepareStatement(text: query)
         defer { statement.close() }
         
@@ -1625,7 +1623,6 @@ final class Service {
     
     func deleteTeam(with id: Int) throws {
         let query = "SELECT delete_team(\(id))"
-        print(query)
         
         let statement = try connection.prepareStatement(text: query)
         defer { statement.close() }
@@ -1652,5 +1649,230 @@ final class Service {
         
         let cursor = try statement.execute(parameterValues: [])
         cursor.close()
+    }
+    
+    func fetchAllStayingInTeams() throws -> [StayingInTeam] {
+        let query = "SELECT sit.ID,  sit.studentID, u.surname, u.name, u.patronymic, sit.teamID, t.name AS team_name, sit.start_date, sit.end_date FROM staying_in_team sit JOIN team t ON sit.teamID = t.ID JOIN student s ON sit.studentID = s.ID JOIN my_user u ON s.userID = u.ID;"
+
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        var stayingInTeams = [StayingInTeam]()
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let id = try columns[0].int()
+            let studentID = try columns[1].int()
+            let studentSurname = try columns[2].string()
+            let studentName = try columns[3].string()
+            let studentPatronymic = try columns[4].optionalString()
+            let student = Student(id: studentID, userID: 0, name: studentName, surname: studentSurname, patronymic: studentPatronymic, phone: "")
+            
+            let teamID = try columns[5].int()
+            let teamName = try columns[6].string()
+            let team = Team(id: teamID, name: teamName, countStudents: 0)
+            
+            let sDate = try columns[7].date().description
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            var startDate = dateFormatter.date(from: sDate) ?? Date()
+            
+            
+            var endDate: Date? = nil
+            let eDate = try columns[8].optionalDate()?.description
+            if let date = eDate {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                endDate = dateFormatter.date(from: date)
+            }
+            
+            let stayingInTeam = StayingInTeam(id: id, team: team, student: student, startDate: startDate, endDate: endDate)
+            stayingInTeams.append(stayingInTeam)
+        }
+        
+        return stayingInTeams
+    }
+    
+    func fetchStayingInTeam(with id: Int) throws -> StayingInTeam {
+        let query = "SELECT sit.ID,  sit.studentID, u.surname, u.name, u.patronymic, sit.teamID, t.name AS team_name, sit.start_date, sit.end_date FROM staying_in_team sit JOIN team t ON sit.teamID = t.ID JOIN student s ON sit.studentID = s.ID JOIN my_user u ON s.userID = u.ID WHERE sit.id = \(id);"
+        
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let id = try columns[0].int()
+            let studentID = try columns[1].int()
+            let studentName = try columns[2].string()
+            let studentSurname = try columns[3].string()
+            let studentPatronymic = try columns[4].optionalString()
+            let student = Student(id: studentID, userID: 0, name: studentName, surname: studentSurname, patronymic: studentPatronymic, phone: "")
+            
+            let teamID = try columns[5].int()
+            let teamName = try columns[6].string()
+            let team = Team(id: teamID, name: teamName, countStudents: 0)
+            
+            let sDate = try columns[7].date().description
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            var startDate = dateFormatter.date(from: sDate) ?? Date()
+            
+            
+            var endDate: Date? = nil
+            let eDate = try columns[8].optionalDate()?.description
+            if let date = eDate {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                endDate = dateFormatter.date(from: date)
+            }
+            
+            let stayingInTeam = StayingInTeam(id: id, team: team, student: student, startDate: startDate, endDate: endDate)
+            return stayingInTeam
+        }
+        
+        return StayingInTeam(id: 0, team: Team(id: 0, name: "", countStudents: 0), student: Student(id: 0, userID: 0, name: "", surname: "", phone: ""), startDate: Date())
+    }
+    
+    func addNewStayingInTeam(studentID: Int, teamID: Int, startDate: Date, endDate: Date?) throws {
+        var startDateString: String?
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        startDateString = dateFormatter.string(from: startDate)
+        
+        var endDateString: String? = nil
+        
+        if let date = endDate {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            endDateString = dateFormatter.string(from: date)
+        }
+        
+        var query = ""
+        
+        if endDateString != nil {
+            query = "SELECT add_staying_in_team(\(teamID), \(studentID), '\(startDateString!)', '\(endDateString!)')"
+        } else {
+            query = "SELECT add_staying_in_team(\(teamID), \(studentID), '\(startDateString!)', null)"
+        }
+        
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        cursor.close()
+    }
+    
+    func updateStayingInTeam(with id: Int, newStudentID: Int, newTeamID: Int, newStartDate: Date, newEndDate: Date?) throws {
+        var startDateString: String?
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        startDateString = dateFormatter.string(from: newStartDate)
+        
+        var endDateString: String? = nil
+        
+        if let date = newEndDate {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            endDateString = dateFormatter.string(from: date)
+        }
+        
+        var query = ""
+        
+        if endDateString != nil {
+            query = "SELECT update_staying_in_team(\(id), \(newTeamID), \(newStudentID), '\(startDateString!)', '\(endDateString!)')"
+        } else {
+            query = "SELECT update_staying_in_team(\(id), \(newTeamID), \(newStudentID), '\(startDateString!)', null)"
+        }
+        
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        cursor.close()
+    }
+    
+    func deleteStayingInTeam(with id: Int) throws {
+        let query = "SELECT delete_staying_in_team(\(id))"
+        
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        cursor.close()
+    }
+    
+    func fetchFreeStudents() throws -> [Student] {
+        let query = "SELECT s.ID AS student_id, u.ID AS user_id, u.surname, u.name, u.patronymic, u.birthdate, u.phone, s.is_elder, s.earnings, s.groupID, s.teamID FROM student s JOIN my_user u ON s.userID = u.ID WHERE s.teamID IS NULL;"
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        var students = [Student]()
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let id = try columns[0].int()
+            let userID = try columns[1].int()
+            let surname = try columns[2].string()
+            let name = try columns[3].string()
+            let patronymic = try columns[4].optionalString() ?? ""
+            
+            let student = Student(id: id, userID: userID, name: name, surname: surname, patronymic: patronymic, phone: "")
+            students.append(student)
+        }
+        return students
+    }
+    
+    func fetchAllStayingInTeamsForStudent(with id: Int) throws -> [StayingInTeam] {
+        let query = "SELECT sit.ID,  sit.studentID, u.surname, u.name, u.patronymic, sit.teamID, t.name AS team_name, sit.start_date, sit.end_date FROM staying_in_team sit JOIN team t ON sit.teamID = t.ID JOIN student s ON sit.studentID = s.ID JOIN my_user u ON s.userID = u.ID WHERE s.id = \(id);"
+
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        var stayingInTeams = [StayingInTeam]()
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let id = try columns[0].int()
+            let studentID = try columns[1].int()
+            let studentSurname = try columns[2].string()
+            let studentName = try columns[3].string()
+            let studentPatronymic = try columns[4].optionalString()
+            let student = Student(id: studentID, userID: 0, name: studentName, surname: studentSurname, patronymic: studentPatronymic, phone: "")
+            
+            let teamID = try columns[5].int()
+            let teamName = try columns[6].string()
+            let team = Team(id: teamID, name: teamName, countStudents: 0)
+            
+            let sDate = try columns[7].date().description
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            var startDate = dateFormatter.date(from: sDate) ?? Date()
+            
+            
+            var endDate: Date? = nil
+            let eDate = try columns[8].optionalDate()?.description
+            if let date = eDate {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                endDate = dateFormatter.date(from: date)
+            }
+            
+            let stayingInTeam = StayingInTeam(id: id, team: team, student: student, startDate: startDate, endDate: endDate)
+            stayingInTeams.append(stayingInTeam)
+        }
+        
+        return stayingInTeams
     }
 }

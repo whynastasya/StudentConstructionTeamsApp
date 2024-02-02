@@ -49,6 +49,8 @@
 		EE7F11742B69820000CAFE8D /* EditingStudentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7F11732B69820000CAFE8D /* EditingStudentView.swift */; };
 		EE7F11762B6BCBF100CAFE8D /* TeamsAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7F11752B6BCBF100CAFE8D /* TeamsAdminView.swift */; };
 		EE7F11782B6BCC3600CAFE8D /* EditingTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7F11772B6BCC3600CAFE8D /* EditingTeamView.swift */; };
+		EE7F117A2B6D3CA800CAFE8D /* StayingInTeamAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7F11792B6D3CA800CAFE8D /* StayingInTeamAdminView.swift */; };
+		EE7F117C2B6D3CC400CAFE8D /* EditingStayingInTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7F117B2B6D3CC400CAFE8D /* EditingStayingInTeamView.swift */; };
 		EE97AE242B52CB220013951B /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97AE232B52CB220013951B /* AddButton.swift */; };
 		EE97AE272B52D83D0013951B /* EditingUserTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97AE262B52D83D0013951B /* EditingUserTeamView.swift */; };
 		EE97AE292B569B7B0013951B /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE97AE282B569B7B0013951B /* Screen.swift */; };
@@ -138,6 +140,8 @@
 		EE7F11732B69820000CAFE8D /* EditingStudentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingStudentView.swift; sourceTree = "<group>"; };
 		EE7F11752B6BCBF100CAFE8D /* TeamsAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsAdminView.swift; sourceTree = "<group>"; };
 		EE7F11772B6BCC3600CAFE8D /* EditingTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTeamView.swift; sourceTree = "<group>"; };
+		EE7F11792B6D3CA800CAFE8D /* StayingInTeamAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StayingInTeamAdminView.swift; sourceTree = "<group>"; };
+		EE7F117B2B6D3CC400CAFE8D /* EditingStayingInTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingStayingInTeamView.swift; sourceTree = "<group>"; };
 		EE97AE232B52CB220013951B /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		EE97AE262B52D83D0013951B /* EditingUserTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserTeamView.swift; sourceTree = "<group>"; };
 		EE97AE282B569B7B0013951B /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 				EE7F116F2B693BF400CAFE8D /* EditingTeamDirectorView.swift */,
 				EE7F11732B69820000CAFE8D /* EditingStudentView.swift */,
 				EE7F11772B6BCC3600CAFE8D /* EditingTeamView.swift */,
+				EE7F117B2B6D3CC400CAFE8D /* EditingStayingInTeamView.swift */,
 				EE7F11522B65769F00CAFE8D /* DeletingView.swift */,
 			);
 			path = "Editing Views";
@@ -287,6 +292,7 @@
 				EE7F116D2B693BCD00CAFE8D /* TeamDirectorsAdminView.swift */,
 				EE7F11712B6981DA00CAFE8D /* StudentsAdminView.swift */,
 				EE7F11752B6BCBF100CAFE8D /* TeamsAdminView.swift */,
+				EE7F11792B6D3CA800CAFE8D /* StayingInTeamAdminView.swift */,
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -518,6 +524,7 @@
 				EE7F11512B655C2600CAFE8D /* AdminEditingUserView.swift in Sources */,
 				EE09B87A2B2F57C800EF5536 /* GroupsAdminTable.swift in Sources */,
 				EEE76B712B321F440092CAFC /* CompletedTasksOnMonths.swift in Sources */,
+				EE7F117C2B6D3CC400CAFE8D /* EditingStayingInTeamView.swift in Sources */,
 				EEEB9CD72B4B5A230018B210 /* Role.swift in Sources */,
 				EEE76B822B32D98F0092CAFC /* ExitButton.swift in Sources */,
 				EE7F11552B65AE1500CAFE8D /* UserTypesAdminTable.swift in Sources */,
@@ -550,6 +557,7 @@
 				EE09B8802B2F5C4600EF5536 /* StayingInTeam.swift in Sources */,
 				EEE76B6D2B321C370092CAFC /* CompletedTasksOnTeams.swift in Sources */,
 				EE09B85A2B2D15B100EF5536 /* MyGroupTable.swift in Sources */,
+				EE7F117A2B6D3CA800CAFE8D /* StayingInTeamAdminView.swift in Sources */,
 				EEE76B692B3213AD0092CAFC /* EarningsOnMonths.swift in Sources */,
 				EE09B85E2B2E1A1600EF5536 /* ConstructionTask.swift in Sources */,
 				EE7F11702B693BF400CAFE8D /* EditingTeamDirectorView.swift in Sources */,

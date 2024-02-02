@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct StayingInTeam: Identifiable{
+struct StayingInTeam: Identifiable {
     var id: Int
     var team: Team
-    var user: User
+    var student: Student
     var startDate: Date
     var endDate: Date?
 }
