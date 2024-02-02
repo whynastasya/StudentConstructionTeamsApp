@@ -96,6 +96,16 @@ struct AdminMainView: View {
                         Text("Студенты")
                     }
                 }
+                
+                NavigationLink(destination: TeamsAdminView(session: session)) {
+                    HStack {
+                        Image(systemName: "circle.grid.2x2.fill")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        
+                        Text("Команды")
+                    }
+                }
             }
         } detail: {
             UsersAdminView(session: session)

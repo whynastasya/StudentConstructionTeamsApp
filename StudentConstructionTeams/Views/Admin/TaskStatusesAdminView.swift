@@ -51,7 +51,7 @@ struct TaskStatusesAdminView: View {
                content: { EditingTaskStatusView(title: "Изменение", titleButton: "Изменить", taskStatusID: session.selectedCellID, cancelAction: cancel) })
         .sheet(isPresented: $isDeletingModalPresented,
                onDismiss: { loadData() },
-               content: { DeletingView(cancelAction: cancel, deleteAction: deleteGroup, loadData: loadSelectedGroup )})
+               content: { DeletingView(cancelAction: cancel, deleteAction: deleteTaskStatus, loadData: loadSelectedTaskStatus )})
     }
     
     private func loadData() {
@@ -66,7 +66,7 @@ struct TaskStatusesAdminView: View {
         isDeletingModalPresented = false
     }
     
-    private func loadSelectedGroup() -> String {
+    private func loadSelectedTaskStatus() -> String {
         do {
             selectedTaskStatus = try Service.shared.fetchTaskStatus(with: session.selectedCellID!)
         } catch { }
@@ -74,7 +74,7 @@ struct TaskStatusesAdminView: View {
         return "Статус задачи '\(selectedTaskStatus.name)'?"
     }
     
-    private func deleteGroup() {
+    private func deleteTaskStatus() {
         do {
             try Service.shared.deleteTaskStatus(with: session.selectedCellID!)
         } catch { }

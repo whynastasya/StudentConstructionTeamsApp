@@ -1,29 +1,29 @@
 //
-//  TaskTypeAdminView.swift
+//  TeamsAdminView.swift
 //  StudentConstructionTeams
 //
-//  Created by nastasya on 29.01.2024.
+//  Created by nastasya on 01.02.2024.
 //
 
 import SwiftUI
 
-struct TaskTypesAdminView: View {
+struct TeamsAdminView: View {
     @StateObject var session: Session
-    @State private var taskTypes = [TaskType]()
+    @State private var teams = [Team]()
     @State private var isEditingModalPresented = false
     @State private var isAddingModalPresented = false
     @State private var isDeletingModalPresented = false
-    @State private var selectedTaskType = TaskType(id: 0, name: "", ratePerHour: "")
+    @State private var selectedTeam = Team(id: 0, name: "", countStudents: 0)
     
     var body: some View {
         VStack {
             VStack {
-                Text("Типы заданий")
+                Text("Команды")
                     .font(.title)
                     .fontWeight(.bold)
                     .fontDesign(.rounded)
                 
-                TaskTypesAdminTable(session: session, taskTypes: taskTypes)
+                TeamsAdminTable(session: session, teams: teams)
             }
             .padding()
             .background()
@@ -45,18 +45,18 @@ struct TaskTypesAdminView: View {
         }
         .sheet(isPresented: $isAddingModalPresented,
                onDismiss: { loadData() },
-               content: { EditingTaskTypesView(cancelAction: cancel)})
+               content: { EditingTeamView(cancelAction: cancel) })
         .sheet(isPresented: $isEditingModalPresented,
                onDismiss: { loadData() },
-               content: { EditingTaskTypesView(title: "Изменение", titleButton: "Изменить", taskTypeID: session.selectedCellID, cancelAction: cancel) })
+               content: { EditingTeamView(title: "Изменение", titleButton: "Изменить", teamID: session.selectedCellID, cancelAction: cancel) })
         .sheet(isPresented: $isDeletingModalPresented,
                onDismiss: { loadData() },
-               content: { DeletingView(cancelAction: cancel, deleteAction: deleteTaskType, loadData: loadSelectedTaskType )})
+               content: { DeletingView(cancelAction: cancel, deleteAction: deleteTeam, loadData: loadSelectedTeam )})
     }
     
     private func loadData() {
         do {
-            taskTypes = try Service.shared.fetchAllTaskTypes()
+            teams = try Service.shared.fetchAllTeams()
         } catch { }
     }
     
@@ -66,18 +66,18 @@ struct TaskTypesAdminView: View {
         isDeletingModalPresented = false
     }
     
-    private func loadSelectedTaskType() -> String {
+    private func loadSelectedTeam() -> String {
         do {
-            selectedTaskType = try Service.shared.fetchTaskType(with: session.selectedCellID!)
+            selectedTeam = try Service.shared.fetchTeam(with: session.selectedCellID!)
         } catch { }
         
-        return "Тип задачи '\(selectedTaskType.name)'?"
+        return "Группу '\(selectedTeam.name)'?"
     }
     
-    private func deleteTaskType() {
+    private func deleteTeam() {
         do {
-            try Service.shared.deleteTaskType(with: session.selectedCellID!)
-        } catch { print(error)}
+            try Service.shared.deleteTeam(with: session.selectedCellID!)
+        } catch { print(error) }
         cancel()
     }
 }

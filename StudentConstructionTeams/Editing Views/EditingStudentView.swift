@@ -215,6 +215,7 @@ struct EditingStudentView: View {
                 try Service.shared.addNewStudent(name: student.name, surname: student.surname, patronymic: student.patronymic ?? "", phone: student.phone, birthdate: newBirthdate, teamID: student.team?.id, groupID: student.group?.id, isElder: student.isElder)
                 successResultForAdding = true
                 errorResult = false
+                successResultForAdding = true
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     cancelAction()
                 }
@@ -226,6 +227,7 @@ struct EditingStudentView: View {
             do {
                 try Service.shared.updateStudent(with: student.id, userID: student.userID, newName: student.name, newSurname: student.surname, newPatronymic: student.patronymic ?? "", newPhone: student.phone, newBirthdate: newBirthdate, newTeamID: student.team?.id, newGroupID: student.group?.id, isElder: student.isElder)
                 errorResult = false
+                successResultForEditing = true
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     cancelAction()
                 }

@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct TeamsAdminTable: View {
-    @State private var selectedTeam: Team.ID? = nil
+    @StateObject var session: Session
     var teams: [Team]
     
     var body: some View {
-        Table(teams, selection: $selectedTeam) {
+        Table(teams, selection: $session.selectedCellID) {
             TableColumn("Название", value: \.name)
             
             TableColumn("Количество участников") { team in

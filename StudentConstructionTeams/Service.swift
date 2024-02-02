@@ -61,7 +61,7 @@ final class Service {
                 surname: surname,
                 patronymic:  patronymic ?? "",
                 birthdate: birthdate,
-                phone: phone, 
+                phone: phone,
                 userType: UserType(id: userTypeID, name: userTypeName)
             )
         }
@@ -269,7 +269,7 @@ final class Service {
         isStudent: Bool
     ) throws {
         var birthdateString: String? = nil
-
+        
         if let birthdate = birthdate {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -308,7 +308,7 @@ final class Service {
             insertQuery = "SELECT add_my_user('\(surname)', '\(name)', '\(phone)', '\(password)', \(userTypeID), '', null)"
         }
         let insertStatement = try connection.prepareStatement(text: insertQuery)
-
+        
         defer { insertStatement.close() }
         
         let insertCursor = try insertStatement.execute(parameterValues: [])
@@ -316,7 +316,7 @@ final class Service {
         
         let query = "SELECT ID FROM my_user WHERE phone = '\(phone)' AND password = '\(password)';"
         let statement = try connection.prepareStatement(text: query)
-
+        
         defer { statement.close() }
         
         let cursor = try statement.execute(parameterValues: [])
@@ -339,7 +339,7 @@ final class Service {
             } else {
                 query = "SELECT add_student(\(userID), FALSE, 0, \(groupID!), \(teamID!));"
             }
-
+            
             let statement = try connection.prepareStatement(text: query)
             defer { statement.close() }
             
@@ -352,7 +352,7 @@ final class Service {
             } else {
                 query = "SELECT add_team_director(\(userID), \(teamID!));"
             }
-
+            
             let statement = try connection.prepareStatement(text: query)
             defer { statement.close() }
             
@@ -380,7 +380,7 @@ final class Service {
             let team = Team(id: id, name: name, countStudents: countStudents)
             teams.append(team)
         }
-
+        
         return teams
     }
     
@@ -456,7 +456,7 @@ final class Service {
             let student = Student(id: id, userID: userID, name: name, surname: surname, patronymic: patronymic, birthdate: birthdate, earnings: earnings, phone: phone, isElder: isElder, group: group, team: team)
             students.append(student)
         }
-
+        
         return students
     }
     
@@ -499,7 +499,7 @@ final class Service {
             let teamDirector = TeamDirector(id: id, userID: userID, name: name, surname: surname, patronymic: patronymic, birthdate: birthdate, phone: phone, team: team)
             teamDirectors.append(teamDirector)
         }
-
+        
         return teamDirectors
     }
     
@@ -538,7 +538,7 @@ final class Service {
                 surname: surname,
                 patronymic: patronymic,
                 birthdate: birthdate,
-                phone: phone, 
+                phone: phone,
                 userType: UserType(id: userTypeID, name: userTypeName)
             )
             users.append(user)
@@ -733,7 +733,7 @@ final class Service {
     
     func fetchTeammates(userID: Int) throws -> [Student] {
         let query = "SELECT u.ID AS student_id, u.surname AS student_surname, u.name AS student_name, u.patronymic AS student_patronymic, u.birthdate AS student_birthdate, u.phone AS student_phone, sg.name AS group_name FROM student s JOIN my_user u ON s.userID = u.ID JOIN team t ON s.teamID = t.ID LEFT JOIN student_group sg ON s.groupID = sg.ID WHERE t.ID IN (SELECT teamID FROM team_director WHERE userID = \(userID)) OR t.ID IN (SELECT teamID FROM student WHERE userID = \(userID));"
-
+        
         let statement = try connection.prepareStatement(text: query)
         defer { statement.close() }
         
@@ -850,8 +850,8 @@ final class Service {
                 birthdate: birthdate,
                 phone: phone,
                 team: Team(id: 0,
-                name: teamName,
-                countStudents:  0)
+                           name: teamName,
+                           countStudents:  0)
             )
             
             students.append(student)
@@ -891,7 +891,7 @@ final class Service {
             let team = Team(id: id, name: name, countStudents: 0)
             teams.append(team)
         }
-
+        
         return teams
     }
     
@@ -947,7 +947,7 @@ final class Service {
         userTypeName: String
     ) throws {
         var birthdateString: String? = nil
-
+        
         if let birthdate = birthdate {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -1047,7 +1047,7 @@ final class Service {
         for row in cursor {
             let columns = try row.get().columns
             let name = try columns[1].string()
-         
+            
             return UserType(id: id, name: name)
         }
         return UserType(id: 0, name: "")
@@ -1126,7 +1126,7 @@ final class Service {
             let columns = try row.get().columns
             let name = try columns[1].string()
             let ratePerHour = try columns[2].int()
-         
+            
             return TaskType(id: id, name: name, ratePerHour: String(ratePerHour))
         }
         return TaskType(id: 0, name: "", ratePerHour: "")
@@ -1287,7 +1287,7 @@ final class Service {
     func addNewTask(typeID: Int, hours: Int, statusID: Int, teamID: Int?, startDate: Date?, endDate: Date?) throws {
         var startDateString: String? = nil
         var endDateString: String? = nil
-
+        
         if let date = startDate {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -1316,11 +1316,11 @@ final class Service {
         } else if startDateString != nil && endDateString != nil && newTeamID == nil {
             query = "SELECT add_task(\(typeID), \(hours), \(statusID), \(teamID!), '\(startDateString!)', null)"
         } else if startDateString != nil && endDateString == nil && newTeamID == nil {
-                query = "SELECT add_task(\(typeID), \(hours), \(statusID), null, '\(startDateString!)', null)"
+            query = "SELECT add_task(\(typeID), \(hours), \(statusID), null, '\(startDateString!)', null)"
         } else if startDateString == nil && endDateString == nil && newTeamID == nil {
             query = "SELECT add_task(\(typeID), \(hours), \(statusID))"
         }
-
+        
         let statement = try connection.prepareStatement(text: query)
         defer { statement.close() }
         
@@ -1331,7 +1331,7 @@ final class Service {
     func updateTask(with id: Int, typeID: Int, hours: Int, statusID: Int, teamID: Int?, startDate: Date?, endDate: Date?) throws {
         var startDateString: String? = nil
         var endDateString: String? = nil
-
+        
         if let date = startDate {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -1360,11 +1360,11 @@ final class Service {
         } else if startDateString != nil && endDateString != nil && newTeamID == nil {
             query = "SELECT update_task(\(id), \(typeID), \(hours), \(statusID), \(teamID!), '\(startDateString!)', null)"
         } else if startDateString != nil && endDateString == nil && newTeamID == nil {
-                query = "SELECT update_task(\(id), \(typeID), \(hours), \(statusID), null, '\(startDateString!)', null)"
+            query = "SELECT update_task(\(id), \(typeID), \(hours), \(statusID), null, '\(startDateString!)', null)"
         } else if startDateString == nil && endDateString == nil && newTeamID == nil {
             query = "SELECT update_task(\(id), \(typeID), \(hours), \(statusID))"
         }
-
+        
         let statement = try connection.prepareStatement(text: query)
         defer { statement.close() }
         
@@ -1594,6 +1594,59 @@ final class Service {
             query = "SELECT update_student(\(id), \(isElder), null, null)"
         }
         print(query)
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        cursor.close()
+    }
+    
+    func fetchTeam(with id: Int) throws -> Team {
+        let query = "SELECT team.ID AS team_id, team.name AS team_name, COUNT(student.ID) AS student_count FROM team LEFT JOIN student ON team.ID = student.teamID WHERE team.id = \(id) GROUP BY team.ID, team.name ORDER BY team.ID;"
+        print(query)
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let id = try columns[0].int()
+            let name = try columns[1].string()
+            let countStudents = try columns[2].int()
+            
+            let team = Team(id: id, name: name, countStudents: countStudents)
+            return team
+        }
+        
+        return Team(id: 0, name: "", countStudents: 0)
+    }
+    
+    func deleteTeam(with id: Int) throws {
+        let query = "SELECT delete_team(\(id))"
+        print(query)
+        
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        cursor.close()
+    }
+    
+    func addNewTeam(name: String) throws {
+        let query = "SELECT add_team('\(name)')"
+        
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        cursor.close()
+    }
+    
+    func updateTeam(with id: Int, newName: String) throws {
+        let query = "SELECT update_team(\(id), '\(newName)')"
+        
         let statement = try connection.prepareStatement(text: query)
         defer { statement.close() }
         
