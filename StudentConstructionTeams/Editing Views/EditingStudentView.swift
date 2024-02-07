@@ -184,7 +184,7 @@ struct EditingStudentView: View {
                 CancelButton(action: cancelAction)
                 
                 EditButton(action: editGroup, name: titleButton)
-                    .disabled(!nameIsRussian || student.name.isEmpty || !surnameIsRussian || student.surname.isEmpty || !patronymicIsRussian || !phoneIsNumber || student.phone.isEmpty || !isElder)
+                    .disabled(!nameIsRussian || student.name.isEmpty || !surnameIsRussian || student.surname.isEmpty || !patronymicIsRussian || !phoneIsNumber || student.phone.isEmpty || !isElder || !(student.isElder && student.group?.id == 0))
             }
         }
         .padding()

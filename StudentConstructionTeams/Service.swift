@@ -1875,4 +1875,95 @@ final class Service {
         
         return stayingInTeams
     }
+    
+    func fetchTeamSummary() throws -> [TeamSummary] {
+        let query = "SELECT * FROM team_summary"
+
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        var teamSummary = [TeamSummary]()
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let id = try columns[0].int()
+            let teamName = try columns[1].string()
+            let studentsCount = try columns[2].int()
+            let averageEarnings = try columns[3].optionalInt()
+            let date = try columns[4].optionalDate()?.description
+            
+            var latestStartDate: Date? = nil
+            if let date = date {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                latestStartDate = dateFormatter.date(from: date)
+            }
+            
+            let team = TeamSummary(id: id, teamName: teamName, studentsCount: studentsCount, averageEarnings: averageEarnings, latestStayStart: latestStartDate)
+
+            teamSummary.append(team)
+        }
+        
+        return teamSummary
+    }
+    
+    func fetchStudentsInBirthdateRange(firstNumber: Int, secondNumber: Int) throws -> [Student] {
+        let query = "SELECT id, surname || ' ' || name || ' ' || patronymic AS full_name, birthdate FROM (SELECT * FROM my_user WHERE EXTRACT(YEAR FROM birthdate) BETWEEN \(firstNumber) AND \(secondNumber)) AS td;"
+
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        var students = [Student]()
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let id = try columns[0].int()
+            let name = try columns[1].string()
+            let date = try columns[2].optionalDate()?.description
+            
+            var birthdate: Date? = nil
+            if let date = date {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                birthdate = dateFormatter.date(from: date)
+            }
+            
+            let student = Student(id: id, userID: 0, name: name, surname: "", birthdate: birthdate, phone: "")
+            students.append(student)
+        }
+        
+        return students
+    }
+    
+    func fetchLargeTasks() throws -> [ConstructionTask] {
+        let query = "SELECT task.ID, task_type.name AS task_type_name, task.hours, CAST((SELECT AVG(hours) FROM task) as int) AS overall_average_hours FROM task JOIN task_type ON task.typeID = task_type.ID WHERE task.hours > (SELECT AVG(hours) FROM task);"
+
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        var tasks = [ConstructionTask]()
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let id = try columns[0].int()
+            let name = try columns[1].string()
+            let hours = try columns[2].int()
+            let overallAverageHours = try columns[3].int()
+            
+            let task = ConstructionTask(id: id, taskType: TaskType(id: 0, name: name, ratePerHour: String(overallAverageHours)), countHours: String(hours), status: TaskStatus(id: 0, name: ""))
+            tasks.append(task)
+        }
+        
+        return tasks
+    }
 }
+

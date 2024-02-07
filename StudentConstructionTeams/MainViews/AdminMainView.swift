@@ -116,6 +116,26 @@ struct AdminMainView: View {
                         Text("Пребывания в команде")
                     }
                 }
+                
+                Text("Запросы из 3 задания")
+                    .font(.title3)
+                
+                NavigationLink(destination: CompositeMultitableQueryWithCaseExpression()) {
+                        Text("Case-выражение")
+                }
+                
+                NavigationLink(destination: MultitabularView(session: session)) {
+                        Text("Многотабличный view")
+                }
+                
+                NavigationLink(destination: SubqueriesView()) {
+                        Text("Запросы, содержащие подзапрос")
+                }
+                
+                NavigationLink(destination: CorrelatedSubqueriesView()) {
+                        Text("Коррелированные подзапросы")
+                }
+                
             }
         } detail: {
             UsersAdminView(session: session)
@@ -123,4 +143,6 @@ struct AdminMainView: View {
         .navigationTitle("Строительные отряды")
     }
 }
+
+
 

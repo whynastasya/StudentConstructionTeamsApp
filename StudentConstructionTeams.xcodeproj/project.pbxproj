@@ -27,6 +27,17 @@
 		EE09B8802B2F5C4600EF5536 /* StayingInTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B87F2B2F5C4600EF5536 /* StayingInTeam.swift */; };
 		EE09B8852B2F63A200EF5536 /* EarningsOnTeamsChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8842B2F63A200EF5536 /* EarningsOnTeamsChart.swift */; };
 		EE09B8882B2F6A5200EF5536 /* EarningsOnTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE09B8872B2F6A5200EF5536 /* EarningsOnTeams.swift */; };
+		EE2D80232B6EA09A004BD8A7 /* CompositeMultitableQueryWithCaseExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2D80222B6EA09A004BD8A7 /* CompositeMultitableQueryWithCaseExpression.swift */; };
+		EE2D80262B6FF445004BD8A7 /* CompositeMultitableQueryWithCaseExpressionTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2D80252B6FF445004BD8A7 /* CompositeMultitableQueryWithCaseExpressionTable.swift */; };
+		EE2D80282B712A0B004BD8A7 /* MultitabularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2D80272B712A0B004BD8A7 /* MultitabularView.swift */; };
+		EE2D802A2B727D8A004BD8A7 /* MultitabularViewTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2D80292B727D8A004BD8A7 /* MultitabularViewTable.swift */; };
+		EE2D802C2B727EE1004BD8A7 /* TeamSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2D802B2B727EE1004BD8A7 /* TeamSummary.swift */; };
+		EE2D802E2B73FC1D004BD8A7 /* SubqueriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2D802D2B73FC1D004BD8A7 /* SubqueriesView.swift */; };
+		EE2D80302B740734004BD8A7 /* SubquerySelectTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2D802F2B740734004BD8A7 /* SubquerySelectTable.swift */; };
+		EE2D80322B74092F004BD8A7 /* SubqueryFromTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2D80312B74092F004BD8A7 /* SubqueryFromTable.swift */; };
+		EE2D80342B7413DB004BD8A7 /* SubqueryWhereTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2D80332B7413DB004BD8A7 /* SubqueryWhereTable.swift */; };
+		EE2D80362B741F54004BD8A7 /* CorrelatedSubqueriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2D80352B741F54004BD8A7 /* CorrelatedSubqueriesView.swift */; };
+		EE2D80382B741FD2004BD8A7 /* CorrelatedSubquerySelectTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2D80372B741FD2004BD8A7 /* CorrelatedSubquerySelectTable.swift */; };
 		EE7EC5462B50A999005FC875 /* EditingUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EC5452B50A999005FC875 /* EditingUserView.swift */; };
 		EE7EC54A2B515974005FC875 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EC5492B515974005FC875 /* CancelButton.swift */; };
 		EE7F11512B655C2600CAFE8D /* AdminEditingUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7F11502B655C2600CAFE8D /* AdminEditingUserView.swift */; };
@@ -118,6 +129,17 @@
 		EE09B87F2B2F5C4600EF5536 /* StayingInTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StayingInTeam.swift; sourceTree = "<group>"; };
 		EE09B8842B2F63A200EF5536 /* EarningsOnTeamsChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsOnTeamsChart.swift; sourceTree = "<group>"; };
 		EE09B8872B2F6A5200EF5536 /* EarningsOnTeams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsOnTeams.swift; sourceTree = "<group>"; };
+		EE2D80222B6EA09A004BD8A7 /* CompositeMultitableQueryWithCaseExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeMultitableQueryWithCaseExpression.swift; sourceTree = "<group>"; };
+		EE2D80252B6FF445004BD8A7 /* CompositeMultitableQueryWithCaseExpressionTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeMultitableQueryWithCaseExpressionTable.swift; sourceTree = "<group>"; };
+		EE2D80272B712A0B004BD8A7 /* MultitabularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultitabularView.swift; sourceTree = "<group>"; };
+		EE2D80292B727D8A004BD8A7 /* MultitabularViewTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultitabularViewTable.swift; sourceTree = "<group>"; };
+		EE2D802B2B727EE1004BD8A7 /* TeamSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSummary.swift; sourceTree = "<group>"; };
+		EE2D802D2B73FC1D004BD8A7 /* SubqueriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubqueriesView.swift; sourceTree = "<group>"; };
+		EE2D802F2B740734004BD8A7 /* SubquerySelectTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubquerySelectTable.swift; sourceTree = "<group>"; };
+		EE2D80312B74092F004BD8A7 /* SubqueryFromTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubqueryFromTable.swift; sourceTree = "<group>"; };
+		EE2D80332B7413DB004BD8A7 /* SubqueryWhereTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubqueryWhereTable.swift; sourceTree = "<group>"; };
+		EE2D80352B741F54004BD8A7 /* CorrelatedSubqueriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrelatedSubqueriesView.swift; sourceTree = "<group>"; };
+		EE2D80372B741FD2004BD8A7 /* CorrelatedSubquerySelectTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrelatedSubquerySelectTable.swift; sourceTree = "<group>"; };
 		EE7EC5452B50A999005FC875 /* EditingUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserView.swift; sourceTree = "<group>"; };
 		EE7EC5492B515974005FC875 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
 		EE7F11502B655C2600CAFE8D /* AdminEditingUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminEditingUserView.swift; sourceTree = "<group>"; };
@@ -213,6 +235,16 @@
 			path = Charts;
 			sourceTree = "<group>";
 		};
+		EE2D80242B6EA0A1004BD8A7 /* Queries */ = {
+			isa = PBXGroup;
+			children = (
+				EE2D802D2B73FC1D004BD8A7 /* SubqueriesView.swift */,
+				EE2D80272B712A0B004BD8A7 /* MultitabularView.swift */,
+				EE2D80222B6EA09A004BD8A7 /* CompositeMultitableQueryWithCaseExpression.swift */,
+			);
+			path = Queries;
+			sourceTree = "<group>";
+		};
 		EE7EC5472B51589E005FC875 /* Editing Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +332,9 @@
 		EEC65F042B2CBF3C00CF7C9C = {
 			isa = PBXGroup;
 			children = (
+				EE2D80352B741F54004BD8A7 /* CorrelatedSubqueriesView.swift */,
+				EE2D80372B741FD2004BD8A7 /* CorrelatedSubquerySelectTable.swift */,
+				EE2D80332B7413DB004BD8A7 /* SubqueryWhereTable.swift */,
 				EEC65F0F2B2CBF3C00CF7C9C /* StudentConstructionTeams */,
 				EEC65F0E2B2CBF3C00CF7C9C /* Products */,
 			);
@@ -327,7 +362,8 @@
 				EE97AE252B52D4D30013951B /* Views */,
 				EE09B8862B2F691300EF5536 /* Charts */,
 				EEC65F252B2CCCB000CF7C9C /* Models */,
-				EEC65F262B2CF88700CF7C9C /* TableViews */,
+				EEC65F262B2CF88700CF7C9C /* Tables */,
+				EE2D80242B6EA0A1004BD8A7 /* Queries */,
 				EEEB9CD42B4B4DEB0018B210 /* Extensions.swift */,
 				EEC65F142B2CBF3E00CF7C9C /* Assets.xcassets */,
 				EEC65F162B2CBF3E00CF7C9C /* StudentConstructionTeams.entitlements */,
@@ -365,15 +401,20 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		EEC65F262B2CF88700CF7C9C /* TableViews */ = {
+		EEC65F262B2CF88700CF7C9C /* Tables */ = {
 			isa = PBXGroup;
 			children = (
+				EE2D802F2B740734004BD8A7 /* SubquerySelectTable.swift */,
+				EE2D80312B74092F004BD8A7 /* SubqueryFromTable.swift */,
 				EEC65F292B2D02B200CF7C9C /* MyTeamTable.swift */,
 				EE09B8592B2D15B100EF5536 /* MyGroupTable.swift */,
 				EE09B86B2B2F20FB00EF5536 /* TasksTable.swift */,
+				EE2D80252B6FF445004BD8A7 /* CompositeMultitableQueryWithCaseExpressionTable.swift */,
+				EE2D80292B727D8A004BD8A7 /* MultitabularViewTable.swift */,
+				EE2D802B2B727EE1004BD8A7 /* TeamSummary.swift */,
 				EE7F11562B65AE1A00CAFE8D /* Admin Tables */,
 			);
-			path = TableViews;
+			path = Tables;
 			sourceTree = "<group>";
 		};
 		EEE76B762B3221700092CAFC /* Models */ = {
@@ -491,6 +532,7 @@
 				EE09B87C2B2F59AC00EF5536 /* TeamsAdminTable.swift in Sources */,
 				EEC65F132B2CBF3C00CF7C9C /* ContentView.swift in Sources */,
 				EE09B8662B2E1CFD00EF5536 /* Team.swift in Sources */,
+				EE2D802E2B73FC1D004BD8A7 /* SubqueriesView.swift in Sources */,
 				EE97AE242B52CB220013951B /* AddButton.swift in Sources */,
 				EE97AE2D2B56C3CD0013951B /* MyTeamViewForTeamDirector.swift in Sources */,
 				EE09B8602B2E1A5600EF5536 /* TaskType.swift in Sources */,
@@ -499,8 +541,10 @@
 				EE7F11782B6BCC3600CAFE8D /* EditingTeamView.swift in Sources */,
 				EE09B8782B2F567D00EF5536 /* TaskTypesAdminTable.swift in Sources */,
 				EEC65F112B2CBF3C00CF7C9C /* StudentConstructionTeamsApp.swift in Sources */,
+				EE2D802C2B727EE1004BD8A7 /* TeamSummary.swift in Sources */,
 				EE7F11602B6706A000CAFE8D /* TaskTypesAdminView.swift in Sources */,
 				EEEB9CC32B497B070018B210 /* RegisterView.swift in Sources */,
+				EE2D802A2B727D8A004BD8A7 /* MultitabularViewTable.swift in Sources */,
 				EE7F11722B6981DA00CAFE8D /* StudentsAdminView.swift in Sources */,
 				EEEB9CCD2B49B8380018B210 /* AuthorizationButton.swift in Sources */,
 				EE7F11662B681F6400CAFE8D /* EditingTaskStatusView.swift in Sources */,
@@ -516,15 +560,19 @@
 				EE7F11682B68210900CAFE8D /* TaskStatusesAdminTable.swift in Sources */,
 				EE7F11742B69820000CAFE8D /* EditingStudentView.swift in Sources */,
 				EEE76B7C2B325C640092CAFC /* MyGroupView.swift in Sources */,
+				EE2D80382B741FD2004BD8A7 /* CorrelatedSubquerySelectTable.swift in Sources */,
 				EE7F11642B681F3300CAFE8D /* TaskStatusesAdminView.swift in Sources */,
 				EE09B86E2B2F28BD00EF5536 /* TasksAdminTable.swift in Sources */,
 				EEE76B802B32CC880092CAFC /* MyAccountView.swift in Sources */,
+				EE2D80262B6FF445004BD8A7 /* CompositeMultitableQueryWithCaseExpressionTable.swift in Sources */,
 				EE7F115C2B66E9AA00CAFE8D /* GroupsAdminView.swift in Sources */,
 				EEE76B992B34808A0092CAFC /* Service.swift in Sources */,
 				EE7F11512B655C2600CAFE8D /* AdminEditingUserView.swift in Sources */,
+				EE2D80302B740734004BD8A7 /* SubquerySelectTable.swift in Sources */,
 				EE09B87A2B2F57C800EF5536 /* GroupsAdminTable.swift in Sources */,
 				EEE76B712B321F440092CAFC /* CompletedTasksOnMonths.swift in Sources */,
 				EE7F117C2B6D3CC400CAFE8D /* EditingStayingInTeamView.swift in Sources */,
+				EE2D80362B741F54004BD8A7 /* CorrelatedSubqueriesView.swift in Sources */,
 				EEEB9CD72B4B5A230018B210 /* Role.swift in Sources */,
 				EEE76B822B32D98F0092CAFC /* ExitButton.swift in Sources */,
 				EE7F11552B65AE1500CAFE8D /* UserTypesAdminTable.swift in Sources */,
@@ -533,6 +581,7 @@
 				EE09B8702B2F298100EF5536 /* StudentsAdminTable.swift in Sources */,
 				EE7F115A2B65B5B300CAFE8D /* EditingUserTypeView.swift in Sources */,
 				EEE76B942B3376CD0092CAFC /* StudentMainView.swift in Sources */,
+				EE2D80282B712A0B004BD8A7 /* MultitabularView.swift in Sources */,
 				EEEB9CC62B49B2E90018B210 /* Session.swift in Sources */,
 				EE09B8762B2F3C5D00EF5536 /* User.swift in Sources */,
 				EE7F11762B6BCBF100CAFE8D /* TeamsAdminView.swift in Sources */,
@@ -552,6 +601,8 @@
 				EEE76B7A2B3222D90092CAFC /* MyTeamViewForStudent.swift in Sources */,
 				EE09B8742B2F3C2400EF5536 /* UsersAdminTable.swift in Sources */,
 				EEFE7FDC2B472967001A2E26 /* LoginView.swift in Sources */,
+				EE2D80342B7413DB004BD8A7 /* SubqueryWhereTable.swift in Sources */,
+				EE2D80322B74092F004BD8A7 /* SubqueryFromTable.swift in Sources */,
 				EE09B8882B2F6A5200EF5536 /* EarningsOnTeams.swift in Sources */,
 				EE97AE272B52D83D0013951B /* EditingUserTeamView.swift in Sources */,
 				EE09B8802B2F5C4600EF5536 /* StayingInTeam.swift in Sources */,
@@ -569,6 +620,7 @@
 				EE7F11622B670DF900CAFE8D /* EditingTaskTypesView.swift in Sources */,
 				EE09B8722B2F36A600EF5536 /* TeamDirectorsAdminTable.swift in Sources */,
 				EEE76B842B32DA2B0092CAFC /* EditButton.swift in Sources */,
+				EE2D80232B6EA09A004BD8A7 /* CompositeMultitableQueryWithCaseExpression.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
