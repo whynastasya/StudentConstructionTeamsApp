@@ -19,7 +19,12 @@ struct CorrelatedSubquerySelectTable: View {
             
             TableColumn("Тип задачи", value: \.taskType.name)
             
-            TableColumn("среднее время работы в команде", value: \.)
+            TableColumn("Cреднее время работы в команде", value: \.taskType.ratePerHour)
+        }
+        .onAppear {
+            do {
+                tasks = try Service.shared.fetchCorrelatedSubqueryForTasks()
+            } catch { }
         }
     }
 }

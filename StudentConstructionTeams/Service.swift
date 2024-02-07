@@ -1965,5 +1965,126 @@ final class Service {
         
         return tasks
     }
+    
+    func fetchCorrelatedSubqueryForTasks() throws -> [ConstructionTask] {
+        let query = "SELECT CAST(AVG(task.id + task_type.id + task.hours)as Int) as i_d, team.name, task.hours, task_type.name AS task_type_name, cast((SELECT AVG(task2.hours) FROM task task2 WHERE task2.teamID = team.ID AND task2.ID <> task.ID) as int) AS average_hours_in_team FROM task JOIN team ON task.teamID = team.ID JOIN task_type ON task.typeID = task_type.ID GROUP BY team.name, task.ID, task.hours, task_type.name, team.ID;"
+
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        var tasks = [ConstructionTask]()
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let id = try columns[0].int()
+            let teamName = try columns[1].string()
+            let hours = try columns[2].int()
+            let taskTypeName = try columns[3].string()
+            let averageHoursInTeam = try columns[4].int()
+            
+            let task = ConstructionTask(id: id, taskType: TaskType(id: 0, name: taskTypeName, ratePerHour: String(averageHoursInTeam)), countHours: String(hours), status: TaskStatus(id: 0, name: ""), team: Team(id: 0, name: teamName, countStudents: 0))
+            tasks.append(task)
+        }
+        
+        return tasks
+    }
+    
+    func fetchCorrelatedSubqueryForTeams() throws -> [Team] {
+        let query = "SELECT team.id, team.name AS team_name, SUM(student.earnings) AS total_earnings_in_team FROM team JOIN student ON team.ID = student.teamID WHERE EXISTS (SELECT 1 FROM student student2 WHERE student2.teamID = team.ID AND student2.earnings > (SELECT AVG(earnings) FROM student student3 WHERE student3.teamID = team.ID)) GROUP BY team.name, team.id;"
+
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        var teams = [Team]()
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let id = try columns[0].int()
+            let teamName = try columns[1].string()
+            let totalEarnings = try columns[2].int()
+            
+            let team = Team(id: id, name: teamName, countStudents: totalEarnings)
+            teams.append(team)
+        }
+        
+        return teams
+    }
+    
+    func fetchCorrelatedSubqueryForStudents() throws -> [Student] {
+        let query = "SELECT student.id, my_user.surname || ' ' || my_user.name || ' ' || my_user.patronymic AS full_name, team.name AS team_name FROM student JOIN my_user ON student.userID = my_user.ID JOIN team ON student.teamID = team.ID WHERE EXISTS (SELECT 1 FROM task WHERE teamID = team.ID AND statusID = (SELECT ID FROM task_status WHERE name = 'Выполнено'));"
+
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        var students = [Student]()
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let id = try columns[0].int()
+            let name = try columns[1].string()
+            let teamName = try columns[2].string()
+            
+            let student = Student(id: id, userID: 0, name: name, surname: "", phone: "", team: Team(id: 0, name: teamName, countStudents: 0))
+            students.append(student)
+        }
+        
+        return students
+    }
+    
+    func fetchTeamsForMultitableQueryWithGrouping(earnings: Int) throws -> [Team] {
+        let query = "SELECT team.name AS team_name, cast(COUNT(student.ID) as int) AS total_students, cast(AVG(student.earnings) as int) AS average_earnings FROM team JOIN student ON team.ID = student.teamID GROUP BY team.name HAVING AVG(student.earnings) > \(earnings);"
+
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        var teams = [Team]()
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let teamName = try columns[0].string()
+            let studentsCount = try columns[1].int()
+            let averageEarnings = try columns[2].int()
+            
+            let team = Team(id: averageEarnings, name: teamName, countStudents: studentsCount)
+            teams.append(team)
+        }
+        
+        return teams
+    }
+    
+    func fetchGroupForMultitableQueryWithPredicates() throws -> [Group] {
+        let query = "SELECT sg.id, sg.name AS group_name FROM student_group sg WHERE sg.ID = SELECT s.groupID FROM student s WHERE s.ID = ANY ( SELECT t.teamID FROM task t WHERE t.hours >= ALL ( SELECT AVG(t2.hours) FROM task t2)));"
+
+        let statement = try connection.prepareStatement(text: query)
+        defer { statement.close() }
+        
+        let cursor = try statement.execute(parameterValues: [])
+        defer { cursor.close() }
+        
+        var groups = [Group]()
+        
+        for row in cursor {
+            let columns = try row.get().columns
+            let id = try columns[0].int()
+            let name = try columns[1].string()
+            
+            let group = Group(id: id, name: name, faculty: "")
+            groups.append(group)
+        }
+        
+        return groups
+    }
 }
 

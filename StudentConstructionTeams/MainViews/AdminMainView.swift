@@ -136,6 +136,13 @@ struct AdminMainView: View {
                         Text("Коррелированные подзапросы")
                 }
                 
+                NavigationLink(destination: MultitableQueryWithGroupingView()) {
+                        Text("Многотабличный запрос")
+                }
+                
+                NavigationLink(destination: QueryWithPredicatesAnyAndAllView()) {
+                        Text("Запрос, содержащий предикат ANY и ALL")
+                }
             }
         } detail: {
             UsersAdminView(session: session)
@@ -143,6 +150,3 @@ struct AdminMainView: View {
         .navigationTitle("Строительные отряды")
     }
 }
-
-
-
