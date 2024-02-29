@@ -18,7 +18,7 @@ struct TasksAdminView: View {
     var body: some View {
         VStack {
             VStack {
-                Text("Статусы выполнения заданий")
+                Text("Задачи")
                     .font(.title)
                     .fontWeight(.bold)
                     .fontDesign(.rounded)

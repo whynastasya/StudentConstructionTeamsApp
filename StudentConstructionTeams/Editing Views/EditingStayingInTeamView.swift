@@ -10,7 +10,7 @@ import SwiftUI
 struct EditingStayingInTeamView: View {
     @State var title = "Добавление"
     @State var titleButton = "Добавить"
-    @State private var stayingInTeam = StayingInTeam(id: 0, team: Team(id: 0, name: "", countStudents: 0), student: Student(id: 0, userID: 0, name: "", surname: "", phone: ""), startDate: Date())
+    @State private var stayingInTeam = StayingInTeam(id: 0, team: Team(id: 0, name: "", countStudents: 0), student: Student(id: 0, userID: 0, name: "", surname: "", phone: ""), startDate: Date(), endDate: Date())
     @State var stayingInTeamID: Int?
     @State private var freeStudents = [Student]()
     @State private var teams = [Team]()
@@ -50,28 +50,20 @@ struct EditingStayingInTeamView: View {
                     .background(.green.opacity(0.1))
             }
             
-            Picker("Выберите студента", selection: $stayingInTeam.student.id ) {
-                Text("").tag(0)
-                ForEach(freeStudents ?? [Student](), id: \.self) { student in
-                    Text(student.fullName).tag(student.id)
-                }
-            }
-            .fontDesign(.rounded)
-            .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 15))
-            .onChange(of: stayingInTeam.student, {
-                do {
-                    studentStayingInTeams = try Service.shared.fetchAllStayingInTeamsForStudent(with: stayingInTeam.student.id)
-                } catch { }
-            })
+            Text("\(stayingInTeam.student.fullName)")
+                .font(.title3)
             
-            Picker("Выберите команду", selection: $stayingInTeam.team.id) {
-                Text("").tag(0)
-                ForEach(teams ?? [Team](), id: \.self) { team in
-                    Text(team.name).tag(team.id)
-                }
-            }
-            .fontDesign(.rounded)
-            .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 15))
+            Text("Команда: \(stayingInTeam.team.name)")
+                .font(.title3)
+
+//            Picker("Выберите команду", selection: $stayingInTeam.team.id) {
+//                Text("").tag(0)
+//                ForEach(teams ?? [Team](), id: \.self) { team in
+//                    Text(team.name).tag(team.id)
+//                }
+//            }
+//            .fontDesign(.rounded)
+//            .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 15))
             
             HStack {
                 Text("Дата начала")
@@ -86,7 +78,7 @@ struct EditingStayingInTeamView: View {
                     .onChange(of: stayingInTeam.startDate, perform: { value in
                         newStartDate = stayingInTeam.startDate
                         for studentStayingInTeam in studentStayingInTeams {
-                            let range = studentStayingInTeam.startDate...studentStayingInTeam.endDate!
+                            let range = studentStayingInTeam.startDate...(studentStayingInTeam.endDate ?? Date())
                             if range.contains(newStartDate!) {
                                 errorDate = true
                             } else {
@@ -109,8 +101,8 @@ struct EditingStayingInTeamView: View {
                     .onChange(of: stayingInTeam.endDate, perform: { value in
                         newEndDate = stayingInTeam.endDate
                         for studentStayingInTeam in studentStayingInTeams {
-                            let range = studentStayingInTeam.startDate...studentStayingInTeam.endDate!
-                            if range.contains(newEndDate!) {
+                            let range = studentStayingInTeam.startDate...(studentStayingInTeam.endDate ?? Date())
+                            if range.contains(newEndDate ?? Date()) {
                                 errorDate = true
                             } else {
                                 errorDate = false

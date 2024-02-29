@@ -2,7 +2,7 @@ CREATE ROLE team_director;
 CREATE ROLE student;
 CREATE ROLE admin;
 
-CREATE USER team_director_user WITH PASSWORD '1234';
+CREATE USER team_director_user WITH PASSWORD 'director';
 CREATE USER student_user WITH PASSWORD 'student';
 CREATE USER admin_user WITH PASSWORD 'admin';
 

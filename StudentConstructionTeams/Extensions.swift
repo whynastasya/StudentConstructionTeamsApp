@@ -19,7 +19,7 @@ extension String {
 extension String {
     var isContainsOnlyRussianCharacters: Bool {
         return self.range(
-            of: "^[а-яА-Я]*$",
+            of: "^[а-яА-Я ]*$",
             options: .regularExpression) != nil
     }
 }

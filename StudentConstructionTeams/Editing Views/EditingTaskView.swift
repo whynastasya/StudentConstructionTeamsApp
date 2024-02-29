@@ -73,6 +73,7 @@ struct EditingTaskView: View {
                     .fontDesign(.rounded)
             }
             
+            if title == "Изменение" {
             Picker("Статус задачи*", selection: $task.status.id) {
                 Text("").tag(0)
                 ForEach(taskStatuses, id: \.self) { taskStatus in
@@ -82,43 +83,44 @@ struct EditingTaskView: View {
             .fontDesign(.rounded)
             .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 15))
             
-            Picker("Команды*", selection: Binding(get: { task.team?.id ?? 0 }, set: { task.team?.id = $0 })) {
-                Text("").tag(0)
-                ForEach(teams, id: \.self) { team in
-                    Text(team.name).tag(team.id)
+                Picker("Команды*", selection: Binding(get: { task.team?.id ?? 0 }, set: { task.team?.id = $0 })) {
+                    Text("").tag(0)
+                    ForEach(teams, id: \.self) { team in
+                        Text(team.name).tag(team.id)
+                    }
                 }
-            }
-            .fontDesign(.rounded)
-            .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 15))
-            
-            HStack {
-                Text("Дата начала")
-                    .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 0))
-                Spacer()
-                DatePicker("", selection: $task.startDate.toUnwrapped(defaultValue: Date()), in: ...Date(), displayedComponents: .date)
-                    .fixedSize()
-                    .environment(\.locale, Locale.init(identifier: "ru_RU"))
-                    .labelsHidden()
-                    .datePickerStyle(.field)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 15))
-                    .onChange(of: task.startDate, perform: { value in
-                        newStartDate = task.startDate
-                    })
-            }
-            
-            HStack {
-                Text("Дата окончания")
-                    .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 0))
-                Spacer()
-                DatePicker("", selection: $task.endDate.toUnwrapped(defaultValue: Date()), in: ...Date(), displayedComponents: .date)
-                    .fixedSize()
-                    .environment(\.locale, Locale.init(identifier: "ru_RU"))
-                    .labelsHidden()
-                    .datePickerStyle(.field)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 15))
-                    .onChange(of: task.endDate, perform: { value in
-                        newEndDate = task.endDate
-                    })
+                .fontDesign(.rounded)
+                .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 15))
+                
+                HStack {
+                    Text("Дата начала")
+                        .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 0))
+                    Spacer()
+                    DatePicker("", selection: $task.startDate.toUnwrapped(defaultValue: Date()), in: ...Date(), displayedComponents: .date)
+                        .fixedSize()
+                        .environment(\.locale, Locale.init(identifier: "ru_RU"))
+                        .labelsHidden()
+                        .datePickerStyle(.field)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 15))
+                        .onChange(of: task.startDate, perform: { value in
+                            newStartDate = task.startDate
+                        })
+                }
+                
+                HStack {
+                    Text("Дата окончания")
+                        .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 0))
+                    Spacer()
+                    DatePicker("", selection: $task.endDate.toUnwrapped(defaultValue: Date()), in: ...Date(), displayedComponents: .date)
+                        .fixedSize()
+                        .environment(\.locale, Locale.init(identifier: "ru_RU"))
+                        .labelsHidden()
+                        .datePickerStyle(.field)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 15))
+                        .onChange(of: task.endDate, perform: { value in
+                            newEndDate = task.endDate
+                        })
+                }
             }
             
             if newStartDate ?? Date() > newEndDate ?? Date() {
@@ -131,8 +133,13 @@ struct EditingTaskView: View {
             HStack {
                 CancelButton(action: cancelAction)
                 
-                EditButton(action: editGroup, name: titleButton)
-                    .disabled(!hoursIsNumber || task.countHours.isEmpty || (task.status.id == 0) || (newEndDate ?? Date() < ((newStartDate ?? Calendar.current.date(byAdding: .day, value: -1, to: Date()))!)))
+                if title == "Изменение" {
+                    EditButton(action: editGroup, name: titleButton)
+                        .disabled(!hoursIsNumber || task.countHours.isEmpty || (task.status.id == 0) || (newEndDate ?? Date() < ((newStartDate ?? Calendar.current.date(byAdding: .day, value: -1, to: Date()))!)))
+                } else {
+                    EditButton(action: editGroup, name: titleButton)
+                        .disabled(!hoursIsNumber || task.countHours.isEmpty)
+                }
             }
         }
         .padding()
@@ -144,6 +151,9 @@ struct EditingTaskView: View {
                 teams = try Service.shared.fetchAllTeams()
                 taskStatuses = try Service.shared.fetchAllTaskStatuses()
                 taskTypes = try Service.shared.fetchAllTaskTypes()
+                if title == "Добавление" {
+                    taskStatuses = [taskStatuses[0]]
+                }
             } catch { }
         }
         .animation(.easeInOut, value: hoursIsNumber)
@@ -170,7 +180,7 @@ struct EditingTaskView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     cancelAction()
                 }
-            } catch { }
+            } catch { print(error) }
         }
     }
 }

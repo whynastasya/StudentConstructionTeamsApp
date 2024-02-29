@@ -12,7 +12,7 @@ struct EarningsOnMonthsChart: View {
     var earningsOnMonths = [EarningsOnMonths]()
     var body: some View {
         VStack {
-            Text("Заработок за N год")
+            Text("Заработок за 2024 год")
                 .font(.title2)
                 .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
             
@@ -42,8 +42,4 @@ struct EarningsOnMonthsChart: View {
         .clipShape(.rect(cornerRadius: 25))
         
     }
-}
-
-#Preview {
-    EarningsOnMonthsChart()
 }

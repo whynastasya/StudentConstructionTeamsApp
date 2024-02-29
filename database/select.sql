@@ -12,8 +12,6 @@ JOIN student_group ON student.groupID = student_group.ID
 LEFT JOIN staying_in_team ON student.ID = staying_in_team.studentID
 JOIN team ON student.teamID = team.ID;
 
--- ------------------
-
 -- Создание многотабличного представления
 CREATE OR REPLACE VIEW team_summary AS
 SELECT
@@ -107,20 +105,36 @@ HAVING AVG(student.earnings) > 2000;
 
     -- -----------\
 
-SELECT *
-FROM team
-WHERE ID = ALL (
-    SELECT teamID
-    FROM student
-    WHERE earnings > 1000
-);
+SELECT
+    sg.name AS group_name
+FROM
+    student_group sg
+WHERE
+    sg.ID = ANY (
+        SELECT
+            s.groupID
+        FROM
+            student s
+        WHERE
+            s.ID = ANY (
+                SELECT
+                    t.teamID
+                FROM
+                    task t
+                WHERE
+                    t.hours >= ALL (
+                        SELECT
+                            AVG(t2.hours)
+                        FROM
+                            task t2
+                    )
+            )
+    );
 
-SELECT *
-FROM team
-WHERE ID = ANY (
-    SELECT teamID
-    FROM student
-    WHERE earnings > 1000
-);
+
+
+
+
+
 
 

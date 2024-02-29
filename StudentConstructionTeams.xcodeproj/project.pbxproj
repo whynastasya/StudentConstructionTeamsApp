@@ -44,6 +44,7 @@
 		EE2D80402B743A2B004BD8A7 /* MultitableQueryWithGroupingTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2D803F2B743A2B004BD8A7 /* MultitableQueryWithGroupingTable.swift */; };
 		EE2D80422B744087004BD8A7 /* QueryWithPredicatesAnyAndAllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2D80412B744087004BD8A7 /* QueryWithPredicatesAnyAndAllView.swift */; };
 		EE2D80442B7440B2004BD8A7 /* QueryWithPredicatesAnyAndAllTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2D80432B7440B2004BD8A7 /* QueryWithPredicatesAnyAndAllTable.swift */; };
+		EE2D80462B75391C004BD8A7 /* LoginOnUsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2D80452B75391C004BD8A7 /* LoginOnUsernameView.swift */; };
 		EE7EC5462B50A999005FC875 /* EditingUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EC5452B50A999005FC875 /* EditingUserView.swift */; };
 		EE7EC54A2B515974005FC875 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EC5492B515974005FC875 /* CancelButton.swift */; };
 		EE7F11512B655C2600CAFE8D /* AdminEditingUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7F11502B655C2600CAFE8D /* AdminEditingUserView.swift */; };
@@ -92,7 +93,6 @@
 		EEE76B782B3221C20092CAFC /* CompletedTasksOnMonthsChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B772B3221C20092CAFC /* CompletedTasksOnMonthsChart.swift */; };
 		EEE76B7A2B3222D90092CAFC /* MyTeamViewForStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B792B3222D90092CAFC /* MyTeamViewForStudent.swift */; };
 		EEE76B7C2B325C640092CAFC /* MyGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B7B2B325C640092CAFC /* MyGroupView.swift */; };
-		EEE76B7E2B325DEE0092CAFC /* MyEarningsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B7D2B325DEE0092CAFC /* MyEarningsView.swift */; };
 		EEE76B802B32CC880092CAFC /* MyAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B7F2B32CC880092CAFC /* MyAccountView.swift */; };
 		EEE76B822B32D98F0092CAFC /* ExitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B812B32D98F0092CAFC /* ExitButton.swift */; };
 		EEE76B842B32DA2B0092CAFC /* EditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE76B832B32DA2B0092CAFC /* EditButton.swift */; };
@@ -152,6 +152,7 @@
 		EE2D803F2B743A2B004BD8A7 /* MultitableQueryWithGroupingTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultitableQueryWithGroupingTable.swift; sourceTree = "<group>"; };
 		EE2D80412B744087004BD8A7 /* QueryWithPredicatesAnyAndAllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryWithPredicatesAnyAndAllView.swift; sourceTree = "<group>"; };
 		EE2D80432B7440B2004BD8A7 /* QueryWithPredicatesAnyAndAllTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryWithPredicatesAnyAndAllTable.swift; sourceTree = "<group>"; };
+		EE2D80452B75391C004BD8A7 /* LoginOnUsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOnUsernameView.swift; sourceTree = "<group>"; };
 		EE7EC5452B50A999005FC875 /* EditingUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingUserView.swift; sourceTree = "<group>"; };
 		EE7EC5492B515974005FC875 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
 		EE7F11502B655C2600CAFE8D /* AdminEditingUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminEditingUserView.swift; sourceTree = "<group>"; };
@@ -202,7 +203,6 @@
 		EEE76B772B3221C20092CAFC /* CompletedTasksOnMonthsChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTasksOnMonthsChart.swift; sourceTree = "<group>"; };
 		EEE76B792B3222D90092CAFC /* MyTeamViewForStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeamViewForStudent.swift; sourceTree = "<group>"; };
 		EEE76B7B2B325C640092CAFC /* MyGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupView.swift; sourceTree = "<group>"; };
-		EEE76B7D2B325DEE0092CAFC /* MyEarningsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEarningsView.swift; sourceTree = "<group>"; };
 		EEE76B7F2B32CC880092CAFC /* MyAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountView.swift; sourceTree = "<group>"; };
 		EEE76B812B32D98F0092CAFC /* ExitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitButton.swift; sourceTree = "<group>"; };
 		EEE76B832B32DA2B0092CAFC /* EditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButton.swift; sourceTree = "<group>"; };
@@ -317,7 +317,6 @@
 				EEE76B792B3222D90092CAFC /* MyTeamViewForStudent.swift */,
 				EE97AE2C2B56C3CC0013951B /* MyTeamViewForTeamDirector.swift */,
 				EEEB9CD82B4B634E0018B210 /* AccountViewInSidebar.swift */,
-				EEE76B7D2B325DEE0092CAFC /* MyEarningsView.swift */,
 				EEE76B7B2B325C640092CAFC /* MyGroupView.swift */,
 				EEE76B7F2B32CC880092CAFC /* MyAccountView.swift */,
 				EEE76B852B32EFD20092CAFC /* TasksView.swift */,
@@ -451,6 +450,7 @@
 			isa = PBXGroup;
 			children = (
 				EEFE7FDB2B472967001A2E26 /* LoginView.swift */,
+				EE2D80452B75391C004BD8A7 /* LoginOnUsernameView.swift */,
 				EEEB9CCC2B49B8380018B210 /* AuthorizationButton.swift */,
 				EEEB9CC22B497B070018B210 /* RegisterView.swift */,
 			);
@@ -618,7 +618,6 @@
 				EE97AE2B2B569E1E0013951B /* EditingStudentGroupView.swift in Sources */,
 				EEC65F2C2B2D02DB00CF7C9C /* Student.swift in Sources */,
 				EE09B8852B2F63A200EF5536 /* EarningsOnTeamsChart.swift in Sources */,
-				EEE76B7E2B325DEE0092CAFC /* MyEarningsView.swift in Sources */,
 				EE7F116C2B6825CE00CAFE8D /* EditingTaskView.swift in Sources */,
 				EE7F115E2B66E9F000CAFE8D /* AdminEditingGroupView.swift in Sources */,
 				EEE76B7A2B3222D90092CAFC /* MyTeamViewForStudent.swift in Sources */,
@@ -627,6 +626,7 @@
 				EE2D80342B7413DB004BD8A7 /* SubqueryWhereTable.swift in Sources */,
 				EE2D80322B74092F004BD8A7 /* SubqueryFromTable.swift in Sources */,
 				EE09B8882B2F6A5200EF5536 /* EarningsOnTeams.swift in Sources */,
+				EE2D80462B75391C004BD8A7 /* LoginOnUsernameView.swift in Sources */,
 				EE97AE272B52D83D0013951B /* EditingUserTeamView.swift in Sources */,
 				EE09B8802B2F5C4600EF5536 /* StayingInTeam.swift in Sources */,
 				EEE76B6D2B321C370092CAFC /* CompletedTasksOnTeams.swift in Sources */,

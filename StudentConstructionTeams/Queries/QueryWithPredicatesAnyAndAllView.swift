@@ -26,3 +26,6 @@ struct QueryWithPredicatesAnyAndAllView: View {
         .padding()
     }
 }
+
+
+

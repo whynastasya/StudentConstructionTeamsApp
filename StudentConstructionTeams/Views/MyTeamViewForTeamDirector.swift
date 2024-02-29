@@ -60,6 +60,7 @@ struct MyTeamViewForTeamDirector: View {
     private func loadData() {
         do {
             teamInformation = try Service.shared.fetchTeamDirectorTeam(with: session.userID)
+            students = try Service.shared.fetchStudentOnTeamDirectorID(id: session.userID)
         } catch {}
     }
 }

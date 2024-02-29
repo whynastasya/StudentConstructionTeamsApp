@@ -18,7 +18,7 @@ struct StayingInTeamAdminView: View {
     var body: some View {
         VStack {
             VStack {
-                Text("Пребыввание студентов в командах")
+                Text("Пребывание студентов в командах")
                     .font(.title)
                     .fontWeight(.bold)
                     .fontDesign(.rounded)

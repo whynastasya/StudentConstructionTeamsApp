@@ -28,7 +28,7 @@ struct TeamDirectorMainView: View {
                     }
                 }
                 
-                NavigationLink(destination: TasksView()) {
+                NavigationLink(destination: TasksView(session: session)) {
                     HStack {
                         Image("my_earnings_icon")
                             .resizable()
@@ -44,7 +44,7 @@ struct TeamDirectorMainView: View {
         .navigationTitle("Строительные отряды")
         .onAppear {
             do {
-                if let teamDirector = try Service.shared.fetchTeamDirector(with: session.userID) {
+                if let teamDirector = try Service.shared.fetchTeamDirector(userID: session.userID) {
                     self.teamDirector = teamDirector
                 } else {
                     session.currentScreen = .login

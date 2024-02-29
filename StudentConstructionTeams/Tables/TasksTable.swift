@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct TasksTable: View {
-    @State private var selectedTask: ConstructionTask.ID? = nil
+    @StateObject var session: Session
     var tasks: [ConstructionTask]
     
     var body: some View {
-        Table(tasks, selection: $selectedTask) {
+        Table(tasks, selection: $session.selectedCellID) {
             TableColumn("Тип работы", value: \ConstructionTask.taskType.name)
             
             TableColumn("Количество часов") { task in
@@ -29,7 +29,7 @@ struct TasksTable: View {
             
             TableColumn("Статус") { task in
                 Text(task.status.name)
-                    .foregroundStyle(task.status.name ==  "Выполнено" ? .green : task.status.name == "Свободно" ? .red : .white)
+                    .foregroundStyle(task.status.name == "Свободно" ? .green : .white)
             }
         }
         .clipShape(.rect(cornerRadius: 25))

@@ -12,8 +12,6 @@ struct AdminEditingGroupView: View {
     @State var titleButton = "Добавить"
     @State private var group = Group(id: 0, name: "", faculty: "")
     @State var groupID: Int?
-    @State private var nameIsRussian = true
-    @State private var facultyIsRussian = true
     var cancelAction : () -> Void
     @State private var errorResult = false
     @State private var successResultForEditing = false
@@ -60,35 +58,17 @@ struct AdminEditingGroupView: View {
                 .textFieldStyle(.roundedBorder)
                 .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
                 .fontDesign(.rounded)
-                .onChange(of: group.name, {
-                    nameIsRussian = group.name.isContainsOnlyRussianCharacters
-                })
-            
-            if !nameIsRussian {
-                Text("Допустимые значения - русский алфавит")
-                    .foregroundStyle(.red)
-                    .fontDesign(.rounded)
-            }
             
             TextField("Факультет*", text: $group.faculty)
                 .textFieldStyle(.roundedBorder)
                 .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
                 .fontDesign(.rounded)
-                .onChange(of: group.faculty, {
-                    facultyIsRussian = group.faculty.isContainsOnlyRussianCharacters
-                })
-            
-            if !facultyIsRussian {
-                Text("Допустимые значения - русский алфавит")
-                    .foregroundStyle(.red)
-                    .fontDesign(.rounded)
-            }
             
             HStack {
                 CancelButton(action: cancelAction)
                 
                 EditButton(action: editGroup, name: titleButton)
-                    .disabled(!nameIsRussian || group.name.isEmpty || !facultyIsRussian || group.faculty.isEmpty)
+                    .disabled(group.name.isEmpty || group.faculty.isEmpty)
             }
         }
         .padding()
@@ -99,8 +79,6 @@ struct AdminEditingGroupView: View {
                 }
             } catch { }
         }
-        .animation(.easeInOut, value: nameIsRussian)
-        .animation(.easeInOut, value: facultyIsRussian)
         .animation(.easeInOut, value: successResultForAdding)
         .animation(.easeInOut, value: successResultForEditing)
         .animation(.easeInOut, value: errorResult)

@@ -77,7 +77,7 @@ struct TaskStatusesAdminView: View {
     private func deleteTaskStatus() {
         do {
             try Service.shared.deleteTaskStatus(with: session.selectedCellID!)
-        } catch { }
+        } catch { print(error)}
         cancel()
     }
 }

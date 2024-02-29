@@ -18,6 +18,14 @@ struct StudentMainView: View {
                     AccountViewInSidebar(session: session)
                 }
                 
+                HStack {
+                    Image("my_earnings_icon")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                    
+                    Text("Мой заработок \(student.earnings) руб.")
+                }
+                
                 NavigationLink(destination: MyTeamViewForStudent(session: session)) {
                     HStack {
                         Image("my_team_icon")
@@ -37,15 +45,6 @@ struct StudentMainView: View {
                         Text("Моя группа")
                     }
                 }
-                NavigationLink(destination: MyEarningsView()) {
-                    HStack {
-                        Image("my_earnings_icon")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                        
-                        Text("Мой заработок")
-                    }
-                }
             }
         } detail: {
             MyTeamViewForStudent(session: session)
@@ -53,7 +52,7 @@ struct StudentMainView: View {
         .navigationTitle("Строительные отряды")
         .onAppear {
             do {
-                if let student = try Service.shared.fetchStudent(with: session.userID) {
+                if let student = try Service.shared.fetchStudent(userID: session.userID) {
                     self.student = student
                 } else {
                     session.currentScreen = .login

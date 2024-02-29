@@ -115,6 +115,7 @@ struct EditingTaskStatusView: View {
                 }
             } catch {
                 errorResult = true
+                print(error)
             }
         }
     }

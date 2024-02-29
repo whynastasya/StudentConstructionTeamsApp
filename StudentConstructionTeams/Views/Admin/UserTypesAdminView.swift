@@ -77,7 +77,7 @@ struct UserTypesAdminView: View {
     private func deleteUserType() {
         do {
             try Service.shared.deleteUserType(with: session.selectedCellID!)
-        } catch { }
+        } catch { print(error) }
         cancel()
     }
 }
